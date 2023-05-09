@@ -2,7 +2,7 @@ import {Route, Routes} from 'react-router-dom';
 import {Home} from './pages/Home';
 import {Game} from './pages/Game';
 import {NotFound} from './pages/NotFound';
-import {Layout} from './components/Layout';
+import {Layout} from './components/layout';
 
 const App = () => {
 	return (

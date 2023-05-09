@@ -1,4 +1,4 @@
-import {GameMode} from '../components/GameMode';
+import {GameMode} from '../components/card/GameModeCard';
 
 const Home = () => {
 	return (

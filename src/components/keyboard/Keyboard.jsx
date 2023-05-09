@@ -1,7 +1,7 @@
-import {buttonsKeyboard} from '../data/buttonsKeyboard';
+import {buttonsKeyboard} from '../../data/buttonsKeyboard';
 
 import {KeyboardKey} from './KeyboardKey';
-import {useKeyboard} from '../hooks/useKeyboard';
+import {useKeyboard} from '../../hooks/useKeyboard';
 
 const Keyboard = () => {
 	const [isShift, eventKeyCode] = useKeyboard();
