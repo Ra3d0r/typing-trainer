@@ -12,5 +12,8 @@
 	"insertPragma": false,
 	"quoteProps": "as-needed",
 	"requirePragma": false,
-	"useTabs": true
+	"useTabs": true,
+	"importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
 }
