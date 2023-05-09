@@ -1,10 +1,18 @@
-import {Keyboard} from './components/Keyboard';
+import {Route, Routes} from 'react-router-dom';
+import {Home} from './pages/Home';
+import {Game} from './pages/Game';
+import {NotFound} from './pages/NotFound';
+import {Layout} from './components/Layout';
 
 const App = () => {
 	return (
-		<div className="container mx-auto overflow-hidden">
-			<Keyboard />
-		</div>
+		<Routes>
+			<Route path="/" element={<Layout />}>
+				<Route index element={<Home />} />
+				<Route path="/game" element={<Game />} />
+				<Route path="*" element={<NotFound />} />
+			</Route>
+		</Routes>
 	);
 };
 

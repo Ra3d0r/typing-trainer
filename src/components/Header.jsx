@@ -1,0 +1,24 @@
+import {Link} from 'react-router-dom';
+
+const Header = () => {
+	return (
+		<nav className="bg-white dark:bg-gray-900 w-full border-b border-gray-200 dark:border-gray-600">
+			<div className="bg-white border-gray-200 dark:bg-gray-900">
+				<div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+					<Link to="/" className="flex items-center">
+						<span className="self-center text-2xl text-cyan-500 font-semibold whitespace-nowrap dark:text-white">
+							Typing Trainer
+						</span>
+					</Link>
+					<div className="flex items-center">
+						<a href="#" className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
+							Login
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	);
+};
+
+export {Header};
