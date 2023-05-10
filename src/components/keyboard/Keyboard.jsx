@@ -6,7 +6,7 @@ const Keyboard = () => {
 	const [isShift, eventKeyCode] = useKeyboard();
 
 	return (
-		<div className="flex justify-center">
+		<div className="flex justify-center mt-20">
 			<div className="inline-block text-center p-2 sm:p-6 mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 				{buttonsKeyboard.map((board, rowIndex) => {
 					return (
