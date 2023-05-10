@@ -8,7 +8,7 @@ const Footer = () => {
 			<div className="sm:flex sm:items-center sm:justify-between">
 				<span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
 					<Link to="/" className="hover:underline">
-						Typing Trainer {date.getFullYear()}
+						© {date.getFullYear()} Typing Trainer
 					</Link>
 				</span>
 				<div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
