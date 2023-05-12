@@ -11,7 +11,9 @@ const Text = () => {
 	const selectCurrentText = useSelector((state) => state.typing.entities.easy.currentText);
 
 	useEffect(() => {
-		dispatch(requestText(URL_QUOTES)).then(console.log);
+		if (!selectCurrentText.length) {
+			dispatch(requestText(URL_QUOTES)).then(console.log);
+		}
 	}, [dispatch]);
 
 	return (
