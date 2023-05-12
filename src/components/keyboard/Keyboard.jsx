@@ -1,4 +1,4 @@
-import {buttonsKeyboard} from '../../data/buttonsKeyboard';
+import {buttonsKeyboard} from '../../../public/data/buttonsKeyboard';
 import {useKeyboard} from '../../hooks/useKeyboard';
 import {KeyboardKey} from './KeyboardKey';
 

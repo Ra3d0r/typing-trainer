@@ -1,9 +1,9 @@
-import path from 'path';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import webpack from 'webpack';
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
+import webpack from 'webpack';
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -103,7 +103,7 @@ export default {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(path.dirname('./'), 'src', 'index.html'),
+			template: path.resolve(path.dirname('./'), 'public', 'index.html'),
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true,

@@ -5,7 +5,7 @@ module.exports = {
 		tailwindcss: {},
 		autoprefixer: {},
 		'@fullhuman/postcss-purgecss': {
-			content: ['./src/**/*.jsx', './src/**/*.html'],
+			content: ['./src/**/*.jsx', './public/index.html'],
 			defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 		},
 	},
