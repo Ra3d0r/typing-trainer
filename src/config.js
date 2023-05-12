@@ -1,4 +1,3 @@
-const API_KEY_NEWS = process.env.REACT_APP_API_NEWS;
-const URL_NEWS = 'https://api.nytimes.com/svc/news/v3/content/nyt/world.json';
+const URL_QUOTES = 'https://type.fit/api/quotes';
 
-export {URL_NEWS, API_KEY_NEWS};
+export {URL_QUOTES};
