@@ -1,4 +1,5 @@
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -116,6 +117,9 @@ export default {
 		}),
 		new webpack.ProvidePlugin({
 			React: 'react',
+		}),
+		new Dotenv({
+			path: './.env.local',
 		}),
 	],
 };
