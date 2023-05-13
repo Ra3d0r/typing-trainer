@@ -11,6 +11,9 @@ export const classNameKey = (id, eventKey, keyTarget) => {
 		case id === 'ShiftRight' && id === eventKey:
 			className = 'special';
 			break;
+		case id === 'Backspace' && id === eventKey:
+			className = 'special';
+			break;
 
 		case id === eventKey:
 			className = 'mis-typed';

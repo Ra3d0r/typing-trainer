@@ -36,6 +36,7 @@ export const keyIdButtons = (key) => {
 		k: 'KeyK',
 		l: 'KeyL',
 		';': 'Semicolon',
+		':': 'Semicolon',
 		"'": 'Quote',
 		z: 'KeyZ',
 		x: 'KeyX',
@@ -50,6 +51,6 @@ export const keyIdButtons = (key) => {
 		' ': 'Space',
 	};
 
-	const result = keyId[key.toLowerCase()];
+	const result = keyId[key?.toLowerCase()];
 	return result ? result : null;
 };

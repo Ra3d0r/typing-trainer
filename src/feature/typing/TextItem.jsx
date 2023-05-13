@@ -1,7 +1,8 @@
-const TextItem = ({letter}) => {
-	return (
-		<span className="text-xl font-semibold text-blue-600/100 dark:text-blue-500/100">{letter}</span>
-	);
+import {classNameLetter} from './classNameLetter';
+
+const TextItem = ({letter, index, errorIndex, currentTextIndex}) => {
+	const className = classNameLetter(index, errorIndex, currentTextIndex);
+	return <span className={className}>{letter}</span>;
 };
 
 export {TextItem};

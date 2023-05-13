@@ -17,25 +17,28 @@ const initialState = {
 			currentText: [],
 			currentTextIndex: 0,
 			currentLetter: '',
+			errorIndex: [],
 			allText: null,
 		},
 		normal: {
 			currentText: [],
 			currentTextIndex: 0,
 			currentLetter: '',
+			errorIndex: [],
 			allText: null,
 		},
 		hard: {
 			currentText: [],
 			currentTextIndex: 0,
 			currentLetter: '',
+			errorIndex: [],
 			allText: null,
 		},
 		custom: {
 			currentText: [],
 			currentTextIndex: 0,
 			currentLetter: '',
-			allText: null,
+			errorIndex: [],
 		},
 	},
 	status: 'idle',
@@ -51,12 +54,17 @@ const typingSlice = createSlice({
 			const text = action.payload[randomNumber].text;
 			state.entities.easy.currentText = text.split('');
 			state.entities.easy.currentLetter = text[0];
+			state.entities.easy.errorIndex = [];
+			state.entities.easy.currentTextIndex = 0;
 		},
 		nextLetter: (state) => {
 			const index = state.entities.easy.currentTextIndex;
 			const letter = state.entities.easy.currentText[index + 1];
 			state.entities.easy.currentTextIndex++;
 			state.entities.easy.currentLetter = letter;
+		},
+		addErrorIndex: (state) => {
+			state.entities.easy.errorIndex.push(state.entities.easy.currentTextIndex);
 		},
 	},
 	extraReducers: (builder) => {
@@ -76,6 +84,6 @@ const typingSlice = createSlice({
 	},
 });
 
-export const {addCurrentText, nextLetter} = typingSlice.actions;
+export const {addCurrentText, nextLetter, addErrorIndex} = typingSlice.actions;
 
 export const typingReducer = typingSlice.reducer;

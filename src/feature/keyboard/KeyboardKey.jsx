@@ -1,7 +1,7 @@
 import {classNameKey} from './classNameKey';
 
 const KeyboardKey = ({kbd, eventKey, id, keyTarget}) => {
-	const className = classNameKey(id, eventKey, keyTarget); // mis-typed | untyped | active | typed | special
+	const className = classNameKey(id, eventKey, keyTarget);
 
 	switch (id) {
 		case 'Space':
