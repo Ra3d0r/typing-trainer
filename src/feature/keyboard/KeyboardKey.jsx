@@ -1,4 +1,8 @@
-const KeyboardKey = ({kbd, className, id}) => {
+import {classNameKey} from './classNameKey';
+
+const KeyboardKey = ({kbd, eventKey, id, keyTarget}) => {
+	const className = classNameKey(id, eventKey, keyTarget); // mis-typed | untyped | active | typed | special
+
 	switch (id) {
 		case 'Space':
 			return <kbd className={className + ' grow'}>{kbd}</kbd>;

@@ -3,7 +3,7 @@ import {useKeyboard} from '../../hooks/useKeyboard';
 import {KeyboardKey} from './KeyboardKey';
 
 const Keyboard = () => {
-	const [isShift, eventKeyCode] = useKeyboard();
+	const [isShift, eventKeyCode, keyTarget] = useKeyboard('KeyT');
 
 	return (
 		<div className="flex justify-center mt-20">
@@ -17,7 +17,8 @@ const Keyboard = () => {
 										key={key.id}
 										{...key}
 										kbd={isShift ? key.shift : key.nonShift}
-										className={eventKeyCode === key.id ? 'key-button-active' : 'key-button'}
+										eventKey={eventKeyCode}
+										keyTarget={keyTarget}
 									/>
 								);
 							})}

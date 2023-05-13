@@ -1,5 +1,4 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {useSelector} from 'react-redux';
 
 function randomIntFromInterval(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min);

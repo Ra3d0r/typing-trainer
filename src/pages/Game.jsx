@@ -1,4 +1,4 @@
-import {Keyboard} from '../components/keyboard/Keyboard.jsx';
+import {Keyboard} from '../feature/keyboard/Keyboard.jsx';
 import {Text} from '../feature/typing/Text.jsx';
 
 const Game = () => {

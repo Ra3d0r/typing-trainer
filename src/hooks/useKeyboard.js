@@ -1,14 +1,16 @@
 import {useEffect, useState} from 'react';
 
-const useKeyboard = () => {
+const useKeyboard = (target) => {
 	const [isShift, setIsShift] = useState(false);
 	const [eventKeyCode, setEventKeyCode] = useState('');
+	const [keyTarget, setKeyTarget] = useState('');
 
 	useEffect(() => {
 		function handleKeyDown(event) {
 			if (event.key === 'Shift') {
 				setIsShift(true);
 			}
+
 			setEventKeyCode(event.code);
 		}
 
@@ -20,6 +22,8 @@ const useKeyboard = () => {
 			setEventKeyCode('');
 		}
 
+		setKeyTarget(target);
+
 		document.addEventListener('keydown', handleKeyDown);
 		document.addEventListener('keyup', handleKeyUp);
 
@@ -27,9 +31,9 @@ const useKeyboard = () => {
 			document.removeEventListener('keydown', handleKeyDown);
 			document.removeEventListener('keyup', handleKeyUp);
 		};
-	}, []);
+	}, [target]);
 
-	return [isShift, eventKeyCode];
+	return [isShift, eventKeyCode, keyTarget];
 };
 
 export {useKeyboard};
