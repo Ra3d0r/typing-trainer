@@ -1,22 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {keyIdButtons} from '../../../public/data/keyIdButtons';
-
 const initialState = {
-	entities: '',
+	enable: true,
 };
 
 const keyboardSlice = createSlice({
 	name: '@@keyboard',
 	initialState,
 	reducers: {
-		addCurrentKey: (state, action) => {
-			const keyId = keyIdButtons[action.payload];
-			state.entities = keyId;
-		},
+		toggleEnable: (state) => !state.enable,
 	},
 });
 
-export const {addCurrentKey} = keyboardSlice.actions;
+export const {toggleEnable} = keyboardSlice.actions;
 
 export const keyboardReducer = keyboardSlice.reducer;

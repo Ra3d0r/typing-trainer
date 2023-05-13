@@ -1,9 +1,14 @@
 import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+
+import {nextLetter} from '../feature/typing/typingSlice';
+import {keyIdButtons} from '../helpers/keyIdButtons';
 
 const useKeyboard = (target) => {
 	const [isShift, setIsShift] = useState(false);
 	const [eventKeyCode, setEventKeyCode] = useState('');
-	const [keyTarget, setKeyTarget] = useState('');
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		function handleKeyDown(event) {
@@ -20,9 +25,11 @@ const useKeyboard = (target) => {
 			}
 
 			setEventKeyCode('');
+			const keyId = keyIdButtons(event.key);
+			if (keyId) {
+				dispatch(nextLetter());
+			}
 		}
-
-		setKeyTarget(target);
 
 		document.addEventListener('keydown', handleKeyDown);
 		document.addEventListener('keyup', handleKeyUp);
@@ -33,7 +40,7 @@ const useKeyboard = (target) => {
 		};
 	}, [target]);
 
-	return [isShift, eventKeyCode, keyTarget];
+	return [isShift, eventKeyCode];
 };
 
 export {useKeyboard};

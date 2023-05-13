@@ -1,8 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-function randomIntFromInterval(min, max) {
-	return Math.floor(Math.random() * (max - min + 1) + min);
-}
+import {randomIntFromInterval} from '../../helpers/randomIntFromInterval';
 
 export const requestText = createAsyncThunk(
 	'@@typing/loading-text',
@@ -18,21 +16,25 @@ const initialState = {
 		easy: {
 			currentText: [],
 			currentTextIndex: 0,
+			currentLetter: '',
 			allText: null,
 		},
 		normal: {
 			currentText: [],
 			currentTextIndex: 0,
+			currentLetter: '',
 			allText: null,
 		},
 		hard: {
 			currentText: [],
 			currentTextIndex: 0,
+			currentLetter: '',
 			allText: null,
 		},
 		custom: {
 			currentText: [],
 			currentTextIndex: 0,
+			currentLetter: '',
 			allText: null,
 		},
 	},
@@ -48,6 +50,13 @@ const typingSlice = createSlice({
 			const randomNumber = randomIntFromInterval(0, action.payload.length);
 			const text = action.payload[randomNumber].text;
 			state.entities.easy.currentText = text.split('');
+			state.entities.easy.currentLetter = text[0];
+		},
+		nextLetter: (state) => {
+			const index = state.entities.easy.currentTextIndex;
+			const letter = state.entities.easy.currentText[index + 1];
+			state.entities.easy.currentTextIndex++;
+			state.entities.easy.currentLetter = letter;
 		},
 	},
 	extraReducers: (builder) => {
@@ -67,6 +76,6 @@ const typingSlice = createSlice({
 	},
 });
 
-export const {addCurrentText} = typingSlice.actions;
+export const {addCurrentText, nextLetter} = typingSlice.actions;
 
 export const typingReducer = typingSlice.reducer;

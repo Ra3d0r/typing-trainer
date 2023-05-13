@@ -1,9 +1,15 @@
+import {useSelector} from 'react-redux';
+
 import {buttonsKeyboard} from '../../../public/data/buttonsKeyboard';
+import {keyIdButtons} from '../../helpers/keyIdButtons';
 import {useKeyboard} from '../../hooks/useKeyboard';
 import {KeyboardKey} from './KeyboardKey';
 
 const Keyboard = () => {
-	const [isShift, eventKeyCode, keyTarget] = useKeyboard('KeyT');
+	const currentKeyId = useSelector((state) =>
+		keyIdButtons(state.typing.entities.easy.currentLetter),
+	);
+	const [isShift, eventKeyCode] = useKeyboard(currentKeyId);
 
 	return (
 		<div className="flex justify-center mt-20">
@@ -18,7 +24,7 @@ const Keyboard = () => {
 										{...key}
 										kbd={isShift ? key.shift : key.nonShift}
 										eventKey={eventKeyCode}
-										keyTarget={keyTarget}
+										keyTarget={currentKeyId}
 									/>
 								);
 							})}
