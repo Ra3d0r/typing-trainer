@@ -6,7 +6,8 @@ export const requestText = createAsyncThunk(
 	'@@typing/loading-text',
 	async (url, {extra: api, dispatch}) => {
 		const quotes = await api.loadText(url);
-		dispatch(addCurrentText(quotes));
+		const randomNumber = randomIntFromInterval(0, quotes?.length);
+		dispatch(addCurrentText(quotes[randomNumber].text));
 		return quotes;
 	},
 );
@@ -16,29 +17,25 @@ const initialState = {
 		easy: {
 			currentText: [],
 			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
+			errorsIndex: [],
 			allText: null,
 		},
 		normal: {
 			currentText: [],
 			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
+			errorsIndex: [],
 			allText: null,
 		},
 		hard: {
 			currentText: [],
 			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
+			errorsIndex: [],
 			allText: null,
 		},
 		custom: {
 			currentText: [],
 			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
+			errorsIndex: [],
 		},
 	},
 	status: 'idle',
@@ -49,22 +46,16 @@ const typingSlice = createSlice({
 	name: '@@typing',
 	initialState,
 	reducers: {
-		addCurrentText: (state, action) => {
-			const randomNumber = randomIntFromInterval(0, action.payload.length);
-			const text = action.payload[randomNumber].text;
-			state.entities.easy.currentText = text.split('');
-			state.entities.easy.currentLetter = text[0];
-			state.entities.easy.errorIndex = [];
+		addCurrentText: (state, {payload}) => {
+			state.entities.easy.currentText = payload.split('');
+			state.entities.easy.errorsIndex = [];
 			state.entities.easy.currentTextIndex = 0;
 		},
 		nextLetter: (state) => {
-			const index = state.entities.easy.currentTextIndex;
-			const letter = state.entities.easy.currentText[index + 1];
 			state.entities.easy.currentTextIndex++;
-			state.entities.easy.currentLetter = letter;
 		},
-		addErrorIndex: (state) => {
-			state.entities.easy.errorIndex.push(state.entities.easy.currentTextIndex);
+		addErrorIndex: (state, {payload}) => {
+			state.entities.easy.errorsIndex.push(payload);
 		},
 	},
 	extraReducers: (builder) => {
@@ -85,5 +76,15 @@ const typingSlice = createSlice({
 });
 
 export const {addCurrentText, nextLetter, addErrorIndex} = typingSlice.actions;
+
+export const selectCurrentLetter = (state, mode) => {
+	const index = state.typing.entities[mode].currentTextIndex;
+	return state.typing.entities[mode].currentText[index];
+};
+
+export const selectCurrentTextIndex = (state, mode) => state.typing.entities[mode].currentTextIndex;
+export const selectCurrentText = (state, mode) => state.typing.entities[mode].currentText;
+export const selectAllText = (state, mode) => state.typing.entities[mode].allText;
+export const selectErrorsIndex = (state, mode) => state.typing.entities[mode].errorsIndex;
 
 export const typingReducer = typingSlice.reducer;

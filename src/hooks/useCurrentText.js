@@ -2,11 +2,11 @@ import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {URL_QUOTES} from '../config';
-import {requestText} from '../feature/typing/typingSlice';
+import {requestText, selectCurrentText} from '../feature/typing/typingSlice';
 
-const useCurrentText = () => {
+const useCurrentText = (mode) => {
 	const dispatch = useDispatch();
-	const currentText = useSelector((state) => state.typing.entities.easy.currentText);
+	const currentText = useSelector((state) => selectCurrentText(state, mode));
 
 	useEffect(() => {
 		if (!currentText.length) {

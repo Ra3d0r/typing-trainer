@@ -1,12 +1,15 @@
 import {useSelector} from 'react-redux';
+import {useParams} from 'react-router';
 
 import {useCurrentText} from '../../hooks/useCurrentText';
 import {TextItem} from './TextItem';
+import {selectCurrentTextIndex, selectErrorsIndex} from './typingSlice';
 
 const Text = () => {
-	const currentText = useCurrentText();
-	const errorIndex = useSelector((state) => state.typing.entities.easy.errorIndex);
-	const currentTextIndex = useSelector((state) => state.typing.entities.easy.currentTextIndex);
+	const {mode} = useParams();
+	const currentText = useCurrentText(mode);
+	const errorsIndex = useSelector((state) => selectErrorsIndex(state, mode));
+	const currentTextIndex = useSelector((state) => selectCurrentTextIndex(state, mode));
 
 	return (
 		<div className="mt-14 w-3/4 flex justify-center m-auto">
@@ -17,7 +20,7 @@ const Text = () => {
 							key={index}
 							letter={letter}
 							index={index}
-							errorIndex={errorIndex}
+							errorsIndex={errorsIndex}
 							currentTextIndex={currentTextIndex}
 						/>
 					))

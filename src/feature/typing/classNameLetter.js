@@ -1,5 +1,5 @@
-export const classNameLetter = (index, errorIndex = [], currentTextIndex) => {
-	if (errorIndex.includes(index)) {
+export const classNameLetter = (index, errorsIndex = [], currentTextIndex) => {
+	if (errorsIndex.includes(index)) {
 		return 'mis-letter';
 	} else if (index === currentTextIndex) {
 		return 'current-letter';

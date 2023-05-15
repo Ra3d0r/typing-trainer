@@ -1,16 +1,24 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {addCurrentText, addErrorIndex, nextLetter} from '../feature/typing/typingSlice';
+import {
+	addCurrentText,
+	addErrorIndex,
+	nextLetter,
+	selectAllText,
+	selectCurrentText,
+	selectCurrentTextIndex,
+} from '../feature/typing/typingSlice';
 import {keyIdButtons} from '../helpers/keyIdButtons';
+import {randomIntFromInterval} from '../helpers/randomIntFromInterval';
 
-const useKeyboard = (target) => {
+const useKeyboard = (target, mode) => {
 	const [isShift, setIsShift] = useState(false);
 	const [eventKeyCode, setEventKeyCode] = useState('');
 
-	const currentTextIndex = useSelector((state) => state.typing.entities.easy.currentTextIndex);
-	const currentTextLength = useSelector((state) => state.typing.entities.easy.currentText?.length);
-	const allText = useSelector((state) => state.typing.entities.easy.allText);
+	const currentTextIndex = useSelector((state) => selectCurrentTextIndex(state, mode));
+	const currentText = useSelector((state) => selectCurrentText(state, mode));
+	const allText = useSelector((state) => selectAllText(state, mode));
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -28,12 +36,21 @@ const useKeyboard = (target) => {
 			}
 
 			setEventKeyCode('');
+
 			const keyId = keyIdButtons(event.key);
 			if (keyId) {
-				target !== event.key && dispatch(addErrorIndex());
-				currentTextIndex < currentTextLength - 1
-					? dispatch(nextLetter())
-					: dispatch(addCurrentText(allText));
+				conditionText({
+					key: event.key,
+					target,
+					dispatch,
+					addErrorIndex,
+					addCurrentText,
+					nextLetter,
+					currentText,
+					currentTextIndex,
+					mode,
+					allText,
+				});
 			}
 		}
 
@@ -48,5 +65,33 @@ const useKeyboard = (target) => {
 
 	return [isShift, eventKeyCode, keyIdButtons(target)];
 };
+
+function conditionText({
+	key,
+	target,
+	dispatch,
+	addErrorIndex,
+	addCurrentText,
+	nextLetter,
+	currentText,
+	currentTextIndex,
+	mode,
+	allText,
+}) {
+	if (target !== key) {
+		dispatch(addErrorIndex(currentTextIndex));
+	}
+
+	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
+		// TODO Написать логику для этого режима
+	}
+
+	if (currentTextIndex < currentText.length - 1) {
+		dispatch(nextLetter());
+	} else {
+		const randomNumber = randomIntFromInterval(0, allText?.length);
+		mode !== 'custom' && dispatch(addCurrentText(allText[randomNumber].text));
+	}
+}
 
 export {useKeyboard};
