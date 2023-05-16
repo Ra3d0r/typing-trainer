@@ -9,7 +9,7 @@ const useCurrentText = (mode) => {
 	const currentText = useSelector((state) => selectCurrentText(state, mode));
 
 	useEffect(() => {
-		if (!currentText.length) {
+		if (!currentText.length && mode !== 'custom') {
 			const config = {
 				url: textEng.url[mode],
 				mode,

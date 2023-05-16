@@ -6,6 +6,6 @@ export const loadText = async (url, headers, mode) => {
 		const AllText = await client.get(url, {headers});
 		return separationTextMode(AllText, mode);
 	} catch (err) {
-		return Promise.reject(err.message);
+		return Promise.reject(err);
 	}
 };

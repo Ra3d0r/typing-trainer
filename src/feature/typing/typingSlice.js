@@ -8,39 +8,44 @@ export const requestText = createAsyncThunk(
 			dispatch(addCurrentText({text, mode}));
 			return {allText, mode};
 		} catch (err) {
-			return rejectWithValue(`Failed to fetch all text for game ${mode}`);
+			return rejectWithValue(`Failed to fetch text for game mode - ${mode}`);
 		}
 	},
 );
 
 const initialState = {
-	entities: {
-		easy: {
-			currentText: [],
-			currentTextIndex: 0,
-			errorsIndex: [],
-			allText: null,
-		},
-		normal: {
-			currentText: [],
-			currentTextIndex: 0,
-			errorsIndex: [],
-			allText: null,
-		},
-		hard: {
-			currentText: [],
-			currentTextIndex: 0,
-			errorsIndex: [],
-			allText: null,
-		},
-		custom: {
-			currentText: [],
-			currentTextIndex: 0,
-			errorsIndex: [],
-		},
+	easy: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
 	},
-	status: 'idle',
-	error: null,
+	normal: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
+	},
+	hard: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
+	},
+	custom: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
+	},
 };
 
 const typingSlice = createSlice({
@@ -48,30 +53,33 @@ const typingSlice = createSlice({
 	initialState,
 	reducers: {
 		addCurrentText: (state, {payload: {mode, text}}) => {
-			state.entities[mode].currentText = text.split('');
-			state.entities[mode].errorsIndex = [];
-			state.entities[mode].currentTextIndex = 0;
+			console.log(state);
+			state[mode].currentText = text.split('');
+			state[mode].errorsIndex = [];
+			state[mode].currentTextIndex = 0;
 		},
 		nextLetter: (state, {payload: {mode}}) => {
-			state.entities[mode].currentTextIndex++;
+			state[mode].currentTextIndex++;
 		},
 		addErrorIndex: (state, {payload: {currentTextIndex, mode}}) => {
-			state.entities[mode].errorsIndex.push(currentTextIndex);
+			state[mode].errorsIndex.push(currentTextIndex);
 		},
 	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(requestText.fulfilled, (state, {payload: {allText, mode}}) => {
-				state.entities[mode].allText = allText;
-				state.status = 'idle';
+				state[mode].allText = allText;
+				state[mode].status = 'fulfilled';
 			})
-			.addCase(requestText.pending, (state) => {
-				state.status = 'loading';
-				state.error = null;
+			.addCase(requestText.pending, (state, action) => {
+				const mode = action.meta.arg.mode;
+				state[mode].status = 'loading';
+				state[mode].error = null;
 			})
 			.addCase(requestText.rejected, (state, action) => {
-				state.status = 'failed';
-				state.error = action.payload;
+				const mode = action.meta.arg.mode;
+				state[mode].status = 'failed';
+				state[mode].error = action.payload;
 			});
 	},
 });
@@ -79,13 +87,16 @@ const typingSlice = createSlice({
 export const {addCurrentText, nextLetter, addErrorIndex} = typingSlice.actions;
 
 export const selectCurrentLetter = (state, mode) => {
-	const index = state.typing.entities[mode].currentTextIndex;
-	return state.typing.entities[mode].currentText[index];
+	const index = state.typing[mode].currentTextIndex;
+	return state.typing[mode].currentText[index];
 };
 
-export const selectCurrentTextIndex = (state, mode) => state.typing.entities[mode].currentTextIndex;
-export const selectCurrentText = (state, mode) => state.typing.entities[mode].currentText;
-export const selectAllText = (state, mode) => state.typing.entities[mode].allText;
-export const selectErrorsIndex = (state, mode) => state.typing.entities[mode].errorsIndex;
+export const selectCurrentTextIndex = (state, mode) => state.typing[mode].currentTextIndex;
+export const selectCurrentText = (state, mode) => state.typing[mode].currentText;
+export const selectAllText = (state, mode) => state.typing[mode].allText;
+export const selectErrorsIndex = (state, mode) => state.typing[mode].errorsIndex;
+
+export const selectTypingStatus = (state, mode) => state.typing[mode].status;
+export const selectTypingError = (state, mode) => state.typing[mode].error;
 
 export const typingReducer = typingSlice.reducer;

@@ -78,6 +78,9 @@ function conditionText({
 	mode,
 	allText,
 }) {
+	if (!currentText.length) {
+		return;
+	}
 	if (target !== key) {
 		dispatch(addErrorIndex({currentTextIndex, mode}));
 	}

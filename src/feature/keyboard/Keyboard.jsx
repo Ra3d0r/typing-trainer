@@ -1,13 +1,11 @@
 import {useSelector} from 'react-redux';
-import {useParams} from 'react-router';
 
 import {buttonsKeyboard} from '../../../public/data/buttonsKeyboard';
 import {useKeyboard} from '../../hooks/useKeyboard';
 import {selectCurrentLetter} from '../typing/typingSlice';
 import {KeyboardKey} from './KeyboardKey';
 
-const Keyboard = () => {
-	const {mode} = useParams();
+const Keyboard = ({mode}) => {
 	const currentLetter = useSelector((state) => selectCurrentLetter(state, mode));
 	const [isShift, eventKeyCode, currentKeyId] = useKeyboard(currentLetter, mode);
 
