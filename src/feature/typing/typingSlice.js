@@ -1,14 +1,15 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {randomIntFromInterval} from '../../helpers/randomIntFromInterval';
-
 export const requestText = createAsyncThunk(
 	'@@typing/loading-text',
-	async (url, {extra: api, dispatch}) => {
-		const quotes = await api.loadText(url);
-		const randomNumber = randomIntFromInterval(0, quotes?.length);
-		dispatch(addCurrentText(quotes[randomNumber].text));
-		return quotes;
+	async ({url, mode, headers}, {extra: {api}, dispatch, rejectWithValue}) => {
+		try {
+			const [allText, text] = await api.loadText(url, headers, mode);
+			dispatch(addCurrentText({text, mode}));
+			return {allText, mode};
+		} catch (err) {
+			return rejectWithValue(`Failed to fetch all text for game ${mode}`);
+		}
 	},
 );
 
@@ -46,22 +47,22 @@ const typingSlice = createSlice({
 	name: '@@typing',
 	initialState,
 	reducers: {
-		addCurrentText: (state, {payload}) => {
-			state.entities.easy.currentText = payload.split('');
-			state.entities.easy.errorsIndex = [];
-			state.entities.easy.currentTextIndex = 0;
+		addCurrentText: (state, {payload: {mode, text}}) => {
+			state.entities[mode].currentText = text.split('');
+			state.entities[mode].errorsIndex = [];
+			state.entities[mode].currentTextIndex = 0;
 		},
-		nextLetter: (state) => {
-			state.entities.easy.currentTextIndex++;
+		nextLetter: (state, {payload: {mode}}) => {
+			state.entities[mode].currentTextIndex++;
 		},
-		addErrorIndex: (state, {payload}) => {
-			state.entities.easy.errorsIndex.push(payload);
+		addErrorIndex: (state, {payload: {currentTextIndex, mode}}) => {
+			state.entities[mode].errorsIndex.push(currentTextIndex);
 		},
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(requestText.fulfilled, (state, action) => {
-				state.entities.easy.allText = action.payload;
+			.addCase(requestText.fulfilled, (state, {payload: {allText, mode}}) => {
+				state.entities[mode].allText = allText;
 				state.status = 'idle';
 			})
 			.addCase(requestText.pending, (state) => {
@@ -70,7 +71,7 @@ const typingSlice = createSlice({
 			})
 			.addCase(requestText.rejected, (state, action) => {
 				state.status = 'failed';
-				state.error = action.error.message;
+				state.error = action.payload;
 			});
 	},
 });

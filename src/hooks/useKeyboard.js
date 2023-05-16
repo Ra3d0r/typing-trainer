@@ -10,7 +10,7 @@ import {
 	selectCurrentTextIndex,
 } from '../feature/typing/typingSlice';
 import {keyIdButtons} from '../helpers/keyIdButtons';
-import {randomIntFromInterval} from '../helpers/randomIntFromInterval';
+import {separationTextMode} from '../helpers/separationTextMode';
 
 const useKeyboard = (target, mode) => {
 	const [isShift, setIsShift] = useState(false);
@@ -79,7 +79,7 @@ function conditionText({
 	allText,
 }) {
 	if (target !== key) {
-		dispatch(addErrorIndex(currentTextIndex));
+		dispatch(addErrorIndex({currentTextIndex, mode}));
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
@@ -87,10 +87,10 @@ function conditionText({
 	}
 
 	if (currentTextIndex < currentText.length - 1) {
-		dispatch(nextLetter());
+		dispatch(nextLetter({mode}));
 	} else {
-		const randomNumber = randomIntFromInterval(0, allText?.length);
-		mode !== 'custom' && dispatch(addCurrentText(allText[randomNumber].text));
+		const text = separationTextMode(allText, mode, false);
+		mode !== 'custom' && dispatch(addCurrentText({text, mode}));
 	}
 }
 
