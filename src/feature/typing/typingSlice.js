@@ -1,89 +1,102 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {randomIntFromInterval} from '../../helpers/randomIntFromInterval';
-
 export const requestText = createAsyncThunk(
 	'@@typing/loading-text',
-	async (url, {extra: api, dispatch}) => {
-		const quotes = await api.loadText(url);
-		dispatch(addCurrentText(quotes));
-		return quotes;
+	async ({url, mode, headers}, {extra: {api}, dispatch, rejectWithValue}) => {
+		try {
+			const [allText, text] = await api.loadText(url, headers, mode);
+			dispatch(addCurrentText({text, mode}));
+			return {allText, mode};
+		} catch (err) {
+			return rejectWithValue(`Failed to fetch text for game mode - ${mode}`);
+		}
 	},
 );
 
 const initialState = {
-	entities: {
-		easy: {
-			currentText: [],
-			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
-			allText: null,
-		},
-		normal: {
-			currentText: [],
-			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
-			allText: null,
-		},
-		hard: {
-			currentText: [],
-			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
-			allText: null,
-		},
-		custom: {
-			currentText: [],
-			currentTextIndex: 0,
-			currentLetter: '',
-			errorIndex: [],
-		},
+	easy: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
 	},
-	status: 'idle',
-	error: null,
+	normal: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
+	},
+	hard: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
+	},
+	custom: {
+		currentText: [],
+		currentTextIndex: 0,
+		errorsIndex: [],
+		allText: null,
+		status: 'idle',
+		error: null,
+	},
 };
 
 const typingSlice = createSlice({
 	name: '@@typing',
 	initialState,
 	reducers: {
-		addCurrentText: (state, action) => {
-			const randomNumber = randomIntFromInterval(0, action.payload.length);
-			const text = action.payload[randomNumber].text;
-			state.entities.easy.currentText = text.split('');
-			state.entities.easy.currentLetter = text[0];
-			state.entities.easy.errorIndex = [];
-			state.entities.easy.currentTextIndex = 0;
+		addCurrentText: (state, {payload: {mode, text}}) => {
+			state[mode].currentText = text.split('');
+			state[mode].errorsIndex = [];
+			state[mode].currentTextIndex = 0;
 		},
-		nextLetter: (state) => {
-			const index = state.entities.easy.currentTextIndex;
-			const letter = state.entities.easy.currentText[index + 1];
-			state.entities.easy.currentTextIndex++;
-			state.entities.easy.currentLetter = letter;
+		nextLetter: (state, {payload: {mode}}) => {
+			state[mode].currentTextIndex++;
 		},
-		addErrorIndex: (state) => {
-			state.entities.easy.errorIndex.push(state.entities.easy.currentTextIndex);
+		addErrorIndex: (state, {payload: {currentTextIndex, mode}}) => {
+			state[mode].errorsIndex.push(currentTextIndex);
 		},
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(requestText.fulfilled, (state, action) => {
-				state.entities.easy.allText = action.payload;
-				state.status = 'idle';
+			.addCase(requestText.fulfilled, (state, {payload: {allText, mode}}) => {
+				state[mode].allText = allText;
+				state[mode].status = 'fulfilled';
 			})
-			.addCase(requestText.pending, (state) => {
-				state.status = 'loading';
-				state.error = null;
+			.addCase(requestText.pending, (state, action) => {
+				const mode = action.meta.arg.mode;
+				state[mode].status = 'loading';
+				state[mode].error = null;
 			})
 			.addCase(requestText.rejected, (state, action) => {
-				state.status = 'failed';
-				state.error = action.error.message;
+				const mode = action.meta.arg.mode;
+				state[mode].status = 'failed';
+				state[mode].error = action.payload;
 			});
 	},
 });
 
 export const {addCurrentText, nextLetter, addErrorIndex} = typingSlice.actions;
+
+export const selectCurrentLetter = (state, mode) => {
+	const index = state.typing[mode].currentTextIndex;
+	return state.typing[mode].currentText[index];
+};
+
+export const selectCurrentTextIndex = (state, mode) => state.typing[mode].currentTextIndex;
+export const selectCurrentText = (state, mode) => state.typing[mode].currentText;
+export const selectAllText = (state, mode) => state.typing[mode].allText;
+export const selectErrorsIndex = (state, mode) => state.typing[mode].errorsIndex;
+export const selectAllInfoText = (state, mode) => state.typing[mode];
+
+export const selectTypingStatus = (state, mode) => state.typing[mode].status;
+export const selectTypingError = (state, mode) => state.typing[mode].error;
 
 export const typingReducer = typingSlice.reducer;

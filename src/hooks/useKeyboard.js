@@ -1,52 +1,45 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {addCurrentText, addErrorIndex, nextLetter} from '../feature/typing/typingSlice';
-import {keyIdButtons} from '../helpers/keyIdButtons';
+import {
+	addCurrentText,
+	addErrorIndex,
+	nextLetter,
+	selectAllInfoText,
+} from '../feature/typing/typingSlice';
+import {handleKeyDown} from '../helpers/handleKeyDown';
+import {handleKeyUp} from '../helpers/handleKeyUp';
+import {useKeyboardEvent} from './utils/useKeyboardEvent';
 
-const useKeyboard = (target) => {
-	const [isShift, setIsShift] = useState(false);
+const useKeyboard = (target, mode) => {
+	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [eventKeyCode, setEventKeyCode] = useState('');
-
-	const currentTextIndex = useSelector((state) => state.typing.entities.easy.currentTextIndex);
-	const currentTextLength = useSelector((state) => state.typing.entities.easy.currentText?.length);
-	const allText = useSelector((state) => state.typing.entities.easy.allText);
+	const {allText, currentText, currentTextIndex} = useSelector((state) =>
+		selectAllInfoText(state, mode),
+	);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		function handleKeyDown(event) {
-			if (event.key === 'Shift') {
-				setIsShift(true);
-			}
+	useKeyboardEvent('keydown', (event) =>
+		handleKeyDown({event, setIsShiftPressed, setEventKeyCode}),
+	);
+	useKeyboardEvent('keyup', (event) =>
+		handleKeyUp({
+			event,
+			setIsShiftPressed,
+			setEventKeyCode,
+			target,
+			dispatch,
+			addErrorIndex,
+			addCurrentText,
+			nextLetter,
+			currentText,
+			currentTextIndex,
+			mode,
+			allText,
+		}),
+	);
 
-			setEventKeyCode(event.code);
-		}
-
-		function handleKeyUp(event) {
-			if (event.key === 'Shift') {
-				setIsShift(false);
-			}
-
-			setEventKeyCode('');
-			const keyId = keyIdButtons(event.key);
-			if (keyId) {
-				target !== event.key && dispatch(addErrorIndex());
-				currentTextIndex < currentTextLength - 1
-					? dispatch(nextLetter())
-					: dispatch(addCurrentText(allText));
-			}
-		}
-
-		document.addEventListener('keydown', handleKeyDown);
-		document.addEventListener('keyup', handleKeyUp);
-
-		return () => {
-			document.removeEventListener('keydown', handleKeyDown);
-			document.removeEventListener('keyup', handleKeyUp);
-		};
-	}, [target]);
-
-	return [isShift, eventKeyCode, keyIdButtons(target)];
+	return [isShiftPressed, eventKeyCode];
 };
 
 export {useKeyboard};

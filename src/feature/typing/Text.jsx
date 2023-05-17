@@ -1,30 +1,34 @@
 import {useSelector} from 'react-redux';
 
+import {Error} from '../../components/status/Error';
+import {Loading} from '../../components/status/Loading';
 import {useCurrentText} from '../../hooks/useCurrentText';
 import {TextItem} from './TextItem';
+import {selectAllInfoText} from './typingSlice';
 
-const Text = () => {
-	const currentText = useCurrentText();
-	const errorIndex = useSelector((state) => state.typing.entities.easy.errorIndex);
-	const currentTextIndex = useSelector((state) => state.typing.entities.easy.currentTextIndex);
+const Text = ({mode}) => {
+	const currentText = useCurrentText(mode);
+	const {errorsIndex, currentTextIndex, status, error} = useSelector((state) =>
+		selectAllInfoText(state, mode),
+	);
 
 	return (
 		<div className="mt-14 w-3/4 flex justify-center m-auto">
-			<div className="text-center">
-				{currentText?.length ? (
-					currentText.map((letter, index) => (
+			{status === 'loading' ? <Loading /> : null}
+			{error && <Error message={error} />}
+			{status === 'fulfilled' && (
+				<div className="text-center">
+					{currentText.map((letter, index) => (
 						<TextItem
 							key={index}
 							letter={letter}
 							index={index}
-							errorIndex={errorIndex}
+							errorsIndex={errorsIndex}
 							currentTextIndex={currentTextIndex}
 						/>
-					))
-				) : (
-					<h2>Loading...</h2>
-				)}
-			</div>
+					))}
+				</div>
+			)}
 		</div>
 	);
 };

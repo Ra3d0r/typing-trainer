@@ -1,7 +1,7 @@
 import {classNameLetter} from './classNameLetter';
 
-const TextItem = ({letter, index, errorIndex, currentTextIndex}) => {
-	const className = classNameLetter(index, errorIndex, currentTextIndex);
+const TextItem = ({letter, index, errorsIndex, currentTextIndex}) => {
+	const className = classNameLetter(index, errorsIndex, currentTextIndex);
 	return <span className={className}>{letter}</span>;
 };
 

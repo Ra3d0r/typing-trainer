@@ -1,3 +1,32 @@
-const URL_QUOTES = 'https://type.fit/api/quotes';
+const API_KEY_HARD = process.env.REACT_APP_API_HARD_ENG;
 
-export {URL_QUOTES};
+const URL_EASY_ENG = 'https://type.fit/api/quotes';
+const URL_NORMAL_ENG = 'https://dummyjson.com/posts';
+const URL_HARD_END = 'https://api.api-ninjas.com/v1/exercises';
+
+const textEng = {
+	url: {
+		easy: URL_EASY_ENG,
+		normal: URL_NORMAL_ENG,
+		hard: URL_HARD_END,
+	},
+	TextsByKey: {
+		easy: null,
+		normal: 'posts',
+		hard: null,
+	},
+	textKey: {
+		easy: 'text',
+		normal: 'body',
+		hard: 'instructions',
+	},
+	headers: {
+		hard: {
+			'X-Api-Key': API_KEY_HARD,
+		},
+		normal: {},
+		easy: {},
+	},
+};
+
+export {textEng};

@@ -1,6 +1,11 @@
-export const loadText = async (url) => {
-	const res = await fetch(url);
-	const data = await res.json();
+import {separationTextMode} from '../helpers/separationTextMode';
+import {client} from './client';
 
-	return data;
+export const loadText = async (url, headers, mode) => {
+	try {
+		const AllText = await client.get(url, {headers});
+		return separationTextMode(AllText, mode);
+	} catch (err) {
+		return Promise.reject(err);
+	}
 };
