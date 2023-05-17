@@ -4,19 +4,13 @@ import {Error} from '../../components/status/Error';
 import {Loading} from '../../components/status/Loading';
 import {useCurrentText} from '../../hooks/useCurrentText';
 import {TextItem} from './TextItem';
-import {
-	selectCurrentTextIndex,
-	selectErrorsIndex,
-	selectTypingError,
-	selectTypingStatus,
-} from './typingSlice';
+import {selectAllInfoText} from './typingSlice';
 
 const Text = ({mode}) => {
 	const currentText = useCurrentText(mode);
-	const errorsIndex = useSelector((state) => selectErrorsIndex(state, mode));
-	const currentTextIndex = useSelector((state) => selectCurrentTextIndex(state, mode));
-	const status = useSelector((state) => selectTypingStatus(state, mode));
-	const error = useSelector((state) => selectTypingError(state, mode));
+	const {errorsIndex, currentTextIndex, status, error} = useSelector((state) =>
+		selectAllInfoText(state, mode),
+	);
 
 	return (
 		<div className="mt-14 w-3/4 flex justify-center m-auto">
