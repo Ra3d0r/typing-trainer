@@ -6,11 +6,7 @@ export const classNameKey = (id, eventKey, keyTarget) => {
 			break;
 
 		case id === 'ShiftLeft' && id === eventKey:
-			className = 'special';
-			break;
 		case id === 'ShiftRight' && id === eventKey:
-			className = 'special';
-			break;
 		case id === 'Backspace' && id === eventKey:
 			className = 'special';
 			break;
