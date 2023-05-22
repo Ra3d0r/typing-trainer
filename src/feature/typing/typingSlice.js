@@ -63,6 +63,14 @@ const typingSlice = createSlice({
 		addErrorIndex: (state, {payload: {currentTextIndex, mode}}) => {
 			state[mode].errorsIndex.push(currentTextIndex);
 		},
+		changeStatusCustomMode: (state, action) => {
+			state.custom.status = action.payload;
+		},
+		resetCustomModeText: (state) => {
+			state.custom.currentText = [];
+			state.custom.currentTextIndex = 0;
+			state.custom.errorsIndex = [];
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -83,7 +91,13 @@ const typingSlice = createSlice({
 	},
 });
 
-export const {addCurrentText, nextLetter, addErrorIndex} = typingSlice.actions;
+export const {
+	addCurrentText,
+	nextLetter,
+	addErrorIndex,
+	changeStatusCustomMode,
+	resetCustomModeText,
+} = typingSlice.actions;
 
 export const selectCurrentLetter = (state, mode) => {
 	const index = state.typing[mode].currentTextIndex;
