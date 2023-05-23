@@ -1,37 +1,81 @@
+import tw from 'twin.macro';
+
 import {Button} from '../UI/Button';
 import {Cross} from '../UI/Cross';
 import {TextArea} from '../UI/TextArea';
 
-const ModalAddText = ({isOpen, closeModal, addText}) => {
+const Window = ({children}) => {
 	return (
 		<div
-			tabIndex={-1}
-			aria-hidden="true"
-			className={`fixed top-0 left-0 right-0 z-50 ${
-				isOpen ? 'flex' : 'hidden'
-			} justify-center items-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full`}
+			css={tw`fixed top-0 left-0 right-0 z-50 
+				justify-center items-center w-full
+				p-4 overflow-x-hidden 
+				overflow-y-auto 
+				md:inset-0 h-[calc(100%-1rem)] max-h-full flex`}
 		>
-			<div className="relative w-full max-w-2xl max-h-full ">
-				{/* Modal content */}
-				<div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-					{/* Modal header */}
-					<div className="flex items-start justify-between p-4  rounded-t dark:border-gray-600">
-						<h3 className="text-xl font-semibold text-gray-900 dark:text-white">Adding text</h3>
-						<Cross onClick={closeModal} />
-					</div>
-					{/* Modal body */}
-					<div className="p-6">
-						<p id="error" className="mb-2 text-sm font-medium text-red-400 dark:text-red-500" />
-						<TextArea />
-					</div>
-					{/* Modal footer */}
-					<div className="flex items-center p-6 space-x-2 border-gray-200 rounded-b dark:border-gray-600">
-						<Button text={'Add text'} onClick={addText} />
-						<Button text={'Cancel'} alternative={true} onClick={closeModal} />
-					</div>
-				</div>
-			</div>
+			{children}
 		</div>
+	);
+};
+
+const ModalContainer = ({children}) => {
+	return (
+		<div css={tw`relative w-full max-w-2xl max-h-full`}>
+			<div css={tw`relative bg-white rounded-lg shadow dark:bg-gray-700`}>{children}</div>
+		</div>
+	);
+};
+
+const ModalHeader = ({children}) => {
+	return (
+		<div css={tw`flex items-start justify-between p-4 rounded-t dark:border-gray-600`}>
+			{children}
+		</div>
+	);
+};
+
+const ModalContent = ({children}) => {
+	return <div css={tw`p-6`}>{children}</div>;
+};
+
+const ModalFooter = ({children}) => {
+	return (
+		<div css={tw`flex items-center p-6 space-x-2 border-gray-200 rounded-b dark:border-gray-600`}>
+			{children}
+		</div>
+	);
+};
+
+const Title = ({children}) => {
+	return <h3 css={tw`text-xl font-semibold text-gray-900 dark:text-white`}>{children}</h3>;
+};
+
+const Error = ({children, id}) => {
+	return (
+		<p id={id} css={tw`mb-2 text-sm font-medium text-red-400 dark:text-red-500`}>
+			{children}
+		</p>
+	);
+};
+
+const ModalAddText = ({closeModal, addText}) => {
+	return (
+		<Window>
+			<ModalContainer>
+				<ModalHeader>
+					<Title>Adding text</Title>
+					<Cross onClick={closeModal} />
+				</ModalHeader>
+				<ModalContent>
+					<Error id="error" />
+					<TextArea />
+				</ModalContent>
+				<ModalFooter>
+					<Button text={'Add text'} onClick={addText} />
+					<Button text={'Cancel'} isAlternative={true} onClick={closeModal} />
+				</ModalFooter>
+			</ModalContainer>
+		</Window>
 	);
 };
 
