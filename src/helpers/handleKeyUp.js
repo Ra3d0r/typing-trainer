@@ -14,6 +14,8 @@ export const handleKeyUp = ({
 	currentTextIndex,
 	mode,
 	allText,
+	changeStatusCustomMode,
+	resetCustomModeText,
 }) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(false);
@@ -34,13 +36,15 @@ export const handleKeyUp = ({
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
-		// TODO Написать логику для этого режима
+		dispatch(changeStatusCustomMode('idle'));
+		dispatch(resetCustomModeText());
+		return;
 	}
 
 	if (currentTextIndex < currentText.length - 1) {
 		dispatch(nextLetter({mode}));
 	} else {
 		const text = separationTextMode(allText, mode, false);
-		mode !== 'custom' && dispatch(addCurrentText({text, mode}));
+		dispatch(addCurrentText({text, mode}));
 	}
 };

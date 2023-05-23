@@ -4,7 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
 	addCurrentText,
 	addErrorIndex,
+	changeStatusCustomMode,
 	nextLetter,
+	resetCustomModeText,
 	selectAllInfoText,
 } from '../feature/typing/typingSlice';
 import {handleKeyDown} from '../helpers/handleKeyDown';
@@ -36,6 +38,8 @@ const useKeyboard = (target, mode) => {
 			currentTextIndex,
 			mode,
 			allText,
+			changeStatusCustomMode,
+			resetCustomModeText,
 		}),
 	);
 
