@@ -49,6 +49,7 @@ export const keyIdButtons = (key) => {
 		'.': 'Period',
 		'/': 'Slash',
 		' ': 'Space',
+		tab: 'Tab',
 	};
 
 	const result = keyId[key?.toLowerCase()];

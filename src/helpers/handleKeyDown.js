@@ -3,5 +3,9 @@ export const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode}) => {
 		setIsShiftPressed(true);
 	}
 
+	if (event.code === 'Space' || event.key === 'Alt' || event.key === 'Tab') {
+		event.preventDefault();
+	}
+
 	setEventKeyCode(event.code);
 };
