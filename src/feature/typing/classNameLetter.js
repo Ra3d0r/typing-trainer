@@ -1,4 +1,4 @@
-export const classNameLetter = (index, errorsIndex = [], currentTextIndex) => {
+const classNameLetter = (index, errorsIndex = [], currentTextIndex) => {
 	if (errorsIndex.includes(index)) {
 		return 'mis-letter';
 	} else if (index === currentTextIndex) {
@@ -9,3 +9,5 @@ export const classNameLetter = (index, errorsIndex = [], currentTextIndex) => {
 		return 'untyped-letter';
 	}
 };
+
+export {classNameLetter};

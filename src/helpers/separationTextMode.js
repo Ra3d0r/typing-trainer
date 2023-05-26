@@ -2,7 +2,7 @@ import {textEng} from '../config';
 import {findKey} from './findKey';
 import {randomIntFromInterval} from './randomIntFromInterval';
 
-export const separationTextMode = (text, mode, isFromApi = true) => {
+const separationTextMode = (text, mode, isFromApi = true) => {
 	const {textKey, TextsByKey} = textEng;
 	if (isFromApi) {
 		const allText = findKey(text, TextsByKey[mode]);
@@ -12,3 +12,5 @@ export const separationTextMode = (text, mode, isFromApi = true) => {
 	const randomNumber = randomIntFromInterval(0, text.length);
 	return findKey(text[randomNumber], textKey[mode]);
 };
+
+export {separationTextMode};

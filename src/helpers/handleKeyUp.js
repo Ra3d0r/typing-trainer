@@ -1,7 +1,7 @@
 import {keyIdButtons} from './keyIdButtons';
 import {separationTextMode} from './separationTextMode';
 
-export const handleKeyUp = ({
+const handleKeyUp = ({
 	event,
 	setIsShiftPressed,
 	setEventKeyCode,
@@ -48,3 +48,5 @@ export const handleKeyUp = ({
 		dispatch(addCurrentText({text, mode}));
 	}
 };
+
+export {handleKeyUp};

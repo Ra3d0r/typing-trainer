@@ -1,4 +1,4 @@
-export const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode}) => {
+const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode}) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(true);
 	}
@@ -9,3 +9,5 @@ export const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode}) => {
 
 	setEventKeyCode(event.code);
 };
+
+export {handleKeyDown};
