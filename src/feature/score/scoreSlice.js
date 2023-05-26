@@ -4,7 +4,7 @@ const initialState = {
 	speed: 0,
 	accuracy: 0,
 	typos: 0,
-	time: '00:00',
+	time: 0,
 	totalChars: 0,
 };
 
@@ -13,22 +13,21 @@ const scoreSlice = createSlice({
 	initialState,
 	reducers: {
 		reset: () => initialState,
-		updateTotalChars: (state, action) => {
+		addTotalChars: (state, action) => {
 			state.totalChars = action.payload;
 		},
 		updateAccuracy: (state, action) => {
 			state.accuracy = action.payload;
 		},
-		updateTypos: (state, action) => {
+		addTypos: (state, action) => {
 			state.typos = action.payload;
 		},
 		updateTime: (state, action) => {
-			state.time = action.payload;
+			state.time += 1000;
 		},
 	},
 });
 
-export const {reset, updateTotalChars, updateAccuracy, updateTypos, updateTime} =
-	scoreSlice.actions;
+export const {reset, addTotalChars, updateAccuracy, addTypos, updateTime} = scoreSlice.actions;
 
 export const scoreReducer = scoreSlice.reducer;
