@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {useUpdateScore} from '../../../../hooks/useUpdateScore';
 import {selectCurrentTextIndex} from '../../../typing/typingSlice';
 import {selectAllScore} from '../../scoreSlice';
+import {Accuracy} from '../item/Accuracy';
 import {Time} from '../item/Time';
 import {Typos} from '../item/Typos';
 
@@ -16,6 +17,7 @@ const Score = ({mode}) => {
 			accuracy: {accuracy}, typos: {typos} totalChars: {totalChars}
 			<Time time={time} startingTime={currenIndex > 0} mode={mode} />
 			<Typos mode={mode} />
+			<Accuracy mode={mode} />
 		</div>
 	);
 };
