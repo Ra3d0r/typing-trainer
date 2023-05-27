@@ -1,14 +1,7 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {
-	addCurrentText,
-	addErrorIndex,
-	changeStatusCustomMode,
-	nextLetter,
-	resetCustomModeText,
-	selectAllInfoText,
-} from '../feature/typing/typingSlice';
+import {selectAllInfoText} from '../feature/typing/typingSlice';
 import {handleKeyDown} from '../helpers/handleKeyDown';
 import {handleKeyUp} from '../helpers/handleKeyUp';
 import {useKeyboardEvent} from './utils/useKeyboardEvent';
@@ -31,15 +24,10 @@ const useKeyboard = (target, mode) => {
 			setEventKeyCode,
 			target,
 			dispatch,
-			addErrorIndex,
-			addCurrentText,
-			nextLetter,
 			currentText,
 			currentTextIndex,
 			mode,
 			allText,
-			changeStatusCustomMode,
-			resetCustomModeText,
 		}),
 	);
 
