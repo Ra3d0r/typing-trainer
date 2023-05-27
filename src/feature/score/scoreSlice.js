@@ -42,8 +42,8 @@ const scoreSlice = createSlice({
 		updateAccuracy: (state, action) => {
 			state.accuracy = action.payload;
 		},
-		addTypos: (state, action) => {
-			state.typos = action.payload;
+		increaseTypos: (state, {payload}) => {
+			state[payload.mode].typos++;
 		},
 		updateTime: (state, {payload}) => {
 			state[payload.mode].time += 1000;
@@ -51,8 +51,9 @@ const scoreSlice = createSlice({
 	},
 });
 
-export const {reset, addTotalChars, updateAccuracy, addTypos, updateTime} = scoreSlice.actions;
+export const {reset, addTotalChars, updateAccuracy, increaseTypos, updateTime} = scoreSlice.actions;
 
 export const selectAllScore = (state, mode) => state.score[mode];
+export const selectCurrentTypos = (state, mode) => state.score[mode].typos;
 
 export const scoreReducer = scoreSlice.reducer;

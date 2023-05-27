@@ -1,3 +1,4 @@
+import {increaseTypos} from '../feature/score/scoreSlice';
 import {
 	addCurrentText,
 	addErrorIndex,
@@ -35,6 +36,7 @@ const handleKeyUp = ({
 	}
 	if (target !== event.key) {
 		dispatch(addErrorIndex({currentTextIndex, mode}));
+		dispatch(increaseTypos({mode}));
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
