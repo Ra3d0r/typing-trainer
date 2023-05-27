@@ -1,5 +1,5 @@
-import {ModalAddText} from '../../components/modal/ModalAddText.jsx';
-import {useCustomMode} from '../../hooks/useCustomMode.js';
+import {ModalAddText} from '../../../../components/modal/ModalAddText';
+import {useCustomMode} from '../../../../hooks/useCustomMode.js';
 
 const CustomMode = () => {
 	const [status, addText, closeModal] = useCustomMode();

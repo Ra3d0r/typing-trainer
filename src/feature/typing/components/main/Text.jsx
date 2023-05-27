@@ -1,12 +1,12 @@
 import {useSelector} from 'react-redux';
 import tw from 'twin.macro';
 
-import {Button} from '../../components/UI/Button';
-import {Error} from '../../components/status/Error';
-import {Loading} from '../../components/status/Loading';
-import {useCurrentText} from '../../hooks/useCurrentText';
-import {TextItem} from './TextItem';
-import {selectAllInfoText} from './typingSlice';
+import {Button} from '../../../../components/UI/Button';
+import {Error} from '../../../../components/status/Error';
+import {Loading} from '../../../../components/status/Loading';
+import {useCurrentText} from '../../../../hooks/useCurrentText';
+import {selectAllInfoText} from '../../typingSlice';
+import {TextItem} from '../item/TextItem';
 
 const TextContainer = ({children}) => {
 	return <div css={tw`mt-14 w-3/4 flex justify-center m-auto`}>{children}</div>;

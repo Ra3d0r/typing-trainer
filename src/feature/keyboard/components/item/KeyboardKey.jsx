@@ -1,4 +1,4 @@
-import {classNameKey} from './classNameKey';
+import {classNameKey} from '../../helpers/classNameKey';
 
 const KeyboardKey = ({kbd, eventKey, id, keyTarget}) => {
 	const className = classNameKey(id, eventKey, keyTarget);

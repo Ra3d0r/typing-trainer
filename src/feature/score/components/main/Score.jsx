@@ -1,8 +1,8 @@
 import {useSelector} from 'react-redux';
 
-import {useUpdateScore} from '../../hooks/useUpdateScore';
-import {selectCurrentTextIndex} from '../typing/typingSlice';
-import {Time} from './Time';
+import {useUpdateScore} from '../../../../hooks/useUpdateScore';
+import {selectCurrentTextIndex} from '../../../typing/typingSlice';
+import {Time} from '../item/Time';
 
 const Score = ({mode}) => {
 	const {accuracy, typos, time, totalChars} = useSelector((state) => state.score);

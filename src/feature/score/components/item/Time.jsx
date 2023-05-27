@@ -1,8 +1,8 @@
 import {useDispatch} from 'react-redux';
 
-import {convertSecondsToDigitTime} from '../../helpers/convertSecondsToDigitTime';
-import {useInterval} from '../../hooks/utils/useInterval';
-import {updateTime} from './scoreSlice';
+import {convertSecondsToDigitTime} from '../../../../helpers/convertSecondsToDigitTime';
+import {useInterval} from '../../../../hooks/utils/useInterval';
+import {updateTime} from '../../scoreSlice';
 
 const Time = ({time, startingTime}) => {
 	const dispatch = useDispatch();
