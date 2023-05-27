@@ -1,3 +1,10 @@
+import {
+	addCurrentText,
+	addErrorIndex,
+	changeStatusCustomMode,
+	nextLetter,
+	resetCustomModeText,
+} from '../feature/typing/typingSlice';
 import {keyIdButtons} from './keyIdButtons';
 import {separationTextMode} from './separationTextMode';
 
@@ -7,15 +14,10 @@ const handleKeyUp = ({
 	setEventKeyCode,
 	target,
 	dispatch,
-	addErrorIndex,
-	addCurrentText,
-	nextLetter,
 	currentText,
 	currentTextIndex,
 	mode,
 	allText,
-	changeStatusCustomMode,
-	resetCustomModeText,
 }) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(false);
