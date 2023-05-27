@@ -4,12 +4,12 @@ import {convertSecondsToDigitTime} from '../../../../helpers/convertSecondsToDig
 import {useInterval} from '../../../../hooks/utils/useInterval';
 import {updateTime} from '../../scoreSlice';
 
-const Time = ({time, startingTime}) => {
+const Time = ({time, startingTime, mode}) => {
 	const dispatch = useDispatch();
 
 	useInterval(
 		() => {
-			dispatch(updateTime());
+			dispatch(updateTime({mode}));
 		},
 		1000,
 		startingTime,

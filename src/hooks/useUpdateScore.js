@@ -12,11 +12,11 @@ const useUpdateScore = (mode) => {
 
 	useEffect(() => {
 		if (previousTotalChars !== currentText.length && previousTotalChars > 0) {
-			dispatch(reset());
+			dispatch(reset({mode}));
 		}
 		if (currentText.length) {
 			setPreviousTotalChars(currentText.length);
-			dispatch(addTotalChars(currentText.length));
+			dispatch(addTotalChars({chars: currentText.length, mode}));
 		}
 	}, [currentText]);
 };
