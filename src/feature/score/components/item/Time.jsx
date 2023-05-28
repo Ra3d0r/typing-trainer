@@ -1,6 +1,6 @@
 import {useDispatch} from 'react-redux';
 
-import {convertSecondsToDigitTime} from '../../../../helpers/convertSecondsToDigitTime';
+import {millisecondsToDigitTime} from '../../../../helpers/millisecondsToDigitTime';
 import {useInterval} from '../../../../hooks/utils/useInterval';
 import {updateTime} from '../../scoreSlice';
 
@@ -17,7 +17,7 @@ const Time = ({time, startingTime, mode}) => {
 
 	return (
 		<div>
-			<p>Time: {convertSecondsToDigitTime(time)}</p>
+			<p>Time: {millisecondsToDigitTime(time)}</p>
 		</div>
 	);
 };
