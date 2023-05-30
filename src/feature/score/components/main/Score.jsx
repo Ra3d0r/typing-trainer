@@ -5,6 +5,7 @@ import {selectCurrentTextIndex} from '../../../typing/typingSlice';
 import {selectAllScore} from '../../scoreSlice';
 import {Accuracy} from '../item/Accuracy';
 import {Time} from '../item/Time';
+import {TotalChars} from '../item/TotalChars';
 import {Typos} from '../item/Typos';
 
 const Score = ({mode}) => {
@@ -14,10 +15,10 @@ const Score = ({mode}) => {
 
 	return (
 		<div className="text-center text-blue-500">
-			accuracy: {accuracy}, typos: {typos} totalChars: {totalChars}
 			<Time time={time} startingTime={currenIndex > 0} mode={mode} />
 			<Typos mode={mode} />
 			<Accuracy mode={mode} />
+			<TotalChars mode={mode} />
 		</div>
 	);
 };
