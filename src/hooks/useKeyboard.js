@@ -9,13 +9,13 @@ import {useKeyboardEvent} from './utils/useKeyboardEvent';
 const useKeyboard = (target, mode) => {
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [eventKeyCode, setEventKeyCode] = useState('');
-	const {allText, currentText, currentTextIndex} = useSelector((state) =>
+	const {allText, currentText, currentTextIndex, status} = useSelector((state) =>
 		selectAllInfoText(state, mode),
 	);
 	const dispatch = useDispatch();
 
 	useKeyboardEvent('keydown', (event) =>
-		handleKeyDown({event, setIsShiftPressed, setEventKeyCode}),
+		handleKeyDown({event, setIsShiftPressed, setEventKeyCode, status}),
 	);
 	useKeyboardEvent('keyup', (event) =>
 		handleKeyUp({

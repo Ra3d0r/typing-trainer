@@ -1,9 +1,13 @@
-const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode}) => {
+const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode, status}) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(true);
 	}
 
-	if (event.code === 'Space' || event.key === 'Alt' || event.key === 'Tab') {
+	if (
+		(status === 'fulfilled' && event.code === 'Space') ||
+		(status === 'fulfilled' && event.key === 'Alt') ||
+		(status === 'fulfilled' && event.key === 'Tab')
+	) {
 		event.preventDefault();
 	}
 
