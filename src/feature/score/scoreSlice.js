@@ -54,7 +54,9 @@ const scoreSlice = createSlice({
 export const {reset, addTotalChars, updateAccuracy, increaseTypos, updateTime} = scoreSlice.actions;
 
 export const selectAllScore = (state, mode) => state.score[mode];
-export const selectCurrentTypos = (state, mode) => state.score[mode].typos;
-export const selectCurrentAccuracy = (state, mode) => state.score[mode].accuracy;
+export const selectTypos = (state, mode) => state.score[mode].typos;
+export const selectAccuracy = (state, mode) => state.score[mode].accuracy;
+export const selectTime = (state, mode) => state.score[mode].time;
+export const selectTotalChars = (state, mode) => state.score[mode].totalChars;
 
 export const scoreReducer = scoreSlice.reducer;

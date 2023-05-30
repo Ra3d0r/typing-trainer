@@ -1,9 +1,9 @@
 import {useSelector} from 'react-redux';
 
-import {selectAllScore} from '../../scoreSlice';
+import {selectTotalChars} from '../../scoreSlice';
 
 const TotalChars = ({mode}) => {
-	const {totalChars} = useSelector((state) => selectAllScore(state, mode));
+	const totalChars = useSelector((state) => selectTotalChars(state, mode));
 
 	return (
 		<div>

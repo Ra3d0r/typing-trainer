@@ -1,12 +1,12 @@
 import {useSelector} from 'react-redux';
 
-import {selectCurrentTypos} from '../../scoreSlice';
+import {selectTypos} from '../../scoreSlice';
 
 const Typos = ({mode}) => {
-	const currentTypos = useSelector((state) => selectCurrentTypos(state, mode));
+	const typos = useSelector((state) => selectTypos(state, mode));
 	return (
 		<div>
-			<p>Typos: {currentTypos}</p>
+			<p>Typos: {typos}</p>
 		</div>
 	);
 };
