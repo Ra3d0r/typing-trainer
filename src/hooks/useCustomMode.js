@@ -12,21 +12,15 @@ const useCustomMode = () => {
 
 	const closeModal = () => dispatch(changeStatusCustomMode('idle'));
 
-	const addText = () => {
-		const textArea = document.getElementById('text');
-		const text = textArea.value.trim();
-		const errorElement = document.getElementById('error');
-
-		if (!text) {
-			errorElement.textContent = 'Enter the text';
+	const addText = (textAreaValue, setTextAreaValue, setErrorMessage) => {
+		if (!textAreaValue) {
+			setErrorMessage('Enter the text');
 			return;
 		}
-
-		dispatch(addCurrentText({text, mode: 'custom'}));
+		dispatch(addCurrentText({text: textAreaValue.trim(), mode: 'custom'}));
 		dispatch(changeStatusCustomMode('fulfilled'));
-
-		textArea.value = '';
-		errorElement.textContent = '';
+		setTextAreaValue('');
+		setErrorMessage('');
 	};
 	return [status, addText, closeModal];
 };
