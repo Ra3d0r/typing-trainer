@@ -1,4 +1,4 @@
-export const keyIdButtons = (key) => {
+const keyIdButtons = (key) => {
 	const keyId = {
 		'`': 'Backquote',
 		1: 'Digit1',
@@ -49,8 +49,11 @@ export const keyIdButtons = (key) => {
 		'.': 'Period',
 		'/': 'Slash',
 		' ': 'Space',
+		tab: 'Tab',
 	};
 
 	const result = keyId[key?.toLowerCase()];
 	return result ? result : null;
 };
+
+export {keyIdButtons};

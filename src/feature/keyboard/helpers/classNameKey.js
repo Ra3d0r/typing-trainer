@@ -1,4 +1,4 @@
-export const classNameKey = (id, eventKey, keyTarget) => {
+const classNameKey = (id, eventKey, keyTarget) => {
 	switch (true) {
 		case eventKey === keyTarget && id === eventKey:
 			return 'target-typed';
@@ -17,3 +17,5 @@ export const classNameKey = (id, eventKey, keyTarget) => {
 			return 'untyped';
 	}
 };
+
+export {classNameKey};

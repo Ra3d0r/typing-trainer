@@ -1,6 +1,6 @@
 import {useCallback, useLayoutEffect, useRef} from 'react';
 
-export function useEvent(fn) {
+const useEvent = (fn) => {
 	const fnRef = useRef(fn);
 
 	useLayoutEffect(() => {
@@ -15,4 +15,6 @@ export function useEvent(fn) {
 	);
 
 	return eventCb;
-}
+};
+
+export {useEvent};

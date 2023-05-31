@@ -58,7 +58,7 @@ const Error = ({children, id}) => {
 	);
 };
 
-const ModalAddText = ({closeModal, addText}) => {
+const ModalAddText = ({closeModal, addText, textAreaValue, handleChange, errorMessage}) => {
 	return (
 		<Window>
 			<ModalContainer>
@@ -67,8 +67,8 @@ const ModalAddText = ({closeModal, addText}) => {
 					<Cross onClick={closeModal} />
 				</ModalHeader>
 				<ModalContent>
-					<Error id="error" />
-					<TextArea />
+					<Error>{errorMessage}</Error>
+					<TextArea value={textAreaValue} onChange={handleChange} />
 				</ModalContent>
 				<ModalFooter>
 					<Button text={'Add text'} onClick={addText} />

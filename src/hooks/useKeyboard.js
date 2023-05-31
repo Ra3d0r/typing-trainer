@@ -1,14 +1,7 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {
-	addCurrentText,
-	addErrorIndex,
-	changeStatusCustomMode,
-	nextLetter,
-	resetCustomModeText,
-	selectAllInfoText,
-} from '../feature/typing/typingSlice';
+import {selectAllInfoText} from '../feature/typing/typingSlice';
 import {handleKeyDown} from '../helpers/handleKeyDown';
 import {handleKeyUp} from '../helpers/handleKeyUp';
 import {useKeyboardEvent} from './utils/useKeyboardEvent';
@@ -16,13 +9,13 @@ import {useKeyboardEvent} from './utils/useKeyboardEvent';
 const useKeyboard = (target, mode) => {
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [eventKeyCode, setEventKeyCode] = useState('');
-	const {allText, currentText, currentTextIndex} = useSelector((state) =>
+	const {allText, currentText, currentTextIndex, status} = useSelector((state) =>
 		selectAllInfoText(state, mode),
 	);
 	const dispatch = useDispatch();
 
 	useKeyboardEvent('keydown', (event) =>
-		handleKeyDown({event, setIsShiftPressed, setEventKeyCode}),
+		handleKeyDown({event, setIsShiftPressed, setEventKeyCode, status}),
 	);
 	useKeyboardEvent('keyup', (event) =>
 		handleKeyUp({
@@ -31,15 +24,10 @@ const useKeyboard = (target, mode) => {
 			setEventKeyCode,
 			target,
 			dispatch,
-			addErrorIndex,
-			addCurrentText,
-			nextLetter,
 			currentText,
 			currentTextIndex,
 			mode,
 			allText,
-			changeStatusCustomMode,
-			resetCustomModeText,
 		}),
 	);
 

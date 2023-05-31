@@ -1,21 +1,24 @@
+import {increaseTypos} from '../feature/score/scoreSlice';
+import {
+	addCurrentText,
+	addErrorIndex,
+	changeStatusCustomMode,
+	nextLetter,
+	resetCustomModeText,
+} from '../feature/typing/typingSlice';
 import {keyIdButtons} from './keyIdButtons';
 import {separationTextMode} from './separationTextMode';
 
-export const handleKeyUp = ({
+const handleKeyUp = ({
 	event,
 	setIsShiftPressed,
 	setEventKeyCode,
 	target,
 	dispatch,
-	addErrorIndex,
-	addCurrentText,
-	nextLetter,
 	currentText,
 	currentTextIndex,
 	mode,
 	allText,
-	changeStatusCustomMode,
-	resetCustomModeText,
 }) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(false);
@@ -33,6 +36,7 @@ export const handleKeyUp = ({
 	}
 	if (target !== event.key) {
 		dispatch(addErrorIndex({currentTextIndex, mode}));
+		dispatch(increaseTypos({mode}));
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
@@ -48,3 +52,5 @@ export const handleKeyUp = ({
 		dispatch(addCurrentText({text, mode}));
 	}
 };
+
+export {handleKeyUp};

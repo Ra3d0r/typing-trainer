@@ -1,4 +1,4 @@
-export const findKey = (obj, key) => {
+const findKey = (obj, key) => {
 	if (key === null || key === undefined) {
 		return obj;
 	}
@@ -31,3 +31,5 @@ export const findKey = (obj, key) => {
 	search(obj);
 	return result;
 };
+
+export {findKey};

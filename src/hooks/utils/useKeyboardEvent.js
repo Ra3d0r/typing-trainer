@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 
 import {useEvent} from './useEvent';
 
-function useKeyboardEvent(type, cb) {
+const useKeyboardEvent = (type, cb) => {
 	const eventCb = useEvent(cb);
 
 	useEffect(() => {
@@ -10,6 +10,6 @@ function useKeyboardEvent(type, cb) {
 
 		return () => document.removeEventListener(type, eventCb);
 	}, [eventCb]);
-}
+};
 
 export {useKeyboardEvent};
