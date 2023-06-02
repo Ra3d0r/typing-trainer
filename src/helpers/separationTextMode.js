@@ -1,6 +1,6 @@
 import {textEng} from '../config';
-import {findKey} from './findKey';
-import {randomIntFromInterval} from './randomIntFromInterval';
+import findKey from './findKey';
+import randomIntFromInterval from './randomIntFromInterval';
 
 const separationTextMode = (text, mode, isFromApi = true) => {
 	const {textKey, TextsByKey} = textEng;
@@ -13,4 +13,4 @@ const separationTextMode = (text, mode, isFromApi = true) => {
 	return findKey(text[randomNumber], textKey[mode]);
 };
 
-export {separationTextMode};
+export default separationTextMode;

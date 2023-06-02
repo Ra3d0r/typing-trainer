@@ -1,5 +1,5 @@
-import {separationTextMode} from '../helpers/separationTextMode';
-import {client} from './client';
+import separationTextMode from '../helpers/separationTextMode';
+import client from './client';
 
 export const loadText = async (url, headers, mode) => {
 	try {

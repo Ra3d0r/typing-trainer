@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 import ModalAddText from '../../../../components/modal/ModalAddText';
-import {useCustomMode} from '../../../../hooks/useCustomMode.js';
+import useCustomMode from '../../../../hooks/useCustomMode.js';
 
 const CustomMode = () => {
 	const [textAreaValue, setTextAreaValue] = useState('');

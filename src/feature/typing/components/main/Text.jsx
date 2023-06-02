@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 import Button from '../../../../components/UI/Button';
 import Error from '../../../../components/status/Error';
 import Loading from '../../../../components/status/Loading';
-import {useCurrentText} from '../../../../hooks/useCurrentText';
+import useCurrentText from '../../../../hooks/useCurrentText';
 import {selectAllInfoText} from '../../typingSlice';
 import TextItem from '../item/TextItem';
 

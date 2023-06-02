@@ -10,4 +10,4 @@ const classNameLetter = (index, errorsIndex = [], currentTextIndex) => {
 	}
 };
 
-export {classNameLetter};
+export default classNameLetter;

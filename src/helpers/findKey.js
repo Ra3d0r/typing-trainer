@@ -32,4 +32,4 @@ const findKey = (obj, key) => {
 	return result;
 };
 
-export {findKey};
+export default findKey;

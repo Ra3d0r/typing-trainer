@@ -23,4 +23,4 @@ const useAccuracy = (mode) => {
 	return accuracy;
 };
 
-export {useAccuracy};
+export default useAccuracy;

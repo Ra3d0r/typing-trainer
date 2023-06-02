@@ -18,4 +18,4 @@ const classNameKey = (id, eventKey, keyTarget) => {
 	}
 };
 
-export {classNameKey};
+export default classNameKey;

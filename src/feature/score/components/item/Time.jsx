@@ -1,5 +1,5 @@
 import Indicator from '../../../../components/score/Indicator';
-import {useTime} from '../../../../hooks/useTime';
+import useTime from '../../../../hooks/useTime';
 
 const Svg = () => {
 	return (

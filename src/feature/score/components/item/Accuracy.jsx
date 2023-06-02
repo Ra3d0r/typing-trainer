@@ -1,5 +1,5 @@
 import Indicator from '../../../../components/score/Indicator';
-import {useAccuracy} from '../../../../hooks/useAccuracy';
+import useAccuracy from '../../../../hooks/useAccuracy';
 
 const Svg = () => {
 	return (

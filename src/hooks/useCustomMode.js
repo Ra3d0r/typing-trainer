@@ -25,4 +25,4 @@ const useCustomMode = () => {
 	return [status, addText, closeModal];
 };
 
-export {useCustomMode};
+export default useCustomMode;

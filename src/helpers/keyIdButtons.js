@@ -56,4 +56,4 @@ const keyIdButtons = (key) => {
 	return result ? result : null;
 };
 
-export {keyIdButtons};
+export default keyIdButtons;

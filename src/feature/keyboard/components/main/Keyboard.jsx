@@ -2,8 +2,8 @@ import {useSelector} from 'react-redux';
 import tw from 'twin.macro';
 
 import {buttonsKeyboard} from '../../../../../public/data/buttonsKeyboard';
-import {keyIdButtons} from '../../../../helpers/keyIdButtons';
-import {useKeyboard} from '../../../../hooks/useKeyboard';
+import keyIdButtons from '../../../../helpers/keyIdButtons';
+import useKeyboard from '../../../../hooks/useKeyboard';
 import {selectCurrentLetter} from '../../../typing/typingSlice';
 import KeyboardKey from '../item/KeyboardKey';
 

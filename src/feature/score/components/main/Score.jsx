@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 
-import {useUpdateScore} from '../../../../hooks/useUpdateScore';
+import useUpdateScore from '../../../../hooks/useUpdateScore';
 import Accuracy from '../item/Accuracy';
 import Time from '../item/Time';
 import TotalChars from '../item/TotalChars';

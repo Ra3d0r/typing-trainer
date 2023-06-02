@@ -21,4 +21,4 @@ const useUpdateScore = (mode) => {
 	}, [currentText]);
 };
 
-export {useUpdateScore};
+export default useUpdateScore;

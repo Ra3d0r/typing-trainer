@@ -2,9 +2,9 @@ import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {selectAllInfoText} from '../feature/typing/typingSlice';
-import {handleKeyDown} from '../helpers/handleKeyDown';
-import {handleKeyUp} from '../helpers/handleKeyUp';
-import {useKeyboardEvent} from './utils/useKeyboardEvent';
+import handleKeyDown from '../helpers/handleKeyDown';
+import handleKeyUp from '../helpers/handleKeyUp';
+import useKeyboardEvent from './utils/useKeyboardEvent';
 
 const useKeyboard = (target, mode) => {
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
@@ -34,4 +34,4 @@ const useKeyboard = (target, mode) => {
 	return [isShiftPressed, eventKeyCode];
 };
 
-export {useKeyboard};
+export default useKeyboard;

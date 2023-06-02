@@ -1,4 +1,4 @@
-export const client = async (endPoint, {body, ...customConfig}) => {
+const client = async (endPoint, {body, ...customConfig}) => {
 	const headers = {
 		'Content-Type': 'applications/json',
 	};
@@ -45,3 +45,5 @@ client.delete = function (endPoint, customConfig = {}) {
 client.patch = function (endPoint, body, customConfig = {}) {
 	return client(endPoint, {...customConfig, body, method: 'PATCH'});
 };
+
+export default client;
