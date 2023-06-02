@@ -5,4 +5,4 @@ const TextItem = ({letter, index, errorsIndex, currentTextIndex}) => {
 	return <span className={className}>{letter}</span>;
 };
 
-export {TextItem};
+export default TextItem;

@@ -66,4 +66,4 @@ const GameModeCardItem = ({mode, description, title}) => {
 	);
 };
 
-export {GameModeCardItem};
+export default GameModeCardItem;

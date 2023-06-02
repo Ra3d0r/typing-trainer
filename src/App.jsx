@@ -1,9 +1,9 @@
 import {Route, Routes} from 'react-router-dom';
 
-import {Layout} from './components/layout/Layout';
-import {Game} from './pages/Game';
-import {Home} from './pages/Home';
-import {NotFound} from './pages/NotFound';
+import Layout from './components/layout/Layout';
+import Game from './pages/Game';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 const App = () => {
 	return (

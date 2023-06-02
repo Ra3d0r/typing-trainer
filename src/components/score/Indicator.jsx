@@ -37,4 +37,4 @@ const Indicator = ({svg, value, text, measure = ''}) => {
 	);
 };
 
-export {Indicator};
+export default Indicator;

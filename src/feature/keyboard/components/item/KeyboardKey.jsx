@@ -23,4 +23,4 @@ const KeyboardKey = ({kbd, eventKey, id, keyTarget}) => {
 	}
 };
 
-export {KeyboardKey};
+export default KeyboardKey;

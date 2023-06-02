@@ -23,4 +23,4 @@ const Cross = ({onClick}) => {
 	);
 };
 
-export {Cross};
+export default Cross;

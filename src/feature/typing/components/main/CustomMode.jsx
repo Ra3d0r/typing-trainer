@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-import {ModalAddText} from '../../../../components/modal/ModalAddText';
+import ModalAddText from '../../../../components/modal/ModalAddText';
 import {useCustomMode} from '../../../../hooks/useCustomMode.js';
 
 const CustomMode = () => {
@@ -22,4 +22,4 @@ const CustomMode = () => {
 	);
 };
 
-export {CustomMode};
+export default CustomMode;

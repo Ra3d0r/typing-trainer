@@ -1,4 +1,4 @@
-import {Indicator} from '../../../../components/score/Indicator';
+import Indicator from '../../../../components/score/Indicator';
 import {useTime} from '../../../../hooks/useTime';
 
 const Svg = () => {
@@ -28,4 +28,4 @@ const Time = ({mode}) => {
 	return <Indicator value={time} svg={<Svg />} text="Time" />;
 };
 
-export {Time};
+export default Time;

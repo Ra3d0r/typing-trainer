@@ -1,8 +1,8 @@
 import tw from 'twin.macro';
 
-import {Button} from '../UI/Button';
-import {Cross} from '../UI/Cross';
-import {TextArea} from '../UI/TextArea';
+import Button from '../UI/Button';
+import Cross from '../UI/Cross';
+import TextArea from '../UI/TextArea';
 
 const Window = ({children}) => {
 	return (
@@ -79,4 +79,4 @@ const ModalAddText = ({closeModal, addText, textAreaValue, handleChange, errorMe
 	);
 };
 
-export {ModalAddText};
+export default ModalAddText;

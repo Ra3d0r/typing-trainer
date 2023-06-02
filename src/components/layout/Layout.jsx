@@ -1,8 +1,8 @@
 import {Outlet} from 'react-router-dom';
 import tw from 'twin.macro';
 
-import {Footer} from './Footer';
-import {Header} from './Header';
+import Footer from './Footer';
+import Header from './Header';
 
 const FlexContainer = ({children}) => {
 	return <div css={tw`flex flex-col min-h-screen dark:bg-gray-900`}>{children}</div>;
@@ -24,4 +24,4 @@ const Layout = () => {
 	);
 };
 
-export {Layout};
+export default Layout;

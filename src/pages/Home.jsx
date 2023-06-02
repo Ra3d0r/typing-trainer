@@ -1,4 +1,4 @@
-import {GameModeCard} from '../components/card/GameModeCard';
+import GameModeCard from '../components/card/GameModeCard';
 
 const Home = () => {
 	return (
@@ -14,4 +14,4 @@ const Home = () => {
 	);
 };
 
-export {Home};
+export default Home;
