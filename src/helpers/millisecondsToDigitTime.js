@@ -4,4 +4,4 @@ const millisecondsToDigitTime = (milliseconds) => {
 	return date.toLocaleTimeString([], options);
 };
 
-export {millisecondsToDigitTime};
+export default millisecondsToDigitTime;

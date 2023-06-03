@@ -1,5 +1,5 @@
-import {Indicator} from '../../../../components/score/Indicator';
-import {useAccuracy} from '../../../../hooks/useAccuracy';
+import Indicator from '../../../../components/score/Indicator';
+import useAccuracy from '../../../../hooks/useAccuracy';
 
 const Svg = () => {
 	return (
@@ -27,4 +27,4 @@ const Accuracy = ({mode}) => {
 	return <Indicator value={accuracy} svg={<Svg />} text="Accuracy" measure="%" />;
 };
 
-export {Accuracy};
+export default Accuracy;

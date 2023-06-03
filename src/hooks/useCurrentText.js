@@ -28,4 +28,4 @@ const useCurrentText = (mode) => {
 	return [currentText, setStatusLoading];
 };
 
-export {useCurrentText};
+export default useCurrentText;

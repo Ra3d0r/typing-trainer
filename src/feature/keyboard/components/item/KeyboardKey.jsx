@@ -1,4 +1,4 @@
-import {classNameKey} from '../../helpers/classNameKey';
+import classNameKey from '../../helpers/classNameKey';
 
 const KeyboardKey = ({kbd, eventKey, id, keyTarget}) => {
 	const className = classNameKey(id, eventKey, keyTarget);
@@ -23,4 +23,4 @@ const KeyboardKey = ({kbd, eventKey, id, keyTarget}) => {
 	}
 };
 
-export {KeyboardKey};
+export default KeyboardKey;

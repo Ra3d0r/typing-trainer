@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux';
 
-import {Indicator} from '../../../../components/score/Indicator';
+import Indicator from '../../../../components/score/Indicator';
 import {selectTypos} from '../../scoreSlice';
 
 const Svg = () => {
@@ -25,4 +25,4 @@ const Typos = ({mode}) => {
 	return <Indicator value={typos} svg={<Svg />} text="Typos" />;
 };
 
-export {Typos};
+export default Typos;

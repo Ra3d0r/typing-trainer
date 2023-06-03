@@ -1,10 +1,10 @@
 import tw from 'twin.macro';
 
-import {useUpdateScore} from '../../../../hooks/useUpdateScore';
-import {Accuracy} from '../item/Accuracy';
-import {Time} from '../item/Time';
-import {TotalChars} from '../item/TotalChars';
-import {Typos} from '../item/Typos';
+import useUpdateScore from '../../../../hooks/useUpdateScore';
+import Accuracy from '../item/Accuracy';
+import Time from '../item/Time';
+import TotalChars from '../item/TotalChars';
+import Typos from '../item/Typos';
 
 const Container = ({children}) => {
 	return (
@@ -29,4 +29,4 @@ const Score = ({mode}) => {
 	);
 };
 
-export {Score};
+export default Score;

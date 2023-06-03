@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux';
 
-import {Indicator} from '../../../../components/score/Indicator';
+import Indicator from '../../../../components/score/Indicator';
 import {selectTotalChars} from '../../scoreSlice';
 
 const Svg = () => {
@@ -29,4 +29,4 @@ const TotalChars = ({mode}) => {
 	return <Indicator value={totalChars} svg={<Svg />} text="Chars" />;
 };
 
-export {TotalChars};
+export default TotalChars;

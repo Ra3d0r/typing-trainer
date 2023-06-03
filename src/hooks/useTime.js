@@ -2,8 +2,8 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {selectTime, updateTime} from '../feature/score/scoreSlice';
 import {selectCurrentTextIndex} from '../feature/typing/typingSlice';
-import {millisecondsToDigitTime} from '../helpers/millisecondsToDigitTime';
-import {useInterval} from './utils/useInterval';
+import millisecondsToDigitTime from '../helpers/millisecondsToDigitTime';
+import useInterval from './utils/useInterval';
 
 const useTime = (mode) => {
 	const time = useSelector((state) => selectTime(state, mode));
@@ -21,4 +21,4 @@ const useTime = (mode) => {
 	return millisecondsToDigitTime(time);
 };
 
-export {useTime};
+export default useTime;

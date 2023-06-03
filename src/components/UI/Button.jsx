@@ -19,4 +19,4 @@ const Button = ({text, onClick, isAlternative = false}) => {
 	);
 };
 
-export {Button};
+export default Button;

@@ -1,5 +1,5 @@
 import {gameModeInfo} from '../../../public/data/gameModeInfo';
-import {GameModeCardItem} from './GameModeCardItem';
+import GameModeCardItem from './GameModeCardItem';
 
 const GameModeCard = () => {
 	return (
@@ -11,4 +11,4 @@ const GameModeCard = () => {
 	);
 };
 
-export {GameModeCard};
+export default GameModeCard;

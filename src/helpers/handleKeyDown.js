@@ -14,4 +14,4 @@ const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode, status}) => {
 	setEventKeyCode(event.code);
 };
 
-export {handleKeyDown};
+export default handleKeyDown;

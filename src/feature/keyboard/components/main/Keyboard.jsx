@@ -2,10 +2,10 @@ import {useSelector} from 'react-redux';
 import tw from 'twin.macro';
 
 import {buttonsKeyboard} from '../../../../../public/data/buttonsKeyboard';
-import {keyIdButtons} from '../../../../helpers/keyIdButtons';
-import {useKeyboard} from '../../../../hooks/useKeyboard';
+import keyIdButtons from '../../../../helpers/keyIdButtons';
+import useKeyboard from '../../../../hooks/useKeyboard';
 import {selectCurrentLetter} from '../../../typing/typingSlice';
-import {KeyboardKey} from '../item/KeyboardKey';
+import KeyboardKey from '../item/KeyboardKey';
 
 const KeyboardContainer = ({children}) => {
 	return <div css={tw`flex justify-center mt-20`}>{children}</div>;
@@ -51,4 +51,4 @@ const Keyboard = ({mode}) => {
 	);
 };
 
-export {Keyboard};
+export default Keyboard;

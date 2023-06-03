@@ -11,4 +11,4 @@ const TextArea = ({value, onChange}) => {
 	);
 };
 
-export {TextArea};
+export default TextArea;

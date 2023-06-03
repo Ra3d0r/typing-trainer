@@ -5,7 +5,7 @@ import {keyboardReducer} from './feature/keyboard/keyboardSlice';
 import {scoreReducer} from './feature/score/scoreSlice';
 import {typingReducer} from './feature/typing/typingSlice';
 
-export const store = configureStore({
+const store = configureStore({
 	reducer: {
 		typing: typingReducer,
 		keyboard: keyboardReducer,
@@ -19,3 +19,5 @@ export const store = configureStore({
 			},
 		}),
 });
+
+export default store;

@@ -23,4 +23,4 @@ const useInterval = (callback, delay, shouldRun = true) => {
 	}, [delay, shouldRun]);
 };
 
-export {useInterval};
+export default useInterval;

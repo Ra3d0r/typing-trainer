@@ -6,8 +6,8 @@ import {
 	nextLetter,
 	resetCustomModeText,
 } from '../feature/typing/typingSlice';
-import {keyIdButtons} from './keyIdButtons';
-import {separationTextMode} from './separationTextMode';
+import keyIdButtons from './keyIdButtons';
+import separationTextMode from './separationTextMode';
 
 const handleKeyUp = ({
 	event,
@@ -53,4 +53,4 @@ const handleKeyUp = ({
 	}
 };
 
-export {handleKeyUp};
+export default handleKeyUp;

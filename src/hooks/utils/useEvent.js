@@ -17,4 +17,4 @@ const useEvent = (fn) => {
 	return eventCb;
 };
 
-export {useEvent};
+export default useEvent;

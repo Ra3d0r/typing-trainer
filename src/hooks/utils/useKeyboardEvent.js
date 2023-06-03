@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 
-import {useEvent} from './useEvent';
+import useEvent from './useEvent';
 
 const useKeyboardEvent = (type, cb) => {
 	const eventCb = useEvent(cb);
@@ -12,4 +12,4 @@ const useKeyboardEvent = (type, cb) => {
 	}, [eventCb]);
 };
 
-export {useKeyboardEvent};
+export default useKeyboardEvent;
