@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {addTotalChars, reset} from '../feature/score/scoreSlice';
@@ -8,14 +8,14 @@ const useUpdateScore = (mode) => {
 	const dispatch = useDispatch();
 
 	const currentText = useSelector((state) => selectCurrentText(state, mode));
-	const [previousTotalChars, setPreviousTotalChars] = useState(0);
+	const previousTotalCharsRef = useRef(0);
 
 	useEffect(() => {
-		if (previousTotalChars !== currentText.length && previousTotalChars > 0) {
+		if (previousTotalCharsRef.current !== currentText.length && previousTotalCharsRef.current > 0) {
 			dispatch(reset({mode}));
 		}
 		if (currentText.length) {
-			setPreviousTotalChars(currentText.length);
+			previousTotalCharsRef.current = currentText.length;
 			dispatch(addTotalChars({chars: currentText.length, mode}));
 		}
 	}, [currentText]);
