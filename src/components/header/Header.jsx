@@ -36,7 +36,9 @@ const Logo = ({children}) => {
 const Login = ({children}) => {
 	return (
 		<div css={tw`flex items-center`}>
-			<Link css={tw`text-base text-blue-600 dark:text-blue-500 hover:underline`}>{children}</Link>
+			<Link to={'/login'} css={tw`text-base text-blue-600 dark:text-blue-500 hover:underline`}>
+				{children}
+			</Link>
 		</div>
 	);
 };
