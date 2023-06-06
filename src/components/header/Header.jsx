@@ -1,6 +1,8 @@
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
+import Logo from '../UI/Logo';
+
 const Nav = ({children}) => {
 	return (
 		<nav css={tw`bg-white dark:bg-gray-900 w-full`}>
@@ -16,18 +18,6 @@ const FlexContainer = ({children}) => {
 		>
 			{children}
 		</div>
-	);
-};
-
-const Logo = ({children}) => {
-	return (
-		<Link to="/" css={tw`flex items-center`}>
-			<span
-				css={tw`self-center text-2xl text-blue-600 dark:text-blue-500 font-semibold whitespace-nowrap`}
-			>
-				{children}
-			</span>
-		</Link>
 	);
 };
 
