@@ -4,12 +4,14 @@ import * as api from './api/api';
 import {keyboardReducer} from './feature/keyboard/keyboardSlice';
 import {scoreReducer} from './feature/score/scoreSlice';
 import {typingReducer} from './feature/typing/typingSlice';
+import {userReducer} from './feature/user/userSlice';
 
 const store = configureStore({
 	reducer: {
 		typing: typingReducer,
 		keyboard: keyboardReducer,
 		score: scoreReducer,
+		user: userReducer,
 	},
 	devTools: true,
 	middleware: (getDefaultMiddleware) =>
