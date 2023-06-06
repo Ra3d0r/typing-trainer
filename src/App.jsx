@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 
 import EmptyLayout from './components/layout/EmptyLayout';
 import MainLayout from './components/layout/MainLayout';
+import useComponentMounted from './hooks/useComponentMounted';
 
 const HomeAsync = lazy(() => import('./pages/Home'));
 const GameAsync = lazy(() => import('./pages/Game'));
@@ -10,6 +11,7 @@ const NotFoundAsync = lazy(() => import('./pages/NotFound'));
 const LoginAsync = lazy(() => import('./pages/Login'));
 
 const App = () => {
+	useComponentMounted();
 	return (
 		<Routes>
 			<Route path="/" element={<MainLayout />}>

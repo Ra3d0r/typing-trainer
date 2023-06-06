@@ -1,8 +1,6 @@
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
-import useHeaderMounted from '../../hooks/useHeaderMounted';
-
 const Nav = ({children}) => {
 	return (
 		<nav css={tw`bg-white dark:bg-gray-900 w-full`}>
@@ -44,7 +42,6 @@ const Login = ({children}) => {
 };
 
 const Header = () => {
-	useHeaderMounted();
 	return (
 		<Nav>
 			<FlexContainer>

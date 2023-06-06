@@ -1,9 +1,9 @@
 import {useEffect} from 'react';
 
-const useHeaderMounted = () => {
+const useComponentMounted = () => {
 	useEffect(() => {
 		document.getElementById('preloader').style.display = 'none';
 	});
 };
 
-export default useHeaderMounted;
+export default useComponentMounted;
