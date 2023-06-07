@@ -12,11 +12,16 @@ const LoginForm = ({onSubmit, register, errors, isValid}) => {
 					name="email"
 					placeholder="name@company.com"
 					register={register}
-					required={'Fill in this field'}
 					label={'Email'}
-					pattern={{
-						value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-						message: 'Invalid email address',
+					options={{
+						required: {
+							value: true,
+							message: 'Fill in this field',
+						},
+						pattern: {
+							value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+							message: 'Invalid email address',
+						},
 					}}
 				/>
 				{errors.email && (
@@ -29,8 +34,17 @@ const LoginForm = ({onSubmit, register, errors, isValid}) => {
 					name="password"
 					placeholder="••••••••"
 					register={register}
-					required={'Fill in this field'}
 					label={'Password'}
+					options={{
+						required: {
+							value: true,
+							message: 'Fill in this field',
+						},
+						minLength: {
+							value: 3,
+							message: 'Password must be at least 3 characters',
+						},
+					}}
 				/>
 				{errors.password && (
 					<p className="text-sm text-red-500 dark:text-red-400 mt-2">{errors.password.message}</p>
