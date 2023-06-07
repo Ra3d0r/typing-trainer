@@ -14,6 +14,10 @@ const LoginForm = ({onSubmit, register, errors, isValid}) => {
 					register={register}
 					required={'Fill in this field'}
 					label={'Email'}
+					pattern={{
+						value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+						message: 'Invalid email address',
+					}}
 				/>
 				{errors.email && (
 					<p className="text-sm text-red-500 dark:text-red-400 mt-2">{errors.email.message}</p>
