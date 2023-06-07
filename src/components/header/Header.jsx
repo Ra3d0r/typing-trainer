@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
-import useHeaderMounted from '../../hooks/useHeaderMounted';
+import Logo from '../UI/Logo';
 
 const Nav = ({children}) => {
 	return (
@@ -21,28 +21,17 @@ const FlexContainer = ({children}) => {
 	);
 };
 
-const Logo = ({children}) => {
-	return (
-		<Link to="/" css={tw`flex items-center`}>
-			<span
-				css={tw`self-center text-2xl text-blue-600 dark:text-blue-500 font-semibold whitespace-nowrap`}
-			>
-				{children}
-			</span>
-		</Link>
-	);
-};
-
 const Login = ({children}) => {
 	return (
 		<div css={tw`flex items-center`}>
-			<Link css={tw`text-base text-blue-600 dark:text-blue-500 hover:underline`}>{children}</Link>
+			<Link to={'/login'} css={tw`text-base text-blue-600 dark:text-blue-500 hover:underline`}>
+				{children}
+			</Link>
 		</div>
 	);
 };
 
 const Header = () => {
-	useHeaderMounted();
 	return (
 		<Nav>
 			<FlexContainer>
