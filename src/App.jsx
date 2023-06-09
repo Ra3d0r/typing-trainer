@@ -9,6 +9,7 @@ const HomeAsync = lazy(() => import('./pages/Home'));
 const GameAsync = lazy(() => import('./pages/Game'));
 const NotFoundAsync = lazy(() => import('./pages/NotFound'));
 const LoginAsync = lazy(() => import('./pages/Login'));
+const RegisterAsync = lazy(() => import('./pages/Register'));
 
 const App = () => {
 	useComponentMounted();
@@ -21,6 +22,7 @@ const App = () => {
 			</Route>
 			<Route path="/" element={<EmptyLayout />}>
 				<Route path="/login" element={<LoginAsync />} />
+				<Route path="/register" element={<RegisterAsync />} />
 			</Route>
 		</Routes>
 	);

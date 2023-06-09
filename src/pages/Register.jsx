@@ -1,14 +1,14 @@
 import Logo from '../components/UI/Logo';
-import SignIn from '../feature/user/components/main/SignIn';
+import SignUp from '../feature/user/components/main/SignUp';
 import Container from './Items/Container';
 
-const Login = () => {
+const Register = () => {
 	return (
 		<Container>
 			<Logo cls={`mb-4 text-gray-800 dark:text-white`}>Typing Trainer</Logo>
-			<SignIn />;
+			<SignUp />;
 		</Container>
 	);
 };
 
-export default Login;
+export default Register;

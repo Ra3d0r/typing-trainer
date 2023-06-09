@@ -1,57 +1,16 @@
-import Checkbox from '../UI/Checkbox';
-import Input from '../UI/Input';
 import LinkForm from '../UI/LinkForm';
 import Submit from '../UI/Submit';
+import CheckboxLabel from '../compose/CheckboxLabel';
+import LoginInput from './item/LoginInput';
+import PasswordInput from './item/PasswordInput';
 
 const LoginForm = ({onSubmit, register, errors, isValid}) => {
 	return (
-		<form className="space-y-4 md:space-y-6" action="#" onSubmit={onSubmit}>
-			<div>
-				<Input
-					type="email"
-					name="email"
-					placeholder="name@company.com"
-					register={register}
-					label={'Email'}
-					options={{
-						required: {
-							value: true,
-							message: 'Fill in this field',
-						},
-						pattern: {
-							value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-							message: 'Invalid email address',
-						},
-					}}
-				/>
-				{errors.email && (
-					<p className="text-sm text-red-500 dark:text-red-400 mt-2">{errors.email.message}</p>
-				)}
-			</div>
-			<div>
-				<Input
-					type="password"
-					name="password"
-					placeholder="••••••••"
-					register={register}
-					label={'Password'}
-					options={{
-						required: {
-							value: true,
-							message: 'Fill in this field',
-						},
-						minLength: {
-							value: 3,
-							message: 'Password must be at least 3 characters',
-						},
-					}}
-				/>
-				{errors.password && (
-					<p className="text-sm text-red-500 dark:text-red-400 mt-2">{errors.password.message}</p>
-				)}
-			</div>
+		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
+			<LoginInput register={register} errors={errors} />
+			<PasswordInput register={register} errors={errors} />
 			<div className="flex items-center justify-between">
-				<Checkbox id="remember" name="remember" register={register} label={'Remember me'} />
+				<CheckboxLabel name="remember" register={register} label={'Remember me'} />
 				<LinkForm to={'/forgot-password'}>Forgot password?</LinkForm>
 			</div>
 			<Submit disabled={!isValid}>Sign in</Submit>
