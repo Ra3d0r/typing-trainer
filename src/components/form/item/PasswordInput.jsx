@@ -1,10 +1,10 @@
-import Input from '../../UI/Input';
+import InputLabel from '../../compose/InputLabel';
 
 const PasswordInput = ({register, errors, options, ...other}) => {
 	const name = other?.name;
 	return (
 		<div>
-			<Input
+			<InputLabel
 				type="password"
 				name="password"
 				placeholder="••••••••"

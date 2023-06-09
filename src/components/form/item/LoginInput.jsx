@@ -1,9 +1,9 @@
-import Input from '../../UI/Input';
+import InputLabel from '../../compose/InputLabel';
 
 const LoginInput = ({register, errors, options, ...other}) => {
 	return (
 		<div>
-			<Input
+			<InputLabel
 				type="email"
 				name="email"
 				placeholder="name@company.com"

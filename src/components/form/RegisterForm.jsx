@@ -1,6 +1,6 @@
-import Checkbox from '../UI/Checkbox';
 import LinkForm from '../UI/LinkForm';
 import Submit from '../UI/Submit';
+import CheckboxLabel from '../compose/CheckboxLabel';
 import LoginInput from './item/LoginInput';
 import PasswordInput from './item/PasswordInput';
 
@@ -20,7 +20,7 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch}) => {
 					validate: matchPassword,
 				}}
 			/>
-			<Checkbox
+			<CheckboxLabel
 				register={register}
 				errors={errors}
 				name="acceptTerms"

@@ -1,6 +1,6 @@
-import Checkbox from '../UI/Checkbox';
 import LinkForm from '../UI/LinkForm';
 import Submit from '../UI/Submit';
+import CheckboxLabel from '../compose/CheckboxLabel';
 import LoginInput from './item/LoginInput';
 import PasswordInput from './item/PasswordInput';
 
@@ -10,7 +10,7 @@ const LoginForm = ({onSubmit, register, errors, isValid}) => {
 			<LoginInput register={register} errors={errors} />
 			<PasswordInput register={register} errors={errors} />
 			<div className="flex items-center justify-between">
-				<Checkbox name="remember" register={register} label={'Remember me'} />
+				<CheckboxLabel name="remember" register={register} label={'Remember me'} />
 				<LinkForm to={'/forgot-password'}>Forgot password?</LinkForm>
 			</div>
 			<Submit disabled={!isValid}>Sign in</Submit>
