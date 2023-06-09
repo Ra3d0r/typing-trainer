@@ -26,6 +26,12 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch}) => {
 				name="acceptTerms"
 				label="I accept the"
 				link={{to: '/', text: 'Terms and Conditions'}}
+				options={{
+					required: {
+						value: true,
+						message: 'You must accept the terms and conditions',
+					},
+				}}
 			/>
 			<Submit disabled={!isValid}>Create an account</Submit>
 			<p className="text-sm font-light text-gray-500 dark:text-gray-400">
