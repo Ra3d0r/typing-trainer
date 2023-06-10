@@ -2,7 +2,7 @@ import {createUserWithEmailAndPassword, getAuth, updateProfile} from 'firebase/a
 
 import {setUser} from '../userSlice';
 
-const createUser = ({email, password, login}, dispatch) => {
+const createUser = ({email, password, login}, dispatch, navigate) => {
 	const auth = getAuth();
 	createUserWithEmailAndPassword(auth, email, password)
 		.then(() => {
@@ -16,6 +16,7 @@ const createUser = ({email, password, login}, dispatch) => {
 						token: auth.currentUser.refreshToken,
 					}),
 				);
+				navigate('/account');
 			});
 		})
 		.catch((error) => {

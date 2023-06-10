@@ -2,7 +2,7 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 
 import {setUser} from '../userSlice';
 
-const loginUser = ({email, password}, dispatch) => {
+const loginUser = ({email, password}, dispatch, navigate) => {
 	const auth = getAuth();
 	signInWithEmailAndPassword(auth, email, password)
 		.then(({user}) => {
@@ -13,6 +13,7 @@ const loginUser = ({email, password}, dispatch) => {
 					token: user.refreshToken,
 				}),
 			);
+			navigate('/account');
 		})
 		.catch((error) => {
 			const errorCode = error.code;
