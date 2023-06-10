@@ -2,6 +2,7 @@ import LinkForm from '../UI/LinkForm';
 import Submit from '../UI/Submit';
 import CheckboxLabel from '../compose/CheckboxLabel';
 import EmailInput from './item/EmailInput';
+import LoginInput from './item/LoginInput';
 import PasswordInput from './item/PasswordInput';
 
 const RegisterForm = ({onSubmit, register, errors, isValid, watch}) => {
@@ -9,6 +10,7 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch}) => {
 		watch('password') !== val ? 'Your passwords do no match' : undefined;
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
+			<LoginInput register={register} errors={errors} />
 			<EmailInput register={register} errors={errors} />
 			<PasswordInput register={register} errors={errors} />
 			<PasswordInput
