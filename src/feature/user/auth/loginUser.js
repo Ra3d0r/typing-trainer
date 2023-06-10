@@ -5,12 +5,10 @@ import {setUser} from '../userSlice';
 const loginUser = ({email, password}, dispatch) => {
 	const auth = getAuth();
 	signInWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
-			const user = userCredential.user;
-			console.log(userCredential);
+		.then(({user}) => {
 			dispatch(
 				setUser({
-					email: user.email,
+					login: user.displayName,
 					id: user.uid,
 					token: user.refreshToken,
 				}),
