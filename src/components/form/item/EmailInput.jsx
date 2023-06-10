@@ -1,6 +1,6 @@
 import InputLabel from '../../compose/InputLabel';
 
-const LoginInput = ({register, errors, options, ...other}) => {
+const EmailInput = ({register, errors, options, ...other}) => {
 	return (
 		<div>
 			<InputLabel
@@ -29,4 +29,4 @@ const LoginInput = ({register, errors, options, ...other}) => {
 	);
 };
 
-export default LoginInput;
+export default EmailInput;
