@@ -22,5 +22,6 @@ const userSlice = createSlice({
 export const {setUser, reset} = userSlice.actions;
 
 export const selectUserAuth = (state) => !!state.user.login;
+export const selectLogin = (state) => state.user.login;
 
 export const userReducer = userSlice.reducer;
