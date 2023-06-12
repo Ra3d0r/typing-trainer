@@ -18,7 +18,7 @@ const ResetPassword = () => {
 				<Title>Resetting a password by mail</Title>
 				<ResetPasswordForm
 					register={register}
-					handleSubmit={handleSubmit(onSubmit)}
+					onSubmit={handleSubmit(onSubmit)}
 					errors={errors}
 					isValid={isValid}
 				/>
