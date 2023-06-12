@@ -12,6 +12,7 @@ const NotFoundAsync = lazy(() => import('./pages/NotFound'));
 const LoginAsync = lazy(() => import('./pages/Login'));
 const RegisterAsync = lazy(() => import('./pages/Register'));
 const AccountAsync = lazy(() => import('./pages/Account'));
+const ForgotPasswordAsync = lazy(() => import('./pages/ForgotPassword'));
 
 const App = () => {
 	useComponentMounted();
@@ -25,6 +26,7 @@ const App = () => {
 			<Route path="/" element={<EmptyLayout />}>
 				<Route path="/login" element={<LoginAsync />} />
 				<Route path="/register" element={<RegisterAsync />} />
+				<Route path="/forgot-password" element={<ForgotPasswordAsync />} />
 				<Route element={<PrivateRoute />}>
 					<Route path="/account" element={<AccountAsync />} />
 				</Route>
