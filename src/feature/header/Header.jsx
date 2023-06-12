@@ -2,8 +2,8 @@ import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
-import {selectLogin} from '../../feature/user/userSlice';
-import Logo from '../UI/Logo';
+import Logo from '../../components/UI/Logo';
+import {selectLogin} from '../user/userSlice';
 
 const Nav = ({children}) => {
 	return (
