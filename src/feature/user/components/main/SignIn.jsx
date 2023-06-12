@@ -1,6 +1,7 @@
 import {useForm} from 'react-hook-form';
 
 import LoginForm from '../../../../components/form/LoginForm';
+import useSingIn from '../../hooks/useSingIn';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';
 import Title from '../item/Title';
@@ -11,7 +12,7 @@ const SignIn = () => {
 		handleSubmit,
 		formState: {errors, isValid},
 	} = useForm({mode: 'onBlur'});
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = useSingIn();
 	return (
 		<Background>
 			<ContainerInner>

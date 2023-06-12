@@ -16,8 +16,8 @@ const PasswordInput = ({register, errors, options, ...other}) => {
 						message: 'Fill in this field',
 					},
 					minLength: {
-						value: 3,
-						message: 'Password must be at least 3 characters',
+						value: 6,
+						message: 'Password must be at least 6 characters',
 					},
 					...options,
 				}}

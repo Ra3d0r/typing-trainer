@@ -1,13 +1,13 @@
 import LinkForm from '../UI/LinkForm';
 import Submit from '../UI/Submit';
 import CheckboxLabel from '../compose/CheckboxLabel';
-import LoginInput from './item/LoginInput';
+import EmailInput from './item/EmailInput';
 import PasswordInput from './item/PasswordInput';
 
 const LoginForm = ({onSubmit, register, errors, isValid}) => {
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
-			<LoginInput register={register} errors={errors} />
+			<EmailInput register={register} errors={errors} />
 			<PasswordInput register={register} errors={errors} />
 			<div className="flex items-center justify-between">
 				<CheckboxLabel name="remember" register={register} label={'Remember me'} />

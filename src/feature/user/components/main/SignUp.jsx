@@ -1,6 +1,7 @@
 import {useForm} from 'react-hook-form';
 
 import RegisterForm from '../../../../components/form/RegisterForm';
+import useSingUp from '../../hooks/useSingUp';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';
 import Title from '../item/Title';
@@ -12,7 +13,7 @@ const SignUp = () => {
 		formState: {errors, isValid},
 		watch,
 	} = useForm({mode: 'onBlur'});
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = useSingUp();
 	return (
 		<Background>
 			<ContainerInner>

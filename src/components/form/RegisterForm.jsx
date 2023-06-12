@@ -1,6 +1,7 @@
 import LinkForm from '../UI/LinkForm';
 import Submit from '../UI/Submit';
 import CheckboxLabel from '../compose/CheckboxLabel';
+import EmailInput from './item/EmailInput';
 import LoginInput from './item/LoginInput';
 import PasswordInput from './item/PasswordInput';
 
@@ -10,6 +11,7 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch}) => {
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
 			<LoginInput register={register} errors={errors} />
+			<EmailInput register={register} errors={errors} />
 			<PasswordInput register={register} errors={errors} />
 			<PasswordInput
 				register={register}
