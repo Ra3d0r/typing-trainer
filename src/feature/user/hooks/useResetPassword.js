@@ -1,7 +1,10 @@
+import {useDispatch} from 'react-redux';
+
 import resetPassword from '../auth/resetPassword';
 
 const useResetPassword = () => {
-	return (data) => resetPassword(data);
+	const dispatch = useDispatch();
+	return (data) => resetPassword(data, dispatch);
 };
 
 export default useResetPassword;
