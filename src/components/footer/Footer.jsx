@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useRef} from 'react';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
@@ -47,10 +47,10 @@ const GitHub = () => {
 };
 
 const Footer = () => {
-	const [date, setDate] = useState(new Date());
+	const dateRef = useRef(new Date());
 	return (
 		<FooterHTML>
-			<Logo>© {date.getFullYear()} Typing Trainer</Logo>
+			<Logo>© {dateRef.current.getFullYear()} Typing Trainer</Logo>
 			<LinksContainer>
 				<LinkHTML href="https://github.com/Ra3d0r/typing-trainer">
 					<GitHub />
