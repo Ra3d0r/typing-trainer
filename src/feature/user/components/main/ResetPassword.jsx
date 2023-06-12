@@ -1,6 +1,7 @@
 import {useForm} from 'react-hook-form';
 
 import ResetPasswordForm from '../../../../components/form/ResetPasswordForm';
+import useResetPassword from '../../hooks/useResetPassword';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';
 import Title from '../item/Title';
@@ -11,7 +12,7 @@ const ResetPassword = () => {
 		handleSubmit,
 		formState: {errors, isValid},
 	} = useForm({mode: 'onBlur'});
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = useResetPassword();
 	return (
 		<Background>
 			<ContainerInner>
