@@ -1,5 +1,6 @@
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 
+import {openToast} from '../../toast/toastSlice';
 import {setStatusUser, setUser} from '../userSlice';
 
 const loginUser = ({email, password}, dispatch, navigate, reset) => {
@@ -20,6 +21,8 @@ const loginUser = ({email, password}, dispatch, navigate, reset) => {
 		.catch((error) => {
 			const errorCode = error.code;
 			const errorMessage = error.message;
+			dispatch(setStatusUser('error'));
+			dispatch(openToast({message: errorMessage, type: 'error'}));
 			console.log(errorCode, errorMessage);
 		});
 };
