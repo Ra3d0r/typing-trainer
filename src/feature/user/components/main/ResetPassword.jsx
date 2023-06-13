@@ -13,8 +13,9 @@ const ResetPassword = () => {
 		register,
 		handleSubmit,
 		formState: {errors, isValid},
+		reset,
 	} = useForm({mode: 'onBlur'});
-	const onSubmit = useResetPassword();
+	const onSubmit = useResetPassword(reset);
 	const status = useSelector(selectStatusUser);
 	return (
 		<Background>

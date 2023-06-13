@@ -14,9 +14,10 @@ const SignUp = () => {
 		handleSubmit,
 		formState: {errors, isValid},
 		watch,
+		reset,
 	} = useForm({mode: 'onBlur'});
 	const status = useSelector(selectStatusUser);
-	const onSubmit = useSingUp();
+	const onSubmit = useSingUp(reset);
 	return (
 		<Background>
 			<ContainerInner>

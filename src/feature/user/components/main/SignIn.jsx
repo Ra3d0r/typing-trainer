@@ -13,9 +13,10 @@ const SignIn = () => {
 		register,
 		handleSubmit,
 		formState: {errors, isValid},
+		reset,
 	} = useForm({mode: 'onBlur'});
 	const status = useSelector(selectStatusUser);
-	const onSubmit = useSingIn();
+	const onSubmit = useSingIn(reset);
 	return (
 		<Background>
 			<ContainerInner>
