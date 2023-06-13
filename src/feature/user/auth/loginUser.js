@@ -1,9 +1,10 @@
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 
-import {setUser} from '../userSlice';
+import {setStatusUser, setUser} from '../userSlice';
 
 const loginUser = ({email, password}, dispatch, navigate) => {
 	const auth = getAuth();
+	dispatch(setStatusUser('loading'));
 	signInWithEmailAndPassword(auth, email, password)
 		.then(({user}) => {
 			dispatch(
