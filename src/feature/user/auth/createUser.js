@@ -1,9 +1,10 @@
 import {createUserWithEmailAndPassword, getAuth, updateProfile} from 'firebase/auth';
 
-import {setUser} from '../userSlice';
+import {setStatusUser, setUser} from '../userSlice';
 
 const createUser = ({email, password, login}, dispatch, navigate) => {
 	const auth = getAuth();
+	dispatch(setStatusUser('loading'));
 	createUserWithEmailAndPassword(auth, email, password)
 		.then(() => {
 			updateProfile(auth.currentUser, {
