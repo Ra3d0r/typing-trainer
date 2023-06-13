@@ -6,6 +6,7 @@ import {
 	nextLetter,
 	resetCustomModeText,
 } from '../feature/typing/typingSlice';
+import checkKeyboardLayout from './checkKeyboardLayout';
 import keyIdButtons from './keyIdButtons';
 import separationTextMode from './separationTextMode';
 
@@ -34,6 +35,11 @@ const handleKeyUp = ({
 	if (!currentText.length) {
 		return;
 	}
+
+	if (checkKeyboardLayout('en', event)) {
+		//
+	}
+
 	if (target !== event.key) {
 		dispatch(addErrorIndex({currentTextIndex, mode}));
 		dispatch(increaseTypos({mode}));
