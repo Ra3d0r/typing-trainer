@@ -1,4 +1,5 @@
 import {increaseTypos} from '../feature/score/scoreSlice';
+import {openToast} from '../feature/toast/toastSlice';
 import {
 	addCurrentText,
 	addErrorIndex,
@@ -27,6 +28,11 @@ const handleKeyUp = ({
 
 	setEventKeyCode('');
 
+	if (!checkKeyboardLayout('en', event)) {
+		dispatch(openToast({message: 'Change the keyboard layout', type: 'error'}));
+		return;
+	}
+
 	const TargetKeyId = keyIdButtons(event.key);
 	if (!TargetKeyId) {
 		return;
@@ -34,10 +40,6 @@ const handleKeyUp = ({
 
 	if (!currentText.length) {
 		return;
-	}
-
-	if (checkKeyboardLayout('en', event)) {
-		//
 	}
 
 	if (target !== event.key) {

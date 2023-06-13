@@ -1,7 +1,7 @@
 const checkKeyboardLayout = (lang, event) => {
 	switch (lang) {
 		case 'en':
-			return event.key.match(/\d|\w|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_]/g);
+			return /\d|\w|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_| ]/g.test(event.key);
 		default:
 			throw new Error('Unknown language');
 	}
