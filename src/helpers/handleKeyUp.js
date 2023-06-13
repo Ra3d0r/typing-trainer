@@ -29,7 +29,7 @@ const handleKeyUp = ({
 	setEventKeyCode('');
 
 	if (!checkKeyboardLayout('en', event)) {
-		dispatch(openToast({message: 'Change the keyboard layout', type: 'error'}));
+		dispatch(openToast({message: 'Change the keyboard layout', type: 'warning'}));
 		return;
 	}
 

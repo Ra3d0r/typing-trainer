@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
 	message: null,
-	type: null, // success info error
+	type: null, // success info error warning
 };
 
 const toastSlice = createSlice({
