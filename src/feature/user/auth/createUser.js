@@ -1,10 +1,10 @@
-import {createUserWithEmailAndPassword, getAuth, updateProfile} from 'firebase/auth';
+import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
 
+import {auth} from '../../../firebase';
 import {openToast} from '../../toast/toastSlice';
 import {setStatusUser, setUser} from '../userSlice';
 
 const createUser = ({email, password, login}, dispatch, navigate, reset) => {
-	const auth = getAuth();
 	dispatch(setStatusUser('loading'));
 	createUserWithEmailAndPassword(auth, email, password)
 		.then(() => {

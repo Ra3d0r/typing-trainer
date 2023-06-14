@@ -1,10 +1,10 @@
-import {getAuth, sendPasswordResetEmail} from 'firebase/auth';
+import {sendPasswordResetEmail} from 'firebase/auth';
 
+import {auth} from '../../../firebase';
 import {openToast} from '../../toast/toastSlice';
 import {setStatusUser} from '../userSlice';
 
 const resetPassword = ({email}, dispatch, reset) => {
-	const auth = getAuth();
 	dispatch(setStatusUser('loading'));
 	sendPasswordResetEmail(auth, email)
 		.then(() => {
