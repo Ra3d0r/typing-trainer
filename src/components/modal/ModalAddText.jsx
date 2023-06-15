@@ -71,8 +71,10 @@ const ModalAddText = ({closeModal, addText, textAreaValue, handleChange, errorMe
 					<TextArea value={textAreaValue} onChange={handleChange} />
 				</ModalContent>
 				<ModalFooter>
-					<Button text={'Add text'} onClick={addText} />
-					<Button text={'Cancel'} isAlternative={true} onClick={closeModal} />
+					<Button onClick={addText}>Add text</Button>
+					<Button isAlternative={true} onClick={closeModal}>
+						Cancel
+					</Button>
 				</ModalFooter>
 			</ModalContainer>
 		</Window>

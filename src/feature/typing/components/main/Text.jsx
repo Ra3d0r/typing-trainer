@@ -21,7 +21,7 @@ const Text = ({mode}) => {
 
 	return (
 		<TextContainer>
-			{isTextNullCustomMode && <Button text={'Add text'} onClick={setStatusLoadingCustomMode} />}
+			{isTextNullCustomMode && <Button onClick={setStatusLoadingCustomMode}>Add text</Button>}
 			{status === 'loading' && <Loading />}
 			{error && <Error message={error} />}
 			{status === 'fulfilled' && (
