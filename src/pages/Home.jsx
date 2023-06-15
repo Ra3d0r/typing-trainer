@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 
 import GameModeCard from '../components/card/GameModeCard';
+import Toast from '../feature/toast/Toast';
 
 const Title = ({children}) => {
 	return (
@@ -19,6 +20,7 @@ const Mark = ({children}) => {
 const Home = () => {
 	return (
 		<>
+			<Toast ms={2000} />
 			<Title>
 				Choose a&nbsp;<Mark>game</Mark>&nbsp;mode
 			</Title>

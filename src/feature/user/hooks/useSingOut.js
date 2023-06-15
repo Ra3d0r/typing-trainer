@@ -12,9 +12,9 @@ const useSingOut = () => {
 	return () => {
 		signOut(auth)
 			.then(() => {
+				navigate('/');
 				dispatch(openToast({message: 'Sign out successful!', type: 'info'}));
 				dispatch(resetUser());
-				navigate('/');
 			})
 			.catch((error) => {
 				dispatch(openToast({message: error.message, type: 'error'}));
