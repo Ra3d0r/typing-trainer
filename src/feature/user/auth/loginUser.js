@@ -2,20 +2,13 @@ import {signInWithEmailAndPassword} from 'firebase/auth';
 
 import {auth} from '../../../firebase';
 import {openToast} from '../../toast/toastSlice';
-import {setStatusUser, setUser} from '../userSlice';
+import {setStatusUser} from '../userSlice';
 
 const loginUser = ({email, password}, dispatch, navigate, reset) => {
 	dispatch(setStatusUser('loading'));
 	signInWithEmailAndPassword(auth, email, password)
-		.then(({user}) => {
+		.then(() => {
 			reset();
-			dispatch(
-				setUser({
-					login: user.displayName,
-					id: user.uid,
-					token: user.refreshToken,
-				}),
-			);
 			navigate('/account');
 		})
 		.catch((error) => {
