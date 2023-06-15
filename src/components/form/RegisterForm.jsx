@@ -37,6 +37,7 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch, status}) => {
 					},
 				}}
 			/>
+			<CheckboxLabel name="remember" register={register} label={'Remember me'} />
 			{status === 'loading' ? (
 				<SubmitLoading disabled />
 			) : (

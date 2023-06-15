@@ -1,10 +1,16 @@
-import {createUserWithEmailAndPassword, sendEmailVerification, updateProfile} from 'firebase/auth';
+import {
+	browserSessionPersistence,
+	createUserWithEmailAndPassword,
+	sendEmailVerification,
+	setPersistence,
+	updateProfile,
+} from 'firebase/auth';
 
 import {auth} from '../../../firebase';
 import {openToast} from '../../toast/toastSlice';
 import {setStatusUser, setUser} from '../userSlice';
 
-const createUser = async ({email, password, login}, dispatch, navigate, reset) => {
+const createUser = async ({email, password, login, remember}, dispatch, navigate, reset) => {
 	try {
 		dispatch(setStatusUser('loading'));
 
@@ -17,6 +23,10 @@ const createUser = async ({email, password, login}, dispatch, navigate, reset) =
 		await updateProfile(auth.currentUser, {
 			displayName: login,
 		});
+
+		if (!remember) {
+			setPersistence(auth, browserSessionPersistence);
+		}
 
 		reset();
 		dispatch(
