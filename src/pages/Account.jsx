@@ -13,7 +13,7 @@ const Account = () => {
 			<Link className="text-blue-500" to="/">
 				Home
 			</Link>
-			<Button onClick={singOut} text={'Sign out'}></Button>
+			<Button onClick={singOut}>Sign out</Button>
 		</div>
 	);
 };
