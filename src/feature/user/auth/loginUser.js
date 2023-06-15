@@ -1,15 +1,18 @@
-import {signInWithEmailAndPassword} from 'firebase/auth';
+import {browserSessionPersistence, setPersistence, signInWithEmailAndPassword} from 'firebase/auth';
 
 import {auth} from '../../../firebase';
 import {openToast} from '../../toast/toastSlice';
 import {setStatusUser} from '../userSlice';
 
-const loginUser = ({email, password}, dispatch, navigate, reset) => {
+const loginUser = ({email, password, remember}, dispatch, navigate, reset) => {
 	dispatch(setStatusUser('loading'));
 	signInWithEmailAndPassword(auth, email, password)
 		.then(() => {
 			reset();
 			navigate('/account');
+			if (!remember) {
+				setPersistence(auth, browserSessionPersistence);
+			}
 		})
 		.catch((error) => {
 			const errorCode = error.code;
