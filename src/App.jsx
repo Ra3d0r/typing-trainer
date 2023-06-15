@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 import EmptyLayout from './components/layout/EmptyLayout';
 import MainLayout from './components/layout/MainLayout';
 import useComponentMounted from './hooks/useComponentMounted';
+import useCurrentUser from './hooks/useCurrentUser';
 import PrivateRoute from './router/PrivateRoute';
 
 const HomeAsync = lazy(() => import('./pages/Home'));
@@ -16,6 +17,7 @@ const ForgotPasswordAsync = lazy(() => import('./pages/ForgotPassword'));
 
 const App = () => {
 	useComponentMounted();
+	useCurrentUser();
 	return (
 		<Routes>
 			<Route path="/" element={<MainLayout />}>
