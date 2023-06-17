@@ -24,9 +24,9 @@ const App = () => {
 			<Route path="/" element={<MainLayout />}>
 				<Route index element={<HomeAsync />} />
 				<Route path="/game/:mode" element={<GameAsync />} />
-				<Route path="*" element={<NotFoundAsync />} />
 			</Route>
 			<Route path="/" element={<EmptyLayout />}>
+				<Route path="*" element={<NotFoundAsync />} />
 				<Route element={<AuthRoute />}>
 					<Route path="/login" element={<LoginAsync />} />
 					<Route path="/register" element={<RegisterAsync />} />
