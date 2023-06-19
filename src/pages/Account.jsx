@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 
 import Button from '../components/UI/Button';
 import Toast from '../feature/toast/Toast';
-import useSingOut from '../feature/user/hooks/useSingOut';
+import useSingOut from '../hooks/useSingOut';
 
 const Account = () => {
 	const singOut = useSingOut();
