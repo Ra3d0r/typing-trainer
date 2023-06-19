@@ -1,7 +1,10 @@
+import {useAuthState} from 'react-firebase-hooks/auth';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
+import LoadingSmall from '../../components/status/LoadingSmall';
+import {auth} from '../../firebase';
 import {selectLogin} from '../user/userSlice';
 
 const LoginHTML = ({children, to}) => {
@@ -16,6 +19,11 @@ const LoginHTML = ({children, to}) => {
 
 const Login = () => {
 	const userName = useSelector(selectLogin);
+	const [_, loading] = useAuthState(auth);
+
+	if (loading) {
+		return <LoadingSmall />;
+	}
 
 	return userName ? (
 		<LoginHTML to="/account">{userName}</LoginHTML>
