@@ -6,7 +6,7 @@ import Error from '../../../../components/status/Error';
 import Loading from '../../../../components/status/Loading';
 import useCurrentText from '../../../../hooks/useCurrentText';
 import {selectAllInfoText} from '../../typingSlice';
-import TextItem from '../item/TextItem';
+import TextList from '../item/TextList';
 
 const TextContainer = ({children}) => {
 	return <div css={tw`mt-14 w-3/4 flex justify-center m-auto`}>{children}</div>;
@@ -25,17 +25,11 @@ const Text = ({mode}) => {
 			{status === 'loading' && <Loading />}
 			{error && <Error message={error} />}
 			{status === 'fulfilled' && (
-				<div className="text-center">
-					{currentText.map((letter, index) => (
-						<TextItem
-							key={index}
-							letter={letter}
-							index={index}
-							errorsIndex={errorsIndex}
-							currentTextIndex={currentTextIndex}
-						/>
-					))}
-				</div>
+				<TextList
+					currentText={currentText}
+					errorsIndex={errorsIndex}
+					currentTextIndex={currentTextIndex}
+				/>
 			)}
 		</TextContainer>
 	);

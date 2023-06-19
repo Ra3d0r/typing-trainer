@@ -1,11 +1,10 @@
 import {useSelector} from 'react-redux';
 import tw from 'twin.macro';
 
-import {buttonsKeyboard} from '../../../../../public/data/buttonsKeyboard';
 import keyIdButtons from '../../../../helpers/keyIdButtons';
 import useKeyboard from '../../../../hooks/useKeyboard';
 import {selectCurrentLetter} from '../../../typing/typingSlice';
-import KeyboardKey from '../item/KeyboardKey';
+import KeyboardList from '../item/KeyboardList';
 
 const KeyboardContainer = ({children}) => {
 	return <div css={tw`flex justify-center mt-20`}>{children}</div>;
@@ -29,23 +28,11 @@ const Keyboard = ({mode}) => {
 	return (
 		<KeyboardContainer>
 			<KeyboardPanel>
-				{buttonsKeyboard.map((board, rowIndex) => {
-					return (
-						<div key={rowIndex} className="space-x-0.5 space-y-0.5 flex grow">
-							{board.map((key) => {
-								return (
-									<KeyboardKey
-										key={key.id}
-										{...key}
-										kbd={isShiftPressed ? key.shift : key.nonShift}
-										eventKey={eventKeyCode}
-										keyTarget={currentKeyId}
-									/>
-								);
-							})}
-						</div>
-					);
-				})}
+				<KeyboardList
+					isShiftPressed={isShiftPressed}
+					eventKeyCode={eventKeyCode}
+					currentKeyId={currentKeyId}
+				/>
 			</KeyboardPanel>
 		</KeyboardContainer>
 	);
