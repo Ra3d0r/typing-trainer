@@ -1,9 +1,16 @@
-const Loading = () => {
+import tw from 'twin.macro';
+
+const styles = {
+	sm: tw`w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`,
+	lg: tw`w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`,
+};
+
+const Loading = ({size = 'lg'}) => {
 	return (
 		<div role="status">
 			<svg
 				aria-hidden="true"
-				className="w-12 h-12 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+				css={styles[size]}
 				viewBox="0 0 100 101"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"

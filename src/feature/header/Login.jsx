@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
-import LoadingSmall from '../../components/status/LoadingSmall';
+import Loading from '../../components/status/Loading';
 import {auth} from '../../firebase';
 import {selectLogin} from '../user/userSlice';
 
@@ -22,7 +22,7 @@ const Login = () => {
 	const [_, loading] = useAuthState(auth);
 
 	if (loading) {
-		return <LoadingSmall />;
+		return <Loading size="sm" />;
 	}
 
 	return userName ? (
