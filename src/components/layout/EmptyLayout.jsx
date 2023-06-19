@@ -1,15 +1,15 @@
 import {Suspense} from 'react';
 import {Outlet} from 'react-router-dom';
 
+import LoadingFullScreen from '../compose/LoadingFullScreen';
 import FlexContainer from './items/FlexContainer';
 import Main from './items/Main';
-import MainLoading from './items/MainLoading';
 
 const EmptyLayout = () => {
 	return (
 		<FlexContainer>
 			<Main>
-				<Suspense fallback={<MainLoading />}>
+				<Suspense fallback={<LoadingFullScreen />}>
 					<Outlet />
 				</Suspense>
 			</Main>

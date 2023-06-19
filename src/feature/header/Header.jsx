@@ -1,9 +1,7 @@
-import {useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
 import Logo from '../../components/UI/Logo';
-import {selectLogin} from '../user/userSlice';
+import Login from './Login';
 
 const Nav = ({children}) => {
 	return (
@@ -23,23 +21,12 @@ const FlexContainer = ({children}) => {
 	);
 };
 
-const Login = ({children, to}) => {
-	return (
-		<div css={tw`flex items-center`}>
-			<Link to={to} css={tw`text-base text-blue-600 dark:text-blue-500 hover:underline`}>
-				{children}
-			</Link>
-		</div>
-	);
-};
-
 const Header = () => {
-	const login = useSelector(selectLogin);
 	return (
 		<Nav>
 			<FlexContainer>
 				<Logo>Typing Trainer</Logo>
-				{login ? <Login to="/account">{login}</Login> : <Login to="/login">Login</Login>}
+				<Login />
 			</FlexContainer>
 		</Nav>
 	);
