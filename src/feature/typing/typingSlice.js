@@ -106,11 +106,8 @@ export const selectCurrentLetter = (state, mode) => {
 
 export const selectCurrentTextIndex = (state, mode) => state.typing[mode].currentTextIndex;
 export const selectCurrentText = (state, mode) => state.typing[mode].currentText;
-export const selectAllText = (state, mode) => state.typing[mode].allText;
-export const selectErrorsIndex = (state, mode) => state.typing[mode].errorsIndex;
 export const selectAllInfoText = (state, mode) => state.typing[mode];
 
 export const selectTypingStatus = (state, mode) => state.typing[mode].status;
-export const selectTypingError = (state, mode) => state.typing[mode].error;
 
 export const typingReducer = typingSlice.reducer;
