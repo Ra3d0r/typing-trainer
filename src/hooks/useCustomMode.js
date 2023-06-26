@@ -1,10 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 
-import {
-	addCurrentText,
-	changeStatusCustomMode,
-	selectTypingStatus,
-} from '../feature/typing/typingSlice';
+import {selectTypingStatus} from '../feature/typing/typingSelectors';
+import {addCurrentText, changeStatusCustomMode} from '../feature/typing/typingSlice';
 
 const useCustomMode = () => {
 	const dispatch = useDispatch();

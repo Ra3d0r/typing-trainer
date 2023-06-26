@@ -1,6 +1,16 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-export const requestText = createAsyncThunk(
+import {
+	IConfigText,
+	IConfigThunkOptions,
+	IReturnThunk,
+	typeActionCurrentText,
+	typeActionErrorIndex,
+	typeActionNextLetter,
+	typeInitialState,
+} from './types/typesSlice';
+
+export const requestText = createAsyncThunk<IReturnThunk, IConfigText, IConfigThunkOptions>(
 	'@@typing/loading-text',
 	async ({url, mode, headers}, {extra: {api}, dispatch, rejectWithValue}) => {
 		try {
@@ -13,12 +23,12 @@ export const requestText = createAsyncThunk(
 	},
 );
 
-const initialState = {
+const initialState: typeInitialState = {
 	easy: {
 		currentText: [],
 		currentTextIndex: 0,
 		errorsIndex: [],
-		allText: null,
+		allText: [],
 		status: 'idle',
 		error: null,
 	},
@@ -26,7 +36,7 @@ const initialState = {
 		currentText: [],
 		currentTextIndex: 0,
 		errorsIndex: [],
-		allText: null,
+		allText: [],
 		status: 'idle',
 		error: null,
 	},
@@ -34,7 +44,7 @@ const initialState = {
 		currentText: [],
 		currentTextIndex: 0,
 		errorsIndex: [],
-		allText: null,
+		allText: [],
 		status: 'idle',
 		error: null,
 	},
@@ -42,7 +52,7 @@ const initialState = {
 		currentText: [],
 		currentTextIndex: 0,
 		errorsIndex: [],
-		allText: null,
+		allText: [],
 		status: 'idle',
 		error: null,
 	},
@@ -52,15 +62,15 @@ const typingSlice = createSlice({
 	name: '@@typing',
 	initialState,
 	reducers: {
-		addCurrentText: (state, {payload: {mode, text}}) => {
+		addCurrentText: (state, {payload: {mode, text}}: typeActionCurrentText) => {
 			state[mode].currentText = text.split('');
 			state[mode].errorsIndex = [];
 			state[mode].currentTextIndex = 0;
 		},
-		nextLetter: (state, {payload: {mode}}) => {
+		nextLetter: (state, {payload: {mode}}: typeActionNextLetter) => {
 			state[mode].currentTextIndex++;
 		},
-		addErrorIndex: (state, {payload: {currentTextIndex, mode}}) => {
+		addErrorIndex: (state, {payload: {currentTextIndex, mode}}: typeActionErrorIndex) => {
 			state[mode].errorsIndex.push(currentTextIndex);
 		},
 		changeStatusCustomMode: (state, action) => {
@@ -86,7 +96,7 @@ const typingSlice = createSlice({
 			.addCase(requestText.rejected, (state, action) => {
 				const mode = action.meta.arg.mode;
 				state[mode].status = 'failed';
-				state[mode].error = action.payload;
+				state[mode].error = action.payload as string;
 			});
 	},
 });
@@ -98,16 +108,5 @@ export const {
 	changeStatusCustomMode,
 	resetCustomModeText,
 } = typingSlice.actions;
-
-export const selectCurrentLetter = (state, mode) => {
-	const index = state.typing[mode].currentTextIndex;
-	return state.typing[mode].currentText[index];
-};
-
-export const selectCurrentTextIndex = (state, mode) => state.typing[mode].currentTextIndex;
-export const selectCurrentText = (state, mode) => state.typing[mode].currentText;
-export const selectAllInfoText = (state, mode) => state.typing[mode];
-
-export const selectTypingStatus = (state, mode) => state.typing[mode].status;
 
 export const typingReducer = typingSlice.reducer;

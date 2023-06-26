@@ -5,7 +5,7 @@ import Button from '../../../../components/UI/Button';
 import Error from '../../../../components/status/Error';
 import Loading from '../../../../components/status/Loading';
 import useCurrentText from '../../../../hooks/useCurrentText';
-import {selectAllInfoText} from '../../typingSlice';
+import {selectAllInfoText} from '../../typingSelectors';
 import TextList from '../item/TextList';
 
 const TextContainer = ({children}) => {

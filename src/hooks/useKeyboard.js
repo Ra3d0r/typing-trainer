@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {selectAllInfoText} from '../feature/typing/typingSlice';
+import {selectAllInfoText} from '../feature/typing/typingSelectors';
 import handleKeyDown from '../helpers/handleKeyDown';
 import handleKeyUp from '../helpers/handleKeyUp';
 import useKeyboardEvent from './utils/useKeyboardEvent';

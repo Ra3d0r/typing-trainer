@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 
 import keyIdButtons from '../../../../helpers/keyIdButtons';
 import useKeyboard from '../../../../hooks/useKeyboard';
-import {selectCurrentLetter} from '../../../typing/typingSlice';
+import {selectCurrentLetter} from '../../../typing/typingSelectors';
 import KeyboardList from '../item/KeyboardList';
 
 const KeyboardContainer = ({children}) => {

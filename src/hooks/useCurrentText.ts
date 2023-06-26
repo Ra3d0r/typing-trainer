@@ -1,16 +1,14 @@
 import {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {typeModeUnion} from 'src/types';
 
 import {textEng} from '../config';
-import {
-	changeStatusCustomMode,
-	requestText,
-	selectCurrentText,
-} from '../feature/typing/typingSlice';
+import {selectCurrentText} from '../feature/typing/typingSelectors';
+import {changeStatusCustomMode, requestText} from '../feature/typing/typingSlice';
+import {useAppDispatch, useAppSelector} from '../store/redux-hooks';
 
-const useCurrentText = (mode) => {
-	const dispatch = useDispatch();
-	const currentText = useSelector((state) => selectCurrentText(state, mode));
+const useCurrentText = (mode: typeModeUnion) => {
+	const dispatch = useAppDispatch();
+	const currentText = useAppSelector((state) => selectCurrentText(state, mode));
 
 	const setStatusLoading = () => dispatch(changeStatusCustomMode('loading'));
 

@@ -2,7 +2,7 @@ import {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {addTotalChars, reset} from '../feature/score/scoreSlice';
-import {selectCurrentText} from '../feature/typing/typingSlice';
+import {selectCurrentText} from '../feature/typing/typingSelectors';
 
 const useUpdateScore = (mode) => {
 	const dispatch = useDispatch();

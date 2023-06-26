@@ -5,11 +5,12 @@ import Keyboard from '../feature/keyboard/components/main/Keyboard.jsx';
 import Score from '../feature/score/components/main/Score.jsx';
 import Toast from '../feature/toast/Toast.jsx';
 import Text from '../feature/typing/components/main/Text.jsx';
+import { typeModeUnion } from 'src/types/index.js';
 
 const CustomModeAsync = lazy(() => import('../feature/typing/components/main/CustomMode.jsx'));
 
 const Game = () => {
-	const {mode} = useParams();
+	const {mode} = useParams<Record<string, typeModeUnion>>();
 	return (
 		<>
 			<Toast />

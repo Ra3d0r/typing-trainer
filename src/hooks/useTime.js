@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 
 import {selectTime, updateTime} from '../feature/score/scoreSlice';
-import {selectCurrentTextIndex} from '../feature/typing/typingSlice';
+import {selectCurrentTextIndex} from '../feature/typing/typingSelectors';
 import millisecondsToDigitTime from '../helpers/millisecondsToDigitTime';
 import useInterval from './utils/useInterval';
 
