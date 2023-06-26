@@ -7,7 +7,7 @@ import App from './App';
 import './css/index.css';
 import store from './store';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<HashRouter>
 		<Provider store={store}>

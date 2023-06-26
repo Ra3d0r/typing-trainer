@@ -16,7 +16,7 @@ export default {
 	devtool,
 	target,
 
-	entry: './src/index.js',
+	entry: './src/index.tsx',
 
 	output: {
 		filename: devMode ? '[name].js' : '[name].[contenthash].js',
@@ -31,7 +31,7 @@ export default {
 	},
 
 	resolve: {
-		extensions: ['.js', '.jsx'],
+		extensions: ['.js', '.jsx', '.tsx', '.ts'],
 	},
 
 	optimization: {
@@ -46,6 +46,12 @@ export default {
 				use: {
 					loader: 'babel-loader',
 				},
+			},
+
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
 			},
 
 			{
