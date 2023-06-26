@@ -1,10 +1,12 @@
-const API_KEY_HARD = process.env.REACT_APP_API_HARD_ENG;
+import {IText} from './types';
+
+const API_KEY_HARD = process.env['REACT_APP_API_HARD_ENG'];
 
 const URL_EASY_ENG = 'https://type.fit/api/quotes';
 const URL_NORMAL_ENG = 'https://dummyjson.com/posts';
 const URL_HARD_END = 'https://api.api-ninjas.com/v1/exercises';
 
-const textEng = {
+const textEng: IText = {
 	url: {
 		easy: URL_EASY_ENG,
 		normal: URL_NORMAL_ENG,
