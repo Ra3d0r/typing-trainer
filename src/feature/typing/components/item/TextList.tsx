@@ -1,7 +1,5 @@
-import { ItextList } from '../../types/typesText';
+import {ItextList} from '../../types/typesText';
 import TextItem from './TextItem';
-
-
 
 const TextList = ({currentText, errorsIndex, currentTextIndex}: ItextList) => {
 	return (

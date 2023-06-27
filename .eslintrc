@@ -6,9 +6,10 @@
     "extends": [ 
         "eslint:recommended",
         "plugin:react/recommended",
-        "prettier"
+        "prettier",
+        "plugin:@typescript-eslint/recommended"
     ],
-    "parser": "@babel/eslint-parser", 
+    "parser": "@typescript-eslint/parser", 
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -19,12 +20,17 @@
     "plugins": [
         "react", 
         "prettier",
-        "react-hooks"
+        "react-hooks",
+        "@typescript-eslint"
     ],
     "rules": {
         "prettier/prettier": "error",
         "react/prop-types": 0,
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn" 
-    }
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-key": "warn",
+        "react/react-in-jsx-scope": "off",
+        "react/no-unknown-property": "off"
+    },
+    "root": true
 }
