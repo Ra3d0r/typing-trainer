@@ -7,6 +7,7 @@ import {
 	typeActionCurrentText,
 	typeActionErrorIndex,
 	typeActionNextLetter,
+	typeActionStatusCustom,
 	typeInitialState,
 } from './types/typesSlice';
 
@@ -73,7 +74,7 @@ const typingSlice = createSlice({
 		addErrorIndex: (state, {payload: {currentTextIndex, mode}}: typeActionErrorIndex) => {
 			state[mode].errorsIndex.push(currentTextIndex);
 		},
-		changeStatusCustomMode: (state, action) => {
+		changeStatusCustomMode: (state, action: typeActionStatusCustom) => {
 			state.custom.status = action.payload;
 		},
 		resetCustomModeText: (state) => {
@@ -96,7 +97,8 @@ const typingSlice = createSlice({
 			.addCase(requestText.rejected, (state, action) => {
 				const mode = action.meta.arg.mode;
 				state[mode].status = 'failed';
-				state[mode].error = action.payload as string;
+				state[mode].error =
+					typeof action.payload === 'string' ? action.payload : 'Something went wrong';
 			});
 	},
 });

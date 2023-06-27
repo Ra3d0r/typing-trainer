@@ -49,3 +49,4 @@ export type typeInitialState = Mapping<typeMode, game>;
 export type typeActionCurrentText = PayloadAction<addCurrentText>;
 export type typeActionErrorIndex = PayloadAction<addErrorIndex>;
 export type typeActionNextLetter = PayloadAction<{mode: typeModeUnion}>;
+export type typeActionStatusCustom = PayloadAction<typeStatus>;
