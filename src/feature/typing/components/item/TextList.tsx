@@ -1,4 +1,5 @@
-import {ItextList} from '../../types/typesText';
+import {ItextList} from '@feature/typing/types/typesText';
+
 import TextItem from './TextItem';
 
 const TextList = ({currentText, errorsIndex, currentTextIndex}: ItextList) => {

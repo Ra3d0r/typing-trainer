@@ -19,7 +19,16 @@
 		"noPropertyAccessFromIndexSignature": true,
 		"noImplicitOverride": true,
 		"paths": {
-			"@/*": ["src/*"],
+			"@public/*": ["public/*"],
+			"@test/*": ["test/*"],
+			"@types": ["src/types"],
+			"@components/*": ["src/components/*"],
+			"@feature/*": ["src/feature/*"],
+			"@pages/*": ["src/pages/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@helpers/*": ["src/helpers/*"],
+			"@store/*": ["src/store/*"],
+			"@api/*": ["src/api/*"],
 		}
 	},
 	"ts-node": {

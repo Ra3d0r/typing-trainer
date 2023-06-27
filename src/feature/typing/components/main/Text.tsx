@@ -1,14 +1,17 @@
 import tw from 'twin.macro';
 
-import {useAppSelector} from '@/store/redux-hooks';
+import {typeModeUnion} from '@types';
 
-import {typeModeUnion} from 'src/types';
+import {selectAllInfoText} from '@feature/typing/typingSelectors';
 
-import Button from '../../../../components/UI/Button';
-import Error from '../../../../components/status/Error';
-import Loading from '../../../../components/status/Loading';
-import useCurrentText from '../../../../hooks/useCurrentText';
-import {selectAllInfoText} from '../../typingSelectors';
+import useCurrentText from '@hooks/useCurrentText';
+
+import {useAppSelector} from '@store/redux-hooks';
+
+import Button from '@components/UI/Button';
+import Error from '@components/status/Error';
+import Loading from '@components/status/Loading';
+
 import TextList from '../item/TextList';
 
 const TextContainer = ({children}: {children: React.ReactNode}) => {

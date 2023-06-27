@@ -1,5 +1,6 @@
-import {RootState} from 'src/store/store';
-import {typeModeUnion} from 'src/types';
+import {typeModeUnion} from '@types';
+
+import {RootState} from '@store/store';
 
 export const selectCurrentLetter = (state: RootState, mode: typeModeUnion) => {
 	const index = state.typing[mode].currentTextIndex;
