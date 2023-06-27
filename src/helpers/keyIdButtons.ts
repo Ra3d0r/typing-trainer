@@ -1,5 +1,5 @@
-const keyIdButtons = (key) => {
-	const keyId = {
+const keyIdButtons = (key: string): string | null => {
+	const keyId: Record<string, string> = {
 		'`': 'Backquote',
 		1: 'Digit1',
 		2: 'Digit2',
@@ -52,7 +52,7 @@ const keyIdButtons = (key) => {
 		tab: 'Tab',
 	};
 
-	const result = keyId[key?.toLowerCase()];
+	const result: string | undefined = keyId[key?.toLowerCase()];
 	return result ? result : null;
 };
 

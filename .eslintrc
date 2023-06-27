@@ -30,7 +30,8 @@
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-key": "warn",
         "react/react-in-jsx-scope": "off",
-        "react/no-unknown-property": "off"
+        "react/no-unknown-property": "off",
+        "no-useless-escape": "off"
     },
     "root": true
 }

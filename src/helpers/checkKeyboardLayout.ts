@@ -1,4 +1,6 @@
-const checkKeyboardLayout = (lang, event) => {
+import {typeLang} from '@types';
+
+const checkKeyboardLayout = (lang: typeLang, event: KeyboardEvent): boolean => {
 	switch (lang) {
 		case 'en':
 			return /\d|\w|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_| ]/g.test(event.key);
