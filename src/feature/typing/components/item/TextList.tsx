@@ -1,6 +1,9 @@
+import { ItextList } from '../../types/typesText';
 import TextItem from './TextItem';
 
-const TextList = ({currentText, errorsIndex, currentTextIndex}) => {
+
+
+const TextList = ({currentText, errorsIndex, currentTextIndex}: ItextList) => {
 	return (
 		<div className="text-center">
 			{currentText.map((letter, index) => (

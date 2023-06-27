@@ -4,8 +4,7 @@
 		"outDir": "./dist/",
 		"noImplicitAny": true,
 		"module": "ESNext",
-		"target": "es5",
-		"jsx": "react-jsx",
+		"jsx": "preserve",
 		"allowJs": true,
 		"moduleResolution": "node",
 		"allowSyntheticDefaultImports": true,
@@ -18,7 +17,10 @@
 		"allowUnreachableCode": true,
 		"noUncheckedIndexedAccess": true,
 		"noPropertyAccessFromIndexSignature": true,
-		"noImplicitOverride": true
+		"noImplicitOverride": true,
+		"paths": {
+			"@/*": ["src/*"],
+		}
 	},
 	"ts-node": {
 		"compilerOptions": {

@@ -1,4 +1,10 @@
-const classNameLetter = (index, errorsIndex = [], currentTextIndex) => {
+import {typeChart} from '../types/typesChart';
+
+const classNameLetter = (
+	index: number,
+	errorsIndex: number[] = [],
+	currentTextIndex: number,
+): typeChart => {
 	if (errorsIndex.includes(index)) {
 		return 'mis-letter';
 	} else if (index === currentTextIndex) {
