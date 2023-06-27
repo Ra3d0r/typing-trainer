@@ -1,12 +1,15 @@
 import {useEffect} from 'react';
+
 import {typeModeUnion} from 'src/types';
 
 import {textEng} from '../config';
 import {selectCurrentText} from '../feature/typing/typingSelectors';
-import {changeStatusCustomMode, requestText} from '../feature/typing/typingSlice';
+import {requestText, typingActions} from '../feature/typing/typingSlice';
 import {useAppDispatch, useAppSelector} from '../store/redux-hooks';
 
-const useCurrentText = (mode: typeModeUnion) => {
+const {changeStatusCustomMode} = typingActions;
+
+const useCurrentText = (mode: typeModeUnion): [string[], () => void] => {
 	const dispatch = useAppDispatch();
 	const currentText = useAppSelector((state) => selectCurrentText(state, mode));
 
@@ -21,7 +24,7 @@ const useCurrentText = (mode: typeModeUnion) => {
 			};
 			dispatch(requestText(config));
 		}
-	}, [dispatch]);
+	});
 
 	return [currentText, setStatusLoading];
 };

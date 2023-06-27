@@ -103,12 +103,7 @@ const typingSlice = createSlice({
 	},
 });
 
-export const {
-	addCurrentText,
-	nextLetter,
-	addErrorIndex,
-	changeStatusCustomMode,
-	resetCustomModeText,
-} = typingSlice.actions;
+export const typingActions = typingSlice.actions;
+const {addCurrentText} = typingActions;
 
 export const typingReducer = typingSlice.reducer;

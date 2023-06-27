@@ -1,17 +1,16 @@
-import {increaseTypos} from '../feature/score/scoreSlice';
-import {openToast} from '../feature/toast/toastSlice';
-import {
-	addCurrentText,
-	addErrorIndex,
-	changeStatusCustomMode,
-	nextLetter,
-	resetCustomModeText,
-} from '../feature/typing/typingSlice';
+import {increaseTypos} from '@feature/score/scoreSlice';
+import {openToast} from '@feature/toast/toastSlice';
+import {typingActions} from '@feature/typing/typingSlice';
+
 import checkKeyboardLayout from './checkKeyboardLayout';
 import keyIdButtons from './keyIdButtons';
 import separationTextMode from './separationTextMode';
+import {typeHandleKeyUp} from './types/typeHandleKeyUp';
 
-const handleKeyUp = ({
+const {addCurrentText, addErrorIndex, changeStatusCustomMode, nextLetter, resetCustomModeText} =
+	typingActions;
+
+const handleKeyUp: typeHandleKeyUp = ({
 	event,
 	setIsShiftPressed,
 	setEventKeyCode,

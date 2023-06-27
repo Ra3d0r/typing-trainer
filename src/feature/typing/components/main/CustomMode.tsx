@@ -1,12 +1,14 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 
-import ModalAddText from '../../../../components/modal/ModalAddText';
-import useCustomMode from '../../../../hooks/useCustomMode.js';
+import useCustomMode from '@hooks/useCustomMode';
+
+import ModalAddText from '@components/modal/ModalAddText';
 
 const CustomMode = () => {
 	const [textAreaValue, setTextAreaValue] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
-	const handleChange = (e) => setTextAreaValue(e.target.value);
+	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
+		setTextAreaValue(e.target.value);
 
 	const [status, addText, closeModal] = useCustomMode();
 	return (

@@ -10,7 +10,7 @@ import Text from '@feature/typing/components/main/Text';
 
 import LoadingFullScreen from '@components/compose/LoadingFullScreen';
 
-const CustomModeAsync = lazy(() => import('@feature/typing/components/main/CustomMode.jsx'));
+const CustomModeAsync = lazy(() => import('@feature/typing/components/main/CustomMode'));
 
 const Game = () => {
 	const {mode} = useParams<Record<string, typeModeUnion>>();
