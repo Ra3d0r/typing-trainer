@@ -12,6 +12,18 @@ import LoadingFullScreen from '@components/compose/LoadingFullScreen';
 
 const CustomModeAsync = lazy(() => import('@feature/typing/components/main/CustomMode'));
 
+const LazyCustomMode = ({mode}: {mode: typeModeUnion}) => {
+	if (mode !== 'custom') {
+		return null;
+	}
+
+	return (
+		<Suspense>
+			<CustomModeAsync />
+		</Suspense>
+	);
+};
+
 const Game = () => {
 	const {mode} = useParams<Record<string, typeModeUnion>>();
 
@@ -22,11 +34,7 @@ const Game = () => {
 	return (
 		<>
 			<Toast />
-			{mode === 'custom' && (
-				<Suspense>
-					<CustomModeAsync />
-				</Suspense>
-			)}
+			<LazyCustomMode mode={mode} />
 			<Score mode={mode} />
 			<Text mode={mode} />
 			<Keyboard mode={mode} />
