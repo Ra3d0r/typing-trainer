@@ -1,4 +1,6 @@
-const handleKeyDown = ({event, setIsShiftPressed, setEventKeyCode, status}) => {
+import typeHandleKeyDown from './types/typeHandleKeyDown';
+
+const handleKeyDown: typeHandleKeyDown = ({event, setIsShiftPressed, setEventKeyCode, status}) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(true);
 	}
