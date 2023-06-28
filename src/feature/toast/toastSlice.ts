@@ -1,15 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {
+import {IInitialState, typeActionOpenToast} from './types/typesSlice';
+
+const initialState: IInitialState = {
 	message: null,
-	type: null, // success info error warning
+	type: 'info',
 };
 
 const toastSlice = createSlice({
 	name: '@@toasts',
 	initialState,
 	reducers: {
-		openToast: (state, {payload}) => {
+		openToast: (state, {payload}: typeActionOpenToast) => {
 			state.message = payload.message;
 			state.type = payload.type || 'info';
 		},
@@ -17,8 +19,6 @@ const toastSlice = createSlice({
 	},
 });
 
-export const {openToast, closeToast} = toastSlice.actions;
-
-export const selectToastInfo = (state) => state.toast;
+export const toastActions = toastSlice.actions;
 
 export const toastReducer = toastSlice.reducer;

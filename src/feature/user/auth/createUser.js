@@ -7,8 +7,10 @@ import {
 } from 'firebase/auth';
 
 import {auth} from '../../../firebase';
-import {openToast} from '../../toast/toastSlice';
+import {toastActions} from '../../toast/toastSlice';
 import {setStatusUser, setUser} from '../userSlice';
+
+const {openToast} = toastActions;
 
 const createUser = async ({email, password, login, remember}, dispatch, navigate, reset) => {
 	try {

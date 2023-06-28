@@ -1,7 +1,7 @@
 import {useEffect, useRef} from 'react';
 
-const useTimeout = (data, ms, fn) => {
-	const idTimeout = useRef(null);
+const useTimeout = (data: unknown, ms: number, fn: () => void) => {
+	const idTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	useEffect(() => {
 		if (data) {
@@ -10,7 +10,7 @@ const useTimeout = (data, ms, fn) => {
 		if (!data && idTimeout.current) {
 			clearTimeout(idTimeout.current);
 		}
-	}, [data]);
+	}, [data, fn, ms]);
 };
 
 export default useTimeout;

@@ -5,7 +5,7 @@ import {typeModeUnion} from '@types';
 
 import Keyboard from '@feature/keyboard/components/main/Keyboard.jsx';
 import Score from '@feature/score/components/main/Score.jsx';
-import Toast from '@feature/toast/Toast.jsx';
+import Toast from '@feature/toast/Toast';
 import Text from '@feature/typing/components/main/Text';
 
 import LoadingFullScreen from '@components/compose/LoadingFullScreen';

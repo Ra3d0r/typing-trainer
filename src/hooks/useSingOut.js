@@ -2,9 +2,11 @@ import {signOut} from 'firebase/auth';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
-import {openToast} from '../feature/toast/toastSlice';
+import {toastActions} from '../feature/toast/toastSlice';
 import {resetUser} from '../feature/user/userSlice';
 import {auth} from '../firebase';
+
+const {openToast} = toastActions;
 
 const useSingOut = () => {
 	const dispatch = useDispatch();

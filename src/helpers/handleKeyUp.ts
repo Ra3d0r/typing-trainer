@@ -1,5 +1,5 @@
 import {increaseTypos} from '@feature/score/scoreSlice';
-import {openToast} from '@feature/toast/toastSlice';
+import {toastActions} from '@feature/toast/toastSlice';
 import {typingActions} from '@feature/typing/typingSlice';
 
 import {textEng} from '../config';
@@ -10,6 +10,8 @@ import {typeHandleKeyUp} from './types/typeHandleKeyUp';
 
 const {addCurrentText, addErrorIndex, changeStatusCustomMode, nextLetter, resetCustomModeText} =
 	typingActions;
+
+const {openToast} = toastActions;
 
 const handleKeyUp: typeHandleKeyUp = ({
 	event,
