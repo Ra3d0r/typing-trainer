@@ -1,6 +1,8 @@
 import {PayloadAction} from '@reduxjs/toolkit';
-import {AppDispatch, typeApi} from 'src/store/store';
-import {typeMode, typeModeUnion, typeStatus} from 'src/types';
+
+import {typeMode, typeModeUnion, typeStatus} from '@types';
+
+import {AppDispatch, typeApi} from '@store/store';
 
 type Mapping<T, N> = {
 	[Property in keyof T]: N;
@@ -10,7 +12,7 @@ interface game {
 	currentText: string[];
 	currentTextIndex: number;
 	errorsIndex: number[];
-	allText: string[];
+	allText: string[] | Record<string, unknown>[];
 	status: typeStatus;
 	error: null | string;
 }
@@ -25,10 +27,10 @@ interface addErrorIndex {
 	mode: typeModeUnion;
 }
 
+type excludeType = Exclude<typeModeUnion, 'custom'>;
+
 export interface IConfigText {
-	url: string;
-	mode: typeModeUnion;
-	headers: Record<string, string>;
+	mode: excludeType;
 }
 
 export interface IConfigThunkOptions {
@@ -40,8 +42,8 @@ export interface IConfigThunkOptions {
 }
 
 export interface IReturnThunk {
-	allText: string[];
-	mode: typeModeUnion;
+	allText: string[] | Record<string, unknown>[];
+	mode: excludeType;
 }
 
 export type typeInitialState = Mapping<typeMode, game>;

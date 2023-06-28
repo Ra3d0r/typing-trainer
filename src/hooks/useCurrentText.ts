@@ -2,7 +2,6 @@ import {useEffect} from 'react';
 
 import {typeModeUnion} from 'src/types';
 
-import {textEng} from '../config';
 import {selectCurrentText} from '../feature/typing/typingSelectors';
 import {requestText, typingActions} from '../feature/typing/typingSlice';
 import {useAppDispatch, useAppSelector} from '../store/redux-hooks';
@@ -17,14 +16,10 @@ const useCurrentText = (mode: typeModeUnion): [string[], () => void] => {
 
 	useEffect(() => {
 		if (!currentText.length && mode !== 'custom') {
-			const config = {
-				url: textEng.url[mode],
-				mode,
-				headers: textEng.headers[mode],
-			};
-			dispatch(requestText(config));
+			dispatch(requestText({mode}));
 		}
-	});
+		// eslint-disable-next-line
+	}, []);
 
 	return [currentText, setStatusLoading];
 };

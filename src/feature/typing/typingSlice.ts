@@ -12,10 +12,10 @@ import {
 } from './types/typesSlice';
 
 export const requestText = createAsyncThunk<IReturnThunk, IConfigText, IConfigThunkOptions>(
-	'@@typing/loading-text',
-	async ({url, mode, headers}, {extra: {api}, dispatch, rejectWithValue}) => {
+	'@@api/loading-text',
+	async ({mode}, {extra: {api}, dispatch, rejectWithValue}) => {
 		try {
-			const [allText, text] = await api.loadText(url, headers, mode);
+			const [allText, text] = await api.loadText(mode);
 			dispatch(addCurrentText({text, mode}));
 			return {allText, mode};
 		} catch (err) {

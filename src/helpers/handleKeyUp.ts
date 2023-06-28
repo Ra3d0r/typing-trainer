@@ -2,9 +2,10 @@ import {increaseTypos} from '@feature/score/scoreSlice';
 import {openToast} from '@feature/toast/toastSlice';
 import {typingActions} from '@feature/typing/typingSlice';
 
+import {textEng} from '../config';
 import checkKeyboardLayout from './checkKeyboardLayout';
 import keyIdButtons from './keyIdButtons';
-import separationTextMode from './separationTextMode';
+import randomTextFromArray from './randomTextFromArray';
 import {typeHandleKeyUp} from './types/typeHandleKeyUp';
 
 const {addCurrentText, addErrorIndex, changeStatusCustomMode, nextLetter, resetCustomModeText} =
@@ -52,12 +53,20 @@ const handleKeyUp: typeHandleKeyUp = ({
 		return;
 	}
 
+	const {textKey} = textEng;
+
 	if (currentTextIndex < currentText.length - 1) {
 		dispatch(nextLetter({mode}));
-	} else {
-		const text = separationTextMode(allText, mode, false);
-		dispatch(addCurrentText({text, mode}));
+		return;
 	}
+
+	if (mode !== 'custom') {
+		const text = randomTextFromArray(allText, mode, textKey);
+		dispatch(addCurrentText({text, mode}));
+		return;
+	}
+
+	throw new Error('Incorrect next text or letter');
 };
 
 export default handleKeyUp;
