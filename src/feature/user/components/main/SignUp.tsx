@@ -1,9 +1,10 @@
-import {useForm} from 'react-hook-form';
+import {SubmitHandler, useForm} from 'react-hook-form';
 import {useSelector} from 'react-redux';
 
 import RegisterForm from '../../../../components/form/RegisterForm';
 import useSingUp from '../../hooks/useSingUp';
-import {selectStatusUser} from '../../userSlice';
+import {IDataFormCreateUser} from '../../types/typesCreateUser';
+import {selectStatusUser} from '../../userSelectors';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';
 import Title from '../item/Title';
@@ -15,9 +16,9 @@ const SignUp = () => {
 		formState: {errors, isValid},
 		watch,
 		reset,
-	} = useForm({mode: 'onBlur'});
+	} = useForm<IDataFormCreateUser>({mode: 'onBlur'});
 	const status = useSelector(selectStatusUser);
-	const onSubmit = useSingUp(reset);
+	const onSubmit: SubmitHandler<IDataFormCreateUser> = useSingUp(reset);
 	return (
 		<Background>
 			<ContainerInner>

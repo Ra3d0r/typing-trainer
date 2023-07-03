@@ -1,9 +1,11 @@
-import {useForm} from 'react-hook-form';
+import {SubmitHandler, useForm} from 'react-hook-form';
 import {useSelector} from 'react-redux';
 
-import ResetPasswordForm from '../../../../components/form/ResetPasswordForm';
+import ResetPasswordForm from '@components/form/ResetPasswordForm';
+
 import useResetPassword from '../../hooks/useResetPassword';
-import {selectStatusUser} from '../../userSlice';
+import {IDataFormResetPassword} from '../../types/typesResetPassword';
+import {selectStatusUser} from '../../userSelectors';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';
 import Title from '../item/Title';
@@ -14,8 +16,8 @@ const ResetPassword = () => {
 		handleSubmit,
 		formState: {errors, isValid},
 		reset,
-	} = useForm({mode: 'onBlur'});
-	const onSubmit = useResetPassword(reset);
+	} = useForm<IDataFormResetPassword>({mode: 'onBlur'});
+	const onSubmit: SubmitHandler<IDataFormResetPassword> = useResetPassword(reset);
 	const status = useSelector(selectStatusUser);
 	return (
 		<Background>

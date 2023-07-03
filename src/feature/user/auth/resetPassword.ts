@@ -2,11 +2,14 @@ import {sendPasswordResetEmail} from 'firebase/auth';
 
 import {auth} from '../../../firebase';
 import {toastActions} from '../../toast/toastSlice';
-import {setStatusUser} from '../userSlice';
+import {typeResetPassword} from '../types/typesResetPassword';
+import {userActions} from '../userSlice';
+
+const {setStatusUser} = userActions;
 
 const {openToast} = toastActions;
 
-const resetPassword = ({email}, dispatch, reset) => {
+const resetPassword: typeResetPassword = ({email}, dispatch, reset) => {
 	dispatch(setStatusUser('loading'));
 	sendPasswordResetEmail(auth, email)
 		.then(() => {

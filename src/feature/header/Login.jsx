@@ -5,7 +5,7 @@ import tw from 'twin.macro';
 
 import Loading from '../../components/status/Loading';
 import {auth} from '../../firebase';
-import {selectLogin} from '../user/userSlice';
+import {selectLogin} from '../user/userSelectors';
 
 const LoginHTML = ({children, to}) => {
 	return (

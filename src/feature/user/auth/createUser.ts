@@ -1,4 +1,5 @@
 import {
+	User,
 	browserSessionPersistence,
 	createUserWithEmailAndPassword,
 	sendEmailVerification,
@@ -8,21 +9,31 @@ import {
 
 import {auth} from '../../../firebase';
 import {toastActions} from '../../toast/toastSlice';
-import {setStatusUser, setUser} from '../userSlice';
+import {typeCreateUser} from '../types/typesCreateUser';
+import {userActions} from '../userSlice';
+
+const {setStatusUser, setUser} = userActions;
 
 const {openToast} = toastActions;
 
-const createUser = async ({email, password, login, remember}, dispatch, navigate, reset) => {
+const createUser: typeCreateUser = async (
+	{email, password, login, remember},
+	dispatch,
+	navigate,
+	reset,
+) => {
 	try {
 		dispatch(setStatusUser('loading'));
 
 		await createUserWithEmailAndPassword(auth, email, password);
 
-		await sendEmailVerification(auth.currentUser);
+		const authUser = auth.currentUser as User;
+
+		await sendEmailVerification(authUser);
 
 		dispatch(openToast({message: 'Verification email sent!', type: 'info'}));
 
-		await updateProfile(auth.currentUser, {
+		await updateProfile(authUser, {
 			displayName: login,
 		});
 
@@ -34,17 +45,18 @@ const createUser = async ({email, password, login, remember}, dispatch, navigate
 		dispatch(
 			setUser({
 				login,
-				id: auth.currentUser.uid,
-				token: auth.currentUser.refreshToken,
+				id: authUser.uid,
+				token: authUser.refreshToken,
 			}),
 		);
 		navigate('/account');
 	} catch (error) {
-		const errorCode = error.code;
-		const errorMessage = error.message;
-		dispatch(setStatusUser('error'));
-		dispatch(openToast({message: errorMessage, type: 'error'}));
-		console.log(errorCode, errorMessage);
+		if (error instanceof Error) {
+			const errorMessage = error.message;
+			dispatch(setStatusUser('error'));
+			dispatch(openToast({message: errorMessage, type: 'error'}));
+			console.log(errorMessage);
+		}
 	}
 };
 

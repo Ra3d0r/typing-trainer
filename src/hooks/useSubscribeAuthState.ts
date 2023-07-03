@@ -1,11 +1,15 @@
 import {onAuthStateChanged} from 'firebase/auth';
-import {useDispatch} from 'react-redux';
 
-import {setUser} from '../feature/user/userSlice';
+import {userActions} from '@feature/user/userSlice';
+
+import {useAppDispatch} from '@store/redux-hooks';
+
 import {auth} from '../firebase';
 
+const {setUser} = userActions;
+
 const useSubscribeAuthState = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	//Also launch when start an application.
 	onAuthStateChanged(auth, (user) => {

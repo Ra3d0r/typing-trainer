@@ -2,11 +2,14 @@ import {browserSessionPersistence, setPersistence, signInWithEmailAndPassword} f
 
 import {auth} from '../../../firebase';
 import {toastActions} from '../../toast/toastSlice';
-import {setStatusUser} from '../userSlice';
+import {typeLoginUser} from '../types/typesLoginUser';
+import {userActions} from '../userSlice';
+
+const {setStatusUser} = userActions;
 
 const {openToast} = toastActions;
 
-const loginUser = ({email, password, remember}, dispatch, navigate, reset) => {
+const loginUser: typeLoginUser = ({email, password, remember}, dispatch, navigate, reset) => {
 	dispatch(setStatusUser('loading'));
 	signInWithEmailAndPassword(auth, email, password)
 		.then(() => {

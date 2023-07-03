@@ -1,9 +1,11 @@
-import {useForm} from 'react-hook-form';
+import {SubmitHandler, useForm} from 'react-hook-form';
 import {useSelector} from 'react-redux';
 
-import LoginForm from '../../../../components/form/LoginForm';
+import LoginForm from '@components/form/LoginForm';
+
 import useSingIn from '../../hooks/useSingIn';
-import {selectStatusUser} from '../../userSlice';
+import {IDataFormLoginUser} from '../../types/typesLoginUser';
+import {selectStatusUser} from '../../userSelectors';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';
 import Title from '../item/Title';
@@ -14,9 +16,9 @@ const SignIn = () => {
 		handleSubmit,
 		formState: {errors, isValid},
 		reset,
-	} = useForm({mode: 'onBlur'});
+	} = useForm<IDataFormLoginUser>({mode: 'onBlur'});
 	const status = useSelector(selectStatusUser);
-	const onSubmit = useSingIn(reset);
+	const onSubmit: SubmitHandler<IDataFormLoginUser> = useSingIn(reset);
 	return (
 		<Background>
 			<ContainerInner>
