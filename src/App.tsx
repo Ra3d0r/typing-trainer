@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 
 import EmptyLayout from './components/layout/EmptyLayout';
 import MainLayout from './components/layout/MainLayout';
-import useComponentMounted from './hooks/useComponentMounted';
+import useDisablePreloader from './hooks/useDisablePreloader';
 import useSubscribeAuthState from './hooks/useSubscribeAuthState';
 import AuthRoute from './router/AuthRoute';
 import PrivateRoute from './router/PrivateRoute';
@@ -17,7 +17,7 @@ const AccountAsync = lazy(() => import('./pages/Account'));
 const ForgotPasswordAsync = lazy(() => import('./pages/ForgotPassword'));
 
 const App = () => {
-	useComponentMounted();
+	useDisablePreloader();
 	useSubscribeAuthState();
 	return (
 		<Routes>
