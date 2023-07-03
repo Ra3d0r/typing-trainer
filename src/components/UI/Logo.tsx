@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-const Logo = ({children, cls}) => {
+const Logo = ({children, cls}: {children: React.ReactNode; cls?: string}) => {
 	return (
 		<Link to="/" className={`flex items-center`}>
 			<span

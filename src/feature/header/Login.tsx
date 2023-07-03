@@ -3,11 +3,13 @@ import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
-import Loading from '../../components/status/Loading';
-import {auth} from '../../firebase';
-import {selectLogin} from '../user/userSelectors';
+import {selectLogin} from '@feature/user/userSelectors';
 
-const LoginHTML = ({children, to}) => {
+import Loading from '@components/status/Loading';
+
+import {auth} from '../../firebase';
+
+const LoginHTML = ({children, to}: {children: React.ReactNode; to: string}) => {
 	return (
 		<div css={tw`flex items-center`}>
 			<Link to={to} css={tw`text-base text-blue-600 dark:text-blue-500 hover:underline`}>
