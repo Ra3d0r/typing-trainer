@@ -1,6 +1,8 @@
-import Logo from '../components/UI/Logo';
-import Toast from '../feature/toast/Toast';
-import ResetPassword from '../feature/user/components/main/ResetPassword';
+import Toast from '@feature/toast/Toast';
+import ResetPassword from '@feature/user/components/main/ResetPassword';
+
+import Logo from '@components/UI/Logo';
+
 import Container from './Items/Container';
 
 const ForgotPassword = () => {

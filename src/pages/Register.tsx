@@ -1,6 +1,8 @@
-import Logo from '../components/UI/Logo';
-import Toast from '../feature/toast/Toast';
-import SignUp from '../feature/user/components/main/SignUp';
+import Toast from '@feature/toast/Toast';
+import SignUp from '@feature/user/components/main/SignUp';
+
+import Logo from '@components/UI/Logo';
+
 import Container from './Items/Container';
 
 const Register = () => {

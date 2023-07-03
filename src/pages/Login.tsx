@@ -1,6 +1,8 @@
-import Logo from '../components/UI/Logo';
-import Toast from '../feature/toast/Toast';
-import SignIn from '../feature/user/components/main/SignIn';
+import Toast from '@feature/toast/Toast';
+import SignIn from '@feature/user/components/main/SignIn';
+
+import Logo from '@components/UI/Logo';
+
 import Container from './Items/Container';
 
 const Login = () => {
