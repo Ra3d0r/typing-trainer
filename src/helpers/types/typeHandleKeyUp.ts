@@ -6,12 +6,12 @@ interface params {
 	event: KeyboardEvent;
 	setIsShiftPressed: React.Dispatch<React.SetStateAction<boolean>>;
 	setEventKeyCode: React.Dispatch<React.SetStateAction<string>>;
-	target: string;
+	target: string | undefined;
 	dispatch: AppDispatch;
 	currentText: string[];
 	currentTextIndex: number;
 	mode: typeModeUnion;
-	allText: string[];
+	allText: string[] | Record<string, unknown>[];
 }
 
 export type typeHandleKeyUp = (arg: params) => void;

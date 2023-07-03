@@ -1,6 +1,13 @@
 import classNameKey from '../../helpers/classNameKey';
 
-const KeyboardKey = ({kbd, eventKey, id, keyTarget}) => {
+interface props {
+	kbd: string;
+	eventKey: string;
+	id: string;
+	keyTarget: string | null;
+}
+
+const KeyboardKey = ({kbd, eventKey, id, keyTarget}: props) => {
 	const className = classNameKey(id, eventKey, keyTarget);
 
 	switch (id) {

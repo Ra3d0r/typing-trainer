@@ -37,6 +37,10 @@ const handleKeyUp: typeHandleKeyUp = ({
 		return;
 	}
 
+	if (!target) {
+		return;
+	}
+
 	const TargetKeyId = keyIdButtons(event.key);
 	if (!TargetKeyId) {
 		return;

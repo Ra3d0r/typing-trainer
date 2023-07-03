@@ -1,4 +1,4 @@
-const classNameKey = (id, eventKey, keyTarget) => {
+const classNameKey = (id: string, eventKey: string, keyTarget: string | null): string => {
 	switch (true) {
 		case eventKey === keyTarget && id === eventKey:
 			return 'target-typed';

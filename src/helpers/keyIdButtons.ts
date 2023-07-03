@@ -1,4 +1,7 @@
-const keyIdButtons = (key: string): string | null => {
+const keyIdButtons = (key: string | undefined): string | null => {
+	if (key === undefined) {
+		return null;
+	}
 	const keyId: Record<string, string> = {
 		'`': 'Backquote',
 		1: 'Digit1',
