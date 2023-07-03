@@ -1,6 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {
+import {
+	typeActionAddTotalChars,
+	typeActionIncreaseTypos,
+	typeActionResetScore,
+	typeActionUpdateAccuracy,
+	typeActionUpdateTime,
+	typeInitialState,
+} from './types/typesSlice';
+
+const initialState: typeInitialState = {
 	easy: {
 		speed: 0,
 		accuracy: 100,
@@ -35,27 +44,25 @@ const scoreSlice = createSlice({
 	name: '@@score',
 	initialState,
 	reducers: {
-		reset: (state, {payload}) => ({...state, [payload.mode]: initialState[payload.mode]}),
-		addTotalChars: (state, {payload}) => {
+		reset: (state, {payload}: typeActionResetScore) => ({
+			...state,
+			[payload.mode]: initialState[payload.mode],
+		}),
+		addTotalChars: (state, {payload}: typeActionAddTotalChars) => {
 			state[payload.mode].totalChars = payload.chars;
 		},
-		updateAccuracy: (state, {payload}) => {
+		updateAccuracy: (state, {payload}: typeActionUpdateAccuracy) => {
 			state[payload.mode].accuracy = payload.percent;
 		},
-		increaseTypos: (state, {payload}) => {
+		increaseTypos: (state, {payload}: typeActionIncreaseTypos) => {
 			state[payload.mode].typos++;
 		},
-		updateTime: (state, {payload}) => {
+		updateTime: (state, {payload}: typeActionUpdateTime) => {
 			state[payload.mode].time += 1000;
 		},
 	},
 });
 
-export const {reset, addTotalChars, updateAccuracy, increaseTypos, updateTime} = scoreSlice.actions;
-
-export const selectTypos = (state, mode) => state.score[mode].typos;
-export const selectAccuracy = (state, mode) => state.score[mode].accuracy;
-export const selectTime = (state, mode) => state.score[mode].time;
-export const selectTotalChars = (state, mode) => state.score[mode].totalChars;
+export const scoreActions = scoreSlice.actions;
 
 export const scoreReducer = scoreSlice.reducer;

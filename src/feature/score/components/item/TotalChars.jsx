@@ -1,7 +1,8 @@
 import {useSelector} from 'react-redux';
 
-import Indicator from '../../../../components/score/Indicator';
-import {selectTotalChars} from '../../scoreSlice';
+import Indicator from '@components/score/Indicator';
+
+import {selectTotalChars} from '../../scoreSelectors';
 
 const Svg = () => {
 	return (

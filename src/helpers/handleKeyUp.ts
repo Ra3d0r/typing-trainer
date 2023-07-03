@@ -1,4 +1,4 @@
-import {increaseTypos} from '@feature/score/scoreSlice';
+import {scoreActions} from '@feature/score/scoreSlice';
 import {toastActions} from '@feature/toast/toastSlice';
 import {typingActions} from '@feature/typing/typingSlice';
 
@@ -12,6 +12,8 @@ const {addCurrentText, addErrorIndex, changeStatusCustomMode, nextLetter, resetC
 	typingActions;
 
 const {openToast} = toastActions;
+
+const {increaseTypos} = scoreActions;
 
 const handleKeyUp: typeHandleKeyUp = ({
 	event,
