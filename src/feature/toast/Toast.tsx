@@ -1,5 +1,6 @@
-import ToastAlert from '../../components/alerts/ToastAlert';
-import useToast from '../../hooks/useToast';
+import useToast from '@hooks/useToast';
+
+import ToastAlert from '@components/alerts/ToastAlert';
 
 const Toast = ({ms = 3000}) => {
 	const [message, type, closeToast] = useToast(ms);
