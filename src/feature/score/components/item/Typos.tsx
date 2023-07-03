@@ -1,4 +1,6 @@
-import {useSelector} from 'react-redux';
+import {typeModeUnion} from '@types';
+
+import {useAppSelector} from '@store/redux-hooks';
 
 import Indicator from '@components/score/Indicator';
 
@@ -20,8 +22,8 @@ const Svg = () => {
 	);
 };
 
-const Typos = ({mode}) => {
-	const typos = useSelector((state) => selectTypos(state, mode));
+const Typos = ({mode}: {mode: typeModeUnion}) => {
+	const typos = useAppSelector((state) => selectTypos(state, mode));
 	return <Indicator value={typos} svg={<Svg />} text="Typos" />;
 };
 

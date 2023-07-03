@@ -1,5 +1,8 @@
-import Indicator from '../../../../components/score/Indicator';
-import useTime from '../../../../hooks/useTime';
+import {typeModeUnion} from '@types';
+
+import useTime from '@hooks/useTime';
+
+import Indicator from '@components/score/Indicator';
 
 const Svg = () => {
 	return (
@@ -17,7 +20,7 @@ const Svg = () => {
 	);
 };
 
-const Time = ({mode}) => {
+const Time = ({mode}: {mode: typeModeUnion}) => {
 	const time = useTime(mode);
 
 	return <Indicator value={time} svg={<Svg />} text="Time" />;

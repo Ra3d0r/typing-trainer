@@ -1,4 +1,6 @@
-import {useSelector} from 'react-redux';
+import {typeModeUnion} from '@types';
+
+import {useAppSelector} from '@store/redux-hooks';
 
 import Indicator from '@components/score/Indicator';
 
@@ -20,8 +22,8 @@ const Svg = () => {
 	);
 };
 
-const TotalChars = ({mode}) => {
-	const totalChars = useSelector((state) => selectTotalChars(state, mode));
+const TotalChars = ({mode}: {mode: typeModeUnion}) => {
+	const totalChars = useAppSelector((state) => selectTotalChars(state, mode));
 
 	return <Indicator value={totalChars} svg={<Svg />} text="Chars" />;
 };

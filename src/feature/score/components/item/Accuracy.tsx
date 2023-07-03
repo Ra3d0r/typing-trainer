@@ -1,5 +1,8 @@
-import Indicator from '../../../../components/score/Indicator';
-import useAccuracy from '../../../../hooks/useAccuracy';
+import {typeModeUnion} from '@types';
+
+import useAccuracy from '@hooks/useAccuracy';
+
+import Indicator from '@components/score/Indicator';
 
 const Svg = () => {
 	return (
@@ -17,7 +20,7 @@ const Svg = () => {
 	);
 };
 
-const Accuracy = ({mode}) => {
+const Accuracy = ({mode}: {mode: typeModeUnion}) => {
 	const accuracy = useAccuracy(mode);
 	return <Indicator value={accuracy} svg={<Svg />} text="Accuracy" measure="%" />;
 };
