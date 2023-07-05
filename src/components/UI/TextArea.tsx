@@ -1,4 +1,10 @@
-const TextArea = ({value, onChange}) => {
+const TextArea = ({
+	value,
+	onChange,
+}: {
+	value: string;
+	onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}) => {
 	return (
 		<textarea
 			rows={4}

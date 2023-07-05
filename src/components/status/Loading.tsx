@@ -1,11 +1,13 @@
 import tw from 'twin.macro';
 
-const styles = {
+import {IPropsLoading, typeStyles} from './types/typesLoading';
+
+const styles: typeStyles = {
 	sm: tw`w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`,
 	lg: tw`w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`,
 };
 
-const Loading = ({size = 'lg'}) => {
+const Loading = ({size = 'lg'}: IPropsLoading) => {
 	return (
 		<div role="status">
 			<svg

@@ -1,4 +1,4 @@
-const Cross = ({onClick}) => {
+const Cross = ({onClick}: {onClick: () => void}) => {
 	return (
 		<button
 			type="button"

@@ -1,5 +1,7 @@
 import tw from 'twin.macro';
 
+import {IPropsButton} from './types/typesButton';
+
 const alternative = tw`
 py-3 px-5  text-sm font-medium text-gray-900 
 focus:outline-none bg-white rounded-lg border border-gray-200 
@@ -11,7 +13,7 @@ dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray
 const defaultButton = tw`text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 font-medium 
 rounded-lg text-sm px-5 py-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800`;
 
-const Button = ({children, onClick, isAlternative = false}) => {
+const Button = ({children, onClick, isAlternative = false}: IPropsButton) => {
 	return (
 		<button type="button" css={[defaultButton, isAlternative && alternative]} onClick={onClick}>
 			{children}
