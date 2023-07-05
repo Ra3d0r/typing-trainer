@@ -2,7 +2,7 @@ import {useRef} from 'react';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
-const FooterHTML = ({children}) => {
+const FooterHTML = ({children}: {children: React.ReactNode}) => {
 	return (
 		<footer css={tw`m-4 container mx-auto overflow-hidden`}>
 			<div css={tw`flex items-center flex-wrap gap-7 px-4`}>{children}</div>
@@ -10,7 +10,7 @@ const FooterHTML = ({children}) => {
 	);
 };
 
-const Logo = ({children}) => {
+const Logo = ({children}: {children: React.ReactNode}) => {
 	return (
 		<span css={tw`text-sm text-gray-500  dark:text-gray-400 ml-auto flex-grow-[0.5]`}>
 			<Link to="/" css={tw`hover:underline`}>
@@ -20,13 +20,13 @@ const Logo = ({children}) => {
 	);
 };
 
-const LinksContainer = ({children}) => {
+const LinksContainer = ({children}: {children: React.ReactNode}) => {
 	return (
 		<div css={tw`flex mt-4 space-x-6  sm:mt-0 gap-4 flex-grow-[0.5] justify-end`}>{children}</div>
 	);
 };
 
-const LinkHTML = ({children, href}) => {
+const LinkHTML = ({children, href}: {children: React.ReactNode; href: string}) => {
 	return (
 		<a css={tw`text-gray-500 hover:text-gray-900 dark:hover:text-white`} href={href}>
 			{children}
