@@ -13,7 +13,19 @@
 	"quoteProps": "as-needed",
 	"requirePragma": false,
 	"useTabs": true,
-	"importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+	"importOrder": [
+		"^@public/(.*)$",
+		"^@?src/(.*)$",
+		"^@types$",
+		"^@feature/(.*)$",
+		"^@hooks/(.*)$",
+		"^@helpers/(.*)$",
+		"^@store/(.*)$",
+		"^@api/(.*)$",
+		"^@pages/(.*)$",
+		"^@components/(.*)$",
+		"^[./]"
+	],
 	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true
 }

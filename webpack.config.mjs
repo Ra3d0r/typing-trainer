@@ -1,5 +1,6 @@
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -16,7 +17,7 @@ export default {
 	devtool,
 	target,
 
-	entry: './src/index.js',
+	entry: './src/index.tsx',
 
 	output: {
 		filename: devMode ? '[name].js' : '[name].[contenthash].js',
@@ -31,17 +32,21 @@ export default {
 	},
 
 	resolve: {
-		extensions: ['.js', '.jsx'],
+		extensions: ['.js', '.jsx', '.tsx', '.ts'],
 	},
 
 	optimization: {
 		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
 	},
 
+	watchOptions: {
+		ignored: /node_modules/,
+	},
+
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.[jt]sx?$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
@@ -120,6 +125,14 @@ export default {
 		}),
 		new Dotenv({
 			path: './.env.local',
+		}),
+		new ForkTsCheckerWebpackPlugin({
+			typescript: {
+				diagnosticOptions: {
+					semantic: true,
+					syntactic: true,
+				},
+			},
 		}),
 	],
 };
