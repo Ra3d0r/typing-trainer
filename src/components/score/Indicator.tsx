@@ -1,10 +1,12 @@
 import tw from 'twin.macro';
 
-const Container = ({children}) => {
+import {IPropsIndicator} from './types/typesIndicator';
+
+const Container = ({children}: {children: React.ReactNode}) => {
 	return <div css={tw`flex justify-center items-center space-x-2`}>{children}</div>;
 };
 
-const BackgroundSVG = ({children}) => {
+const BackgroundSVG = ({children}: {children: React.ReactNode}) => {
 	return (
 		<div
 			css={tw`flex justify-center items-center dark:bg-slate-700 bg-slate-300 w-10 h-10 rounded-full`}
@@ -14,15 +16,15 @@ const BackgroundSVG = ({children}) => {
 	);
 };
 
-const TextContainer = ({children}) => {
+const TextContainer = ({children}: {children: React.ReactNode}) => {
 	return <div css={tw`flex flex-col font-medium`}>{children}</div>;
 };
 
-const Span = ({children}) => {
+const Span = ({children}: {children: React.ReactNode}) => {
 	return <span css={tw`text-xs`}>{children}</span>;
 };
 
-const Indicator = ({svg, value, text, measure = ''}) => {
+const Indicator = ({svg, value, text, measure = ''}: IPropsIndicator) => {
 	return (
 		<Container>
 			<BackgroundSVG>{svg}</BackgroundSVG>
