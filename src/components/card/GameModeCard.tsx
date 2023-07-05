@@ -1,4 +1,5 @@
-import {gameModeInfo} from '../../../public/data/gameModeInfo';
+import {gameModeInfo} from '@public/data/gameModeInfo';
+
 import GameModeCardItem from './GameModeCardItem';
 
 const GameModeCard = () => {

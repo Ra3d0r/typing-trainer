@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
-const CardContainer = ({children}) => {
+const CardContainer = ({children}: {children: React.ReactNode}) => {
 	return (
 		<div
 			css={tw`flex flex-col h-60 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700`}
@@ -11,11 +11,11 @@ const CardContainer = ({children}) => {
 	);
 };
 
-const TextContainer = ({children}) => {
+const TextContainer = ({children}: {children: React.ReactNode}) => {
 	return <div css={tw`flex-grow`}>{children}</div>;
 };
 
-const Title = ({children}) => {
+const Title = ({children}: {children: React.ReactNode}) => {
 	return (
 		<h5 css={tw`mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white`}>
 			{children}
@@ -23,11 +23,11 @@ const Title = ({children}) => {
 	);
 };
 
-const Description = ({children}) => {
+const Description = ({children}: {children: React.ReactNode}) => {
 	return <p css={tw`mb-3 font-normal text-gray-700 dark:text-gray-400`}>{children}</p>;
 };
 
-const Button = ({to, children}) => {
+const Button = ({to, children}: {children: React.ReactNode; to: string}) => {
 	return (
 		<Link
 			css={tw`inline-flex max-w-max items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}
@@ -49,7 +49,15 @@ const Button = ({to, children}) => {
 	);
 };
 
-const GameModeCardItem = ({mode, description, title}) => {
+const GameModeCardItem = ({
+	mode,
+	description,
+	title,
+}: {
+	mode: string;
+	description: string;
+	title: string;
+}) => {
 	return (
 		<CardContainer>
 			<TextContainer>
