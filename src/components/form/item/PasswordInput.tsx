@@ -1,6 +1,8 @@
-import InputLabel from '../../compose/InputLabel';
+import InputLabel from '@components/compose/InputLabel';
 
-const PasswordInput = ({register, errors, options, ...other}) => {
+import {IPropsInput} from '../types/typesInput';
+
+const PasswordInput = ({register, errors, options, ...other}: IPropsInput) => {
 	const name = other?.name;
 	return (
 		<div>
@@ -25,7 +27,7 @@ const PasswordInput = ({register, errors, options, ...other}) => {
 			/>
 			{errors[name || 'password'] && (
 				<p className="text-sm text-red-500 dark:text-red-400 mt-2">
-					{errors[name || 'password'].message}
+					{errors[name || 'password']?.message as string}
 				</p>
 			)}
 		</div>

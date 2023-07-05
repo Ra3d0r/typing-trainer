@@ -1,10 +1,11 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useSelector} from 'react-redux';
 
+import {IDataFormCreateUser} from '@types';
+
 import RegisterForm from '@components/form/RegisterForm';
 
 import useSingUp from '../../hooks/useSingUp';
-import {IDataFormCreateUser} from '../../types/typesCreateUser';
 import {selectStatusUser} from '../../userSelectors';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';

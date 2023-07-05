@@ -1,10 +1,12 @@
 import tw from 'twin.macro';
 
-import Checkbox from '../UI/Checkbox';
-import Label from '../UI/Label';
-import LinkForm from '../UI/LinkForm';
+import Checkbox from '@components/UI/Checkbox';
+import Label from '@components/UI/Label';
+import LinkForm from '@components/UI/LinkForm';
 
-const CheckboxLabel = ({name, register, options, label, link, ...other}) => {
+import {IPropsCheckboxLabel} from './types/typesCheckboxLabel';
+
+const CheckboxLabel = ({name, register, options, label, link, ...other}: IPropsCheckboxLabel) => {
 	return (
 		<div className="flex items-start">
 			<div className="flex items-center h-5">

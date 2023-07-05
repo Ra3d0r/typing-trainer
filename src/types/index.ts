@@ -4,3 +4,4 @@ export * from './status/status';
 export * from './lang/lang';
 export * from './toast/toast';
 export * from './statusUser/statusUser';
+export * from './forms/formsAuth';

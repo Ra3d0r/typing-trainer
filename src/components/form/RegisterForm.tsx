@@ -1,13 +1,15 @@
-import LinkForm from '../UI/LinkForm';
-import Submit from '../UI/Submit';
-import SubmitLoading from '../UI/SubmitLoading';
-import CheckboxLabel from '../compose/CheckboxLabel';
+import LinkForm from '@components/UI/LinkForm';
+import Submit from '@components/UI/Submit';
+import SubmitLoading from '@components/UI/SubmitLoading';
+import CheckboxLabel from '@components/compose/CheckboxLabel';
+
 import EmailInput from './item/EmailInput';
 import LoginInput from './item/LoginInput';
 import PasswordInput from './item/PasswordInput';
+import {IPropsRegisterForm} from './types/typeRegisterForm';
 
-const RegisterForm = ({onSubmit, register, errors, isValid, watch, status}) => {
-	const matchPassword = (val) =>
+const RegisterForm = ({onSubmit, register, errors, isValid, watch, status}: IPropsRegisterForm) => {
+	const matchPassword = (val: string) =>
 		watch('password') !== val ? 'Your passwords do no match' : undefined;
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
@@ -26,7 +28,6 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch, status}) => {
 			/>
 			<CheckboxLabel
 				register={register}
-				errors={errors}
 				name="acceptTerms"
 				label="I accept the"
 				link={{to: '/', text: 'Terms and Conditions'}}

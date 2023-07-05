@@ -1,4 +1,4 @@
-const Submit = ({children, ...other}) => {
+const Submit = ({children, ...other}: {children?: React.ReactNode; disabled?: boolean}) => {
 	return (
 		<button
 			type="submit"

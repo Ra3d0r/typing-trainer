@@ -2,8 +2,9 @@ import {UseFormReset} from 'react-hook-form';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
+import {IDataFormLoginUser} from '@types';
+
 import loginUser from '../auth/loginUser';
-import {IDataFormLoginUser} from '../types/typesLoginUser';
 
 const useSingIn = (reset: UseFormReset<IDataFormLoginUser>) => {
 	const dispatch = useDispatch();

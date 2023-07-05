@@ -1,10 +1,8 @@
 import {UseFormReset} from 'react-hook-form';
 
-import {AppDispatch} from '@store/store';
+import {IDataFormResetPassword} from '@types';
 
-export interface IDataFormResetPassword {
-	email: string;
-}
+import {AppDispatch} from '@store/store';
 
 export type typeResetPassword = (
 	data: IDataFormResetPassword,

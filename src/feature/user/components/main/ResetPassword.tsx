@@ -1,10 +1,11 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useSelector} from 'react-redux';
 
+import {IDataFormResetPassword} from '@types';
+
 import ResetPasswordForm from '@components/form/ResetPasswordForm';
 
 import useResetPassword from '../../hooks/useResetPassword';
-import {IDataFormResetPassword} from '../../types/typesResetPassword';
 import {selectStatusUser} from '../../userSelectors';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';

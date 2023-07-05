@@ -1,11 +1,13 @@
-import LinkForm from '../UI/LinkForm';
-import Submit from '../UI/Submit';
-import SubmitLoading from '../UI/SubmitLoading';
-import CheckboxLabel from '../compose/CheckboxLabel';
+import LinkForm from '@components/UI/LinkForm';
+import Submit from '@components/UI/Submit';
+import SubmitLoading from '@components/UI/SubmitLoading';
+import CheckboxLabel from '@components/compose/CheckboxLabel';
+
 import EmailInput from './item/EmailInput';
 import PasswordInput from './item/PasswordInput';
+import {IPropsLoginForm} from './types/typesLoginForm';
 
-const LoginForm = ({onSubmit, register, errors, isValid, status}) => {
+const LoginForm = ({onSubmit, register, errors, isValid, status}: IPropsLoginForm) => {
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
 			<EmailInput register={register} errors={errors} disabled={status === 'loading'} />

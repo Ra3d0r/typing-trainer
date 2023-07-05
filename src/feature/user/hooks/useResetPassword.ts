@@ -1,8 +1,9 @@
 import {UseFormReset} from 'react-hook-form';
 import {useDispatch} from 'react-redux';
 
+import {IDataFormResetPassword} from '@types';
+
 import resetPassword from '../auth/resetPassword';
-import {IDataFormResetPassword} from '../types/typesResetPassword';
 
 const useResetPassword = (reset: UseFormReset<IDataFormResetPassword>) => {
 	const dispatch = useDispatch();

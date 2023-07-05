@@ -1,8 +1,10 @@
-import Submit from '../UI/Submit';
-import SubmitLoading from '../UI/SubmitLoading';
-import EmailInput from './item/EmailInput';
+import Submit from '@components/UI/Submit';
+import SubmitLoading from '@components/UI/SubmitLoading';
 
-const ResetPasswordForm = ({onSubmit, register, errors, isValid, status}) => {
+import EmailInput from './item/EmailInput';
+import {IPropsResetForm} from './types/typesResetForm';
+
+const ResetPasswordForm = ({onSubmit, register, errors, isValid, status}: IPropsResetForm) => {
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
 			<p className="text-sm font-light text-gray-500 dark:text-gray-400">

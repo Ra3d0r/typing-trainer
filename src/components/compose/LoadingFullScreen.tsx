@@ -1,4 +1,4 @@
-import Loading from '../status/Loading';
+import Loading from '@components/status/Loading';
 
 const LoadingFullScreen = () => {
 	return (

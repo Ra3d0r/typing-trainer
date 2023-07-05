@@ -1,13 +1,9 @@
 import {UseFormReset} from 'react-hook-form';
 import {NavigateFunction} from 'react-router-dom';
 
-import {AppDispatch} from '@store/store';
+import {IDataFormLoginUser} from '@types';
 
-export interface IDataFormLoginUser {
-	password: string;
-	email: string;
-	remember: boolean;
-}
+import {AppDispatch} from '@store/store';
 
 export type typeLoginUser = (
 	data: IDataFormLoginUser,

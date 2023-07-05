@@ -1,6 +1,8 @@
-import InputLabel from '../../compose/InputLabel';
+import InputLabel from '@components/compose/InputLabel';
 
-const EmailInput = ({register, errors, options, ...other}) => {
+import {IPropsInput} from '../types/typesInput';
+
+const EmailInput = ({register, errors, options, ...other}: IPropsInput) => {
 	return (
 		<div>
 			<InputLabel
@@ -22,8 +24,10 @@ const EmailInput = ({register, errors, options, ...other}) => {
 				}}
 				{...other}
 			/>
-			{errors.email && (
-				<p className="text-sm text-red-500 dark:text-red-400 mt-2">{errors.email.message}</p>
+			{errors['email'] && (
+				<p className="text-sm text-red-500 dark:text-red-400 mt-2">
+					{errors['email'].message as string}
+				</p>
 			)}
 		</div>
 	);

@@ -1,6 +1,8 @@
-import InputLabel from '../../compose/InputLabel';
+import InputLabel from '@components/compose/InputLabel';
 
-const LoginInput = ({register, errors, options, ...other}) => {
+import {IPropsInput} from '../types/typesInput';
+
+const LoginInput = ({register, errors, options, ...other}: IPropsInput) => {
 	return (
 		<div>
 			<InputLabel
@@ -22,8 +24,10 @@ const LoginInput = ({register, errors, options, ...other}) => {
 				}}
 				{...other}
 			/>
-			{errors.login && (
-				<p className="text-sm text-red-500 dark:text-red-400 mt-2">{errors.login.message}</p>
+			{errors['login'] && (
+				<p className="text-sm text-red-500 dark:text-red-400 mt-2">
+					{errors['login'].message as string}
+				</p>
 			)}
 		</div>
 	);

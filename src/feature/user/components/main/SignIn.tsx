@@ -1,10 +1,11 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useSelector} from 'react-redux';
 
+import {IDataFormLoginUser} from '@types';
+
 import LoginForm from '@components/form/LoginForm';
 
 import useSingIn from '../../hooks/useSingIn';
-import {IDataFormLoginUser} from '../../types/typesLoginUser';
 import {selectStatusUser} from '../../userSelectors';
 import Background from '../item/Background';
 import ContainerInner from '../item/ContainerInner';
