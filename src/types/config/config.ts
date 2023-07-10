@@ -9,7 +9,7 @@ type Headers =
 			'X-Api-Key': string;
 			Authorization: string;
 	  }
-	| {};
+	| object;
 
 export interface IText {
 	url: Mapping<typeof mode, string>;
