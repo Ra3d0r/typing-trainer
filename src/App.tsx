@@ -1,6 +1,8 @@
 import {lazy} from 'react';
 import {Route, Routes} from 'react-router-dom';
 
+import SidebarLayout from '@components/layout/SidebarLayout';
+
 import EmptyLayout from './components/layout/EmptyLayout';
 import MainLayout from './components/layout/MainLayout';
 import useDisablePreloader from './hooks/useDisablePreloader';
@@ -26,16 +28,18 @@ const App = () => {
 				<Route path="/game/:mode" element={<GameAsync />} />
 			</Route>
 			<Route path="/" element={<EmptyLayout />}>
-				<Route path="*" element={<NotFoundAsync />} />
 				<Route element={<AuthRoute />}>
 					<Route path="/login" element={<LoginAsync />} />
 					<Route path="/register" element={<RegisterAsync />} />
 					<Route path="/forgot-password" element={<ForgotPasswordAsync />} />
 				</Route>
+			</Route>
+			<Route path="/account" element={<SidebarLayout />}>
 				<Route element={<PrivateRoute />}>
-					<Route path="/account" element={<AccountAsync />} />
+					<Route index element={<AccountAsync />} />
 				</Route>
 			</Route>
+			<Route path="*" element={<NotFoundAsync />} />
 		</Routes>
 	);
 };
