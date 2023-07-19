@@ -36,7 +36,7 @@ function Sidebar() {
 				className="sm:relative fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
 				aria-label="Sidenav"
 			>
-				<div className="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+				<div className="overflow-y-auto flex flex-col py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
 					<ul className="space-y-2">
 						<li>
 							<Link
@@ -101,7 +101,7 @@ function Sidebar() {
 							</Link>
 						</li>
 					</ul>
-					<div className="h-4/5 flex items-end justify-center">
+					<div className="mt-auto">
 						<Button onClick={singOut} size="fullMedium">
 							Sign out
 						</Button>
