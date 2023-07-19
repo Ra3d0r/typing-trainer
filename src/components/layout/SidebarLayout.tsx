@@ -1,8 +1,9 @@
 import {Suspense} from 'react';
 import {Outlet} from 'react-router-dom';
 
+import Sidebar from '@feature/sidebar/Sidebar';
+
 import LoadingFullScreen from '@components/compose/LoadingFullScreen';
-import Sidebar from '@components/sidebar/Sidebar';
 
 const SidebarLayout = () => {
 	return (
