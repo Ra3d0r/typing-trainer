@@ -1,6 +1,12 @@
 import {Link} from 'react-router-dom';
 
+import useSingOut from '@hooks/useSingOut';
+
+import Button from '@components/UI/Button';
+
 function Sidebar() {
+	const singOut = useSingOut();
+
 	return (
 		<>
 			<button
@@ -31,6 +37,29 @@ function Sidebar() {
 				aria-label="Sidenav"
 			>
 				<div className="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+					<ul className="space-y-2">
+						<li>
+							<Link
+								to="/"
+								className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+							>
+								<svg
+									className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+									aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor"
+									viewBox="0 0 20 20"
+								>
+									<path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+								</svg>
+
+								<span className="ml-3 pt-1">Home</span>
+							</Link>
+						</li>
+					</ul>
+
+					<hr className="h-px my-2 bg-gray-200 border-0 dark:bg-gray-700" />
+
 					<ul className="space-y-2">
 						<li>
 							<Link
@@ -72,6 +101,11 @@ function Sidebar() {
 							</Link>
 						</li>
 					</ul>
+					<div className="h-4/5 flex items-end justify-center">
+						<Button onClick={singOut} size="fullMedium">
+							Sign out
+						</Button>
+					</div>
 				</div>
 			</aside>
 		</>
