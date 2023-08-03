@@ -1,4 +1,5 @@
 import {ref, set} from 'firebase/database';
+import {nanoid} from 'nanoid';
 
 import {auth, db} from '../firebase';
 
@@ -9,9 +10,9 @@ const setDataFireBaseStore = (path: string, subpath?: string) => {
 		return null;
 	}
 
-	let reference = ref(db, `${path}/` + uid + `/${new Date().getTime()}`);
+	let reference = ref(db, `${path}/` + uid + `/${nanoid()}`);
 	if (subpath) {
-		reference = ref(db, `${path}/` + uid + `/${subpath}` + `/${new Date().getTime()}`);
+		reference = ref(db, `${path}/` + uid + `/${subpath}` + `/${nanoid()}`);
 	}
 
 	return (data: object) => {
