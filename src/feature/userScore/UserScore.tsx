@@ -2,6 +2,10 @@ import {mode} from '@public/data/mode';
 
 import {typeModeUnion} from '@types';
 
+import setScore from '@helpers/setScore';
+
+import Button from '@components/UI/Button';
+
 import Tabs from './Tabs';
 
 const UserScore = () => {
@@ -72,6 +76,21 @@ const UserScore = () => {
 					</tbody>
 				</table>
 			</div>
+			<Button
+				onClick={() => {
+					setScore(
+						{
+							chars: 30,
+							time: 0,
+							typos: 12,
+							accuracy: 99,
+						},
+						'easy',
+					);
+				}}
+			>
+				Add data
+			</Button>
 		</div>
 	);
 };
