@@ -1,6 +1,10 @@
+import {DataSnapshot} from 'firebase/database';
+
 import {mode} from '@public/data/mode';
 
 import {typeModeUnion} from '@types';
+
+import useScoreFireBase from '@hooks/useScoreFireBase';
 
 import setScore from '@helpers/setScore';
 
@@ -10,13 +14,22 @@ import Table from './Table';
 import Tabs from './Tabs';
 
 const UserScore = () => {
+	const [snapshots, loading, error] = useScoreFireBase('easy');
+
+	if (loading) {
+		return <>Loading...</>;
+	}
+	if (error) {
+		return <>Error: {error}</>;
+	}
+
 	return (
 		<div className="w-full p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 			<Tabs tabs={mode as Record<typeModeUnion, typeModeUnion>} />
 			<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 				<Table
 					headers={['Total chars', 'Accuracy', 'Time', 'Typos', 'Action']}
-					columns={[{chars: 30, accuracy: 99, time: 0, typos: 12}]}
+					columns={snapshots as DataSnapshot[]}
 				/>
 			</div>
 			<Button

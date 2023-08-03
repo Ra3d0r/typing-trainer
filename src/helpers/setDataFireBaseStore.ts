@@ -10,13 +10,15 @@ const setDataFireBaseStore = (path: string, subpath?: string) => {
 		return null;
 	}
 
-	let reference = ref(db, `${path}/` + uid + `/${nanoid()}`);
+	const id = nanoid();
+
+	let reference = ref(db, `${path}/` + uid + `/${id}`);
 	if (subpath) {
-		reference = ref(db, `${path}/` + uid + `/${subpath}` + `/${nanoid()}`);
+		reference = ref(db, `${path}/` + uid + `/${subpath}` + `/${id}`);
 	}
 
 	return (data: object) => {
-		set(reference, data);
+		set(reference, {...data, id});
 	};
 };
 
