@@ -61,7 +61,6 @@
     "@reduxjs/toolkit": "^1.9.5",
     "firebase": "^9.22.2",
     "flowbite": "^1.6.5",
-    "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
