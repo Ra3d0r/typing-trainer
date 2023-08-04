@@ -7,11 +7,10 @@ type Mapping<T, N> = {
 };
 
 interface score {
-	speed: number;
 	accuracy: number;
 	typos: number;
 	time: number;
-	totalChars: number;
+	chars: number;
 }
 
 interface payloadTotalChars {
