@@ -2,6 +2,8 @@ import {DataSnapshot} from 'firebase/database';
 
 import {typeModeUnion} from '@types';
 
+import millisecondsToDigitTime from '@helpers/millisecondsToDigitTime';
+
 const Table = ({
 	headers,
 	columns,
@@ -36,8 +38,10 @@ const Table = ({
 							<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
 								{column.val()['chars']}
 							</td>
-							<td className="px-6 py-4 text-center">{column.val()['accuracy']}</td>
-							<td className="px-6 py-4 text-center">{column.val()['time']}</td>
+							<td className="px-6 py-4 text-center">{column.val()['accuracy'] + '%'}</td>
+							<td className="px-6 py-4 text-center">
+								{millisecondsToDigitTime(column.val()['time'])}
+							</td>
 							<td className="px-6 py-4 text-center">{column.val()['typos']}</td>
 							<td
 								className="px-6 py-4 text-right"
