@@ -1,6 +1,18 @@
 import {DataSnapshot} from 'firebase/database';
 
-const Table = ({headers, columns}: {headers: string[]; columns: DataSnapshot[]}) => {
+import {typeModeUnion} from '@types';
+
+const Table = ({
+	headers,
+	columns,
+	mode,
+	action,
+}: {
+	headers: string[];
+	columns: DataSnapshot[];
+	mode: typeModeUnion;
+	action: ({id, mode}: {id: string; mode: typeModeUnion}) => void;
+}) => {
 	return (
 		<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 			<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -27,7 +39,10 @@ const Table = ({headers, columns}: {headers: string[]; columns: DataSnapshot[]})
 							<td className="px-6 py-4 text-center">{column.val()['accuracy']}</td>
 							<td className="px-6 py-4 text-center">{column.val()['time']}</td>
 							<td className="px-6 py-4 text-center">{column.val()['typos']}</td>
-							<td className="px-6 py-4 text-right">
+							<td
+								className="px-6 py-4 text-right"
+								onClick={() => action({id: column.val().id, mode})}
+							>
 								<span className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer">
 									Remove
 								</span>

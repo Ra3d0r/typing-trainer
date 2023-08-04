@@ -10,6 +10,7 @@ import Button from '@components/UI/Button';
 
 import Table from './Table';
 import Tabs from './Tabs';
+import deleteScore from './deleteScore';
 
 const UserScore = () => {
 	const [snapshots, loading, error] = useScoreFireBase('easy');
@@ -28,6 +29,8 @@ const UserScore = () => {
 				<Table
 					headers={['Total chars', 'Accuracy', 'Time', 'Typos', 'Action']}
 					columns={snapshots as DataSnapshot[]}
+					mode="easy"
+					action={deleteScore}
 				/>
 			</div>
 			<Button
