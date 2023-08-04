@@ -2,8 +2,6 @@ import {DataSnapshot} from 'firebase/database';
 
 import {mode} from '@public/data/mode';
 
-import {typeModeUnion} from '@types';
-
 import useScoreFireBase from '@hooks/useScoreFireBase';
 
 import setScore from '@helpers/setScore';
@@ -25,7 +23,7 @@ const UserScore = () => {
 
 	return (
 		<div className="w-full p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-			<Tabs tabs={mode as Record<typeModeUnion, typeModeUnion>} />
+			<Tabs tabs={mode} />
 			<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 				<Table
 					headers={['Total chars', 'Accuracy', 'Time', 'Typos', 'Action']}
