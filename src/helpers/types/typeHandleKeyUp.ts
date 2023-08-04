@@ -12,6 +12,7 @@ interface params {
 	currentTextIndex: number;
 	mode: typeModeUnion;
 	allText: string[] | Record<string, unknown>[];
+	isAuth: boolean;
 }
 
 export type typeHandleKeyUp = (arg: params) => void;

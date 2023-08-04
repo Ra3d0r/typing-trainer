@@ -3,6 +3,7 @@ import {useState} from 'react';
 import {typeModeUnion} from '@types';
 
 import {selectAllInfoText} from '@feature/typing/typingSelectors';
+import {selectUserAuth} from '@feature/user/userSelectors';
 
 import handleKeyDown from '@helpers/handleKeyDown';
 import handleKeyUp from '@helpers/handleKeyUp';
@@ -17,6 +18,7 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 	const {allText, currentText, currentTextIndex, status} = useAppSelector((state) =>
 		selectAllInfoText(state, mode),
 	);
+	const isAuth = useAppSelector(selectUserAuth);
 	const dispatch = useAppDispatch();
 
 	useKeyboardEvent('keydown', (event: KeyboardEvent) =>
@@ -33,6 +35,7 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 			currentTextIndex,
 			mode,
 			allText,
+			isAuth,
 		}),
 	);
 

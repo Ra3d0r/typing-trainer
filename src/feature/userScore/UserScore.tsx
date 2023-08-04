@@ -7,19 +7,13 @@ import {typeModeUnion} from '@types';
 
 import useScoreFireBase from '@hooks/useScoreFireBase';
 
-import {useAppDispatch} from '@store/redux-hooks';
-
-import Button from '@components/UI/Button';
-
 import Table from './Table';
 import Tabs from './Tabs';
 import deleteScore from './deleteScore';
-import postScore from './postScore';
 
 const UserScore = () => {
 	const [currentMode, setCurrentMode] = useState<typeModeUnion>(mode.easy);
 	const [snapshots, loading, error] = useScoreFireBase(currentMode);
-	const dispatch = useAppDispatch();
 
 	if (loading) {
 		return <>Loading...</>;
@@ -39,13 +33,6 @@ const UserScore = () => {
 					action={deleteScore}
 				/>
 			</div>
-			<Button
-				onClick={() => {
-					dispatch(postScore({mode: currentMode}));
-				}}
-			>
-				Add data
-			</Button>
 		</div>
 	);
 };

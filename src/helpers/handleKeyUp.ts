@@ -1,6 +1,7 @@
 import {scoreActions} from '@feature/score/scoreSlice';
 import {toastActions} from '@feature/toast/toastSlice';
 import {typingActions} from '@feature/typing/typingSlice';
+import postScore from '@feature/userScore/postScore';
 
 import {textEng} from '../config';
 import checkKeyboardLayout from './checkKeyboardLayout';
@@ -25,6 +26,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	currentTextIndex,
 	mode,
 	allText,
+	isAuth,
 }) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(false);
@@ -56,6 +58,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
+		isAuth && dispatch(postScore({mode}));
 		dispatch(changeStatusCustomMode('idle'));
 		dispatch(resetCustomModeText());
 		return;
@@ -66,6 +69,10 @@ const handleKeyUp: typeHandleKeyUp = ({
 	if (currentTextIndex < currentText.length - 1) {
 		dispatch(nextLetter({mode}));
 		return;
+	}
+
+	if (isAuth) {
+		dispatch(postScore({mode}));
 	}
 
 	if (mode !== 'custom') {
