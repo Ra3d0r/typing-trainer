@@ -1,21 +1,18 @@
+import {nanoid} from '@reduxjs/toolkit';
 import {ref, set} from 'firebase/database';
-import {nanoid} from 'nanoid';
 
 import {auth, db} from '../firebase';
 
 const setDataFireBaseStore = (path: string, subpath?: string) => {
-	const currentUser = auth.currentUser;
-	const uid = currentUser?.uid;
+	const uid = auth.currentUser?.uid;
 	if (!uid) {
-		return null;
+		throw new Error('User is not logged in');
 	}
 
 	const id = nanoid();
+	const pth = subpath ? `${path}/${uid}/${subpath}/${id}` : `${path}/${uid}/${id}`;
 
-	let reference = ref(db, `${path}/` + uid + `/${id}`);
-	if (subpath) {
-		reference = ref(db, `${path}/` + uid + `/${subpath}` + `/${id}`);
-	}
+	const reference = ref(db, pth);
 
 	return (data: object) => {
 		set(reference, {...data, id});

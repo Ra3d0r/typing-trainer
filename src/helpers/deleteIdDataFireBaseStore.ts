@@ -3,10 +3,9 @@ import {ref, remove} from 'firebase/database';
 import {auth, db} from '../firebase';
 
 const deleteIdDataFireBaseStore = (path: string, subpath?: string) => {
-	const currentUser = auth.currentUser;
-	const uid = currentUser?.uid;
+	const uid = auth.currentUser?.uid;
 	if (!uid) {
-		return null;
+		throw new Error('User is not logged in');
 	}
 
 	return (id: string) => {

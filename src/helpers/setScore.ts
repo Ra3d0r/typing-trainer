@@ -2,13 +2,22 @@ import {typeModeUnion} from '@types';
 
 import setDataFireBaseStore from './setDataFireBaseStore';
 
-const setScore = (
-	score: {chars: number; time: number; typos: number; accuracy: number},
-	mode: typeModeUnion,
-) => {
-	const setData = setDataFireBaseStore(`scores`, mode);
-	if (setData) {
-		setData(score);
+interface IScore {
+	chars: number;
+	time: number;
+	typos: number;
+	accuracy: number;
+}
+
+const setScore = (score: IScore, mode: typeModeUnion) => {
+	try {
+		setDataFireBaseStore(`scores`, mode)(score);
+	} catch (err) {
+		if (err instanceof Error) {
+			console.error(err.message);
+		} else {
+			console.error(err);
+		}
 	}
 };
 
