@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {usePagination} from 'react-use-pagination';
 
 import {mode} from '@public/data/mode';
 
@@ -14,6 +15,16 @@ import deleteScore from './deleteScore';
 const UserScore = () => {
 	const [currentMode, setCurrentMode] = useState<typeModeUnion>(mode.easy);
 	const [snapshots, loading, error] = useScoreFireBase(currentMode);
+	const {
+		currentPage,
+		totalPages,
+		setNextPage,
+		setPreviousPage,
+		nextEnabled,
+		previousEnabled,
+		startIndex,
+		endIndex,
+	} = usePagination({totalItems: snapshots?.length ?? 0, initialPageSize: 10});
 
 	return (
 		<div className="w-full p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -21,14 +32,21 @@ const UserScore = () => {
 			<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 				<Table
 					headers={['Total chars', 'Accuracy', 'Time', 'Typos', 'Action']}
-					columns={snapshots}
+					columns={snapshots?.slice(startIndex, endIndex + 1)}
 					mode={currentMode}
 					action={deleteScore}
 					loading={loading}
 					error={error}
 				/>
 			</div>
-			<Pagination />
+			<Pagination
+				currentPage={currentPage}
+				totalPages={totalPages}
+				setNextPage={setNextPage}
+				setPreviousPage={setPreviousPage}
+				nextEnabled={nextEnabled}
+				previousEnabled={previousEnabled}
+			/>
 		</div>
 	);
 };
