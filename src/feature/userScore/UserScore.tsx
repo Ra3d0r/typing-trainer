@@ -1,4 +1,3 @@
-import {DataSnapshot} from 'firebase/database';
 import {useState} from 'react';
 
 import {mode} from '@public/data/mode';
@@ -21,10 +20,10 @@ const UserScore = () => {
 			<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 				<Table
 					headers={['Total chars', 'Accuracy', 'Time', 'Typos', 'Action']}
-					columns={snapshots as DataSnapshot[]}
+					columns={snapshots}
 					mode={currentMode}
 					action={deleteScore}
-					loading={loading as boolean}
+					loading={loading}
 					error={error}
 				/>
 			</div>

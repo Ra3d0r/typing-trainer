@@ -1,5 +1,4 @@
 import {DataSnapshot} from 'firebase/database';
-import {ReactNode} from 'react';
 
 import {typeModeUnion} from '@types';
 
@@ -16,11 +15,11 @@ const Table = ({
 	error,
 }: {
 	headers: string[];
-	columns: DataSnapshot[];
+	columns: DataSnapshot[] | undefined;
 	mode: typeModeUnion;
 	action: ({id, mode}: {id: string; mode: typeModeUnion}) => void;
 	loading?: boolean;
-	error?: boolean | DataSnapshot[] | Error | undefined;
+	error?: Error | undefined;
 }) => {
 	return (
 		<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -46,35 +45,36 @@ const Table = ({
 				{error && (
 					<tr>
 						<td colSpan={headers.length} className="pt-2 h-20">
-							{<strong className="flex justify-center">Error: {error as ReactNode}</strong>}
+							{<strong className="flex justify-center">Error: {error.message}</strong>}
 						</td>
 					</tr>
 				)}
-				{columns.map((column) => {
-					return (
-						<tr
-							className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-							key={column.val().id}
-						>
-							<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
-								{column.val()['chars']}
-							</td>
-							<td className="px-6 py-4 text-center">{column.val()['accuracy'] + '%'}</td>
-							<td className="px-6 py-4 text-center">
-								{millisecondsToDigitTime(column.val()['time'])}
-							</td>
-							<td className="px-6 py-4 text-center">{column.val()['typos']}</td>
-							<td
-								className="px-6 py-4 text-right"
-								onClick={() => action({id: column.val().id, mode})}
+				{columns &&
+					columns.map((column) => {
+						return (
+							<tr
+								className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+								key={column.val().id}
 							>
-								<span className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer">
-									Remove
-								</span>
-							</td>
-						</tr>
-					);
-				})}
+								<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
+									{column.val()['chars']}
+								</td>
+								<td className="px-6 py-4 text-center">{column.val()['accuracy'] + '%'}</td>
+								<td className="px-6 py-4 text-center">
+									{millisecondsToDigitTime(column.val()['time'])}
+								</td>
+								<td className="px-6 py-4 text-center">{column.val()['typos']}</td>
+								<td
+									className="px-6 py-4 text-right"
+									onClick={() => action({id: column.val().id, mode})}
+								>
+									<span className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer">
+										Remove
+									</span>
+								</td>
+							</tr>
+						);
+					})}
 			</tbody>
 		</table>
 	);
