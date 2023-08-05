@@ -16,9 +16,11 @@ const Pagination = ({
 	return (
 		<nav className="flex items-center justify-between pt-4" aria-label="Table navigation">
 			<span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-				Current page:{' '}
-				<span className="font-semibold text-gray-900 dark:text-white">{currentPage + 1}</span> of{' '}
-				<span className="font-semibold text-gray-900 dark:text-white">{totalPages}</span>
+				Page:{' '}
+				<span className="font-semibold text-gray-900 dark:text-white">
+					{totalPages === 0 ? 0 : currentPage + 1}
+				</span>{' '}
+				of <span className="font-semibold text-gray-900 dark:text-white">{totalPages}</span>
 			</span>
 			<div className="inline-flex -space-x-px text-sm h-8">
 				<button
