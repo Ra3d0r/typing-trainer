@@ -19,7 +19,7 @@ const setDataFireBaseStore = (path: string, subpath?: string) => {
 			...data,
 			id,
 			createdAt: new Date().toLocaleDateString([], {
-				month: 'short',
+				month: 'numeric',
 				day: 'numeric',
 				year: 'numeric',
 				hour: 'numeric',

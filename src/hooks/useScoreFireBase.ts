@@ -6,6 +6,8 @@ import {typeModeUnion} from '@types';
 
 import {selectIdUser} from '@feature/user/userSelectors';
 
+import sortedSnapshotsByDate from '@helpers/sortedSnapshotsByDate';
+
 import {db} from '../firebase';
 
 const useScoreFireBase = (
@@ -13,7 +15,7 @@ const useScoreFireBase = (
 ): [DataSnapshot[] | undefined, boolean, Error | undefined] => {
 	const id = useSelector(selectIdUser);
 	const [snapshots, loading, error] = useList(ref(db, `scores/${id}/${mode}`));
-	return [snapshots, loading, error];
+	return [sortedSnapshotsByDate(snapshots), loading, error];
 };
 
 export default useScoreFireBase;
