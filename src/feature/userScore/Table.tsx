@@ -1,4 +1,5 @@
 import {DataSnapshot} from 'firebase/database';
+import {ReactNode} from 'react';
 
 import {typeModeUnion} from '@types';
 
@@ -12,12 +13,14 @@ const Table = ({
 	mode,
 	action,
 	loading,
+	error,
 }: {
 	headers: string[];
 	columns: DataSnapshot[];
 	mode: typeModeUnion;
 	action: ({id, mode}: {id: string; mode: typeModeUnion}) => void;
 	loading?: boolean;
+	error?: boolean | DataSnapshot[] | Error | undefined;
 }) => {
 	return (
 		<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -37,6 +40,13 @@ const Table = ({
 					<tr>
 						<td colSpan={headers.length} className="pt-2 h-20">
 							<Loading className="flex justify-center" />
+						</td>
+					</tr>
+				)}
+				{error && (
+					<tr>
+						<td colSpan={headers.length} className="pt-2 h-20">
+							{<strong className="flex justify-center">Error: {error as ReactNode}</strong>}
 						</td>
 					</tr>
 				)}
