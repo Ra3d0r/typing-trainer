@@ -6,6 +6,7 @@ import {typeModeUnion} from '@types';
 
 import useScoreFireBase from '@hooks/useScoreFireBase';
 
+import Pagination from './Pagination';
 import Table from './Table';
 import Tabs from './Tabs';
 import deleteScore from './deleteScore';
@@ -27,6 +28,7 @@ const UserScore = () => {
 					error={error}
 				/>
 			</div>
+			<Pagination />
 		</div>
 	);
 };
