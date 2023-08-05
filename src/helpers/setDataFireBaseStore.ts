@@ -15,7 +15,18 @@ const setDataFireBaseStore = (path: string, subpath?: string) => {
 	const reference = ref(db, pth);
 
 	return (data: object) => {
-		set(reference, {...data, id});
+		set(reference, {
+			...data,
+			id,
+			createdAt: new Date().toLocaleDateString([], {
+				month: 'short',
+				day: 'numeric',
+				year: 'numeric',
+				hour: 'numeric',
+				minute: 'numeric',
+				second: 'numeric',
+			}),
+		});
 	};
 };
 
