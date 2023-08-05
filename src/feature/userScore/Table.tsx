@@ -4,16 +4,20 @@ import {typeModeUnion} from '@types';
 
 import millisecondsToDigitTime from '@helpers/millisecondsToDigitTime';
 
+import Loading from '@components/status/Loading';
+
 const Table = ({
 	headers,
 	columns,
 	mode,
 	action,
+	loading,
 }: {
 	headers: string[];
 	columns: DataSnapshot[];
 	mode: typeModeUnion;
 	action: ({id, mode}: {id: string; mode: typeModeUnion}) => void;
+	loading?: boolean;
 }) => {
 	return (
 		<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -29,6 +33,13 @@ const Table = ({
 				</tr>
 			</thead>
 			<tbody>
+				{loading && (
+					<tr>
+						<td colSpan={headers.length} className="pt-2 h-20">
+							<Loading className="flex justify-center" />
+						</td>
+					</tr>
+				)}
 				{columns.map((column) => {
 					return (
 						<tr

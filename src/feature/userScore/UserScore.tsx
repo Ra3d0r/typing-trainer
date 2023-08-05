@@ -15,9 +15,6 @@ const UserScore = () => {
 	const [currentMode, setCurrentMode] = useState<typeModeUnion>(mode.easy);
 	const [snapshots, loading, error] = useScoreFireBase(currentMode);
 
-	if (loading) {
-		return <>Loading...</>;
-	}
 	if (error) {
 		return <>Error: {error}</>;
 	}
@@ -31,6 +28,7 @@ const UserScore = () => {
 					columns={snapshots as DataSnapshot[]}
 					mode={currentMode}
 					action={deleteScore}
+					loading={loading as boolean}
 				/>
 			</div>
 		</div>

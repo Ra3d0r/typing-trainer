@@ -7,9 +7,9 @@ const styles: typeStyles = {
 	lg: tw`w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600`,
 };
 
-const Loading = ({size = 'lg'}: IPropsLoading) => {
+const Loading = ({size = 'lg', className = ''}: IPropsLoading) => {
 	return (
-		<div role="status">
+		<div role="status" className={className}>
 			<svg
 				aria-hidden="true"
 				css={styles[size]}
