@@ -11,11 +11,11 @@ const SidebarLayout = () => {
 			<div>
 				<Sidebar />
 			</div>
-			<div>
+			<>
 				<Suspense fallback={<LoadingFullScreen />}>
 					<Outlet />
 				</Suspense>
-			</div>
+			</>
 		</div>
 	);
 };
