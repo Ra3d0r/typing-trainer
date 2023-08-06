@@ -8,7 +8,7 @@ const sortedSnapshotsByDate = (array: DataSnapshot[] | undefined) => {
 		return [];
 	}
 	return array.sort((a, b) => {
-		return new Date(b.val()['createdAt']).getTime() - new Date(a.val()['createdAt']).getTime();
+		return b.val()['createdAt'] - a.val()['createdAt'];
 	});
 };
 

@@ -57,7 +57,14 @@ const Table = ({
 								key={column.val().id}
 							>
 								<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
-									{column.val()['createdAt']}
+									{new Date(column.val()['createdAt']).toLocaleDateString([], {
+										month: 'short',
+										day: 'numeric',
+										year: 'numeric',
+										hour: 'numeric',
+										minute: 'numeric',
+										second: 'numeric',
+									})}
 								</td>
 								<td className="px-6 py-4 text-center">{column.val()['chars']}</td>
 								<td className="px-6 py-4 text-center">{column.val()['accuracy'] + '%'}</td>
