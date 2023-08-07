@@ -5,7 +5,7 @@ const Account = () => {
 	return (
 		<>
 			<Toast />
-			<div className="max-w-screen-xl w-2/4 mx-auto">
+			<div className="max-w-screen-xl w-full lg:w-2/4 mx-auto overflow-hidden">
 				<UserScore />
 			</div>
 		</>
