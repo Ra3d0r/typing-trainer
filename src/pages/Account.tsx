@@ -1,22 +1,14 @@
-import {Link} from 'react-router-dom';
-
 import Toast from '@feature/toast/Toast';
-
-import useSingOut from '@hooks/useSingOut';
-
-import Button from '@components/UI/Button';
+import UserScore from '@feature/userScore/UserScore';
 
 const Account = () => {
-	const singOut = useSingOut();
 	return (
-		<div>
+		<>
 			<Toast />
-			<h1 className="text-center text-blue-500">Account page</h1>
-			<Link className="text-blue-500" to="/">
-				Home
-			</Link>
-			<Button onClick={singOut}>Sign out</Button>
-		</div>
+			<div className="max-w-screen-xl w-full lg:w-2/4 mx-auto overflow-hidden">
+				<UserScore />
+			</div>
+		</>
 	);
 };
 

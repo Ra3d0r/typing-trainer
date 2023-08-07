@@ -10,4 +10,5 @@ export type typeStyles = Mapping<Record<typeLoading, TwStyle>>;
 
 export interface IPropsLoading {
 	size?: typeLoading;
+	className?: string;
 }

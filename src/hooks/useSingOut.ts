@@ -16,7 +16,9 @@ const useSingOut = () => {
 	return () => {
 		signOut(auth)
 			.then(() => {
-				navigate('/');
+				setTimeout(() => {
+					navigate('/');
+				}, 0);
 				dispatch(openToast({message: 'Sign out successful!', type: 'info'}));
 				dispatch(resetUser());
 			})

@@ -11,32 +11,28 @@ import {
 
 const initialState: typeInitialState = {
 	easy: {
-		speed: 0,
 		accuracy: 100,
 		typos: 0,
 		time: 0,
-		totalChars: 0,
+		chars: 0,
 	},
 	normal: {
-		speed: 0,
 		accuracy: 100,
 		typos: 0,
 		time: 0,
-		totalChars: 0,
+		chars: 0,
 	},
 	hard: {
-		speed: 0,
 		accuracy: 100,
 		typos: 0,
 		time: 0,
-		totalChars: 0,
+		chars: 0,
 	},
 	custom: {
-		speed: 0,
 		accuracy: 100,
 		typos: 0,
 		time: 0,
-		totalChars: 0,
+		chars: 0,
 	},
 };
 
@@ -49,7 +45,7 @@ const scoreSlice = createSlice({
 			[payload.mode]: initialState[payload.mode],
 		}),
 		addTotalChars: (state, {payload}: typeActionAddTotalChars) => {
-			state[payload.mode].totalChars = payload.chars;
+			state[payload.mode].chars = payload.chars;
 		},
 		updateAccuracy: (state, {payload}: typeActionUpdateAccuracy) => {
 			state[payload.mode].accuracy = payload.percent;
