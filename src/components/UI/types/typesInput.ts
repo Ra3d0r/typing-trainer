@@ -2,6 +2,7 @@ import {FieldValues, UseFormRegister} from 'react-hook-form';
 
 import {
 	IDataFormChangeLoginUser,
+	IDataFormChangePassword,
 	IDataFormCreateUser,
 	IDataFormLoginUser,
 	IDataFormResetPassword,
@@ -15,6 +16,7 @@ export interface IPropsInput {
 		| UseFormRegister<IDataFormLoginUser>
 		| UseFormRegister<IDataFormResetPassword>
 		| UseFormRegister<IDataFormChangeLoginUser>
-		| UseFormRegister<IDataFormChangeLoginUser>;
+		| UseFormRegister<IDataFormChangeLoginUser>
+		| UseFormRegister<IDataFormChangePassword>;
 	options: FieldValues | undefined;
 }
