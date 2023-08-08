@@ -5,7 +5,7 @@ import {toastActions} from '../../toast/toastSlice';
 import {typeChangeLogin} from '../types/typesChangeLogin';
 import {userActions} from '../userSlice';
 
-const {setStatusUser} = userActions;
+const {setStatusUser, setUser} = userActions;
 
 const {openToast} = toastActions;
 
@@ -16,6 +16,12 @@ const changeLogin: typeChangeLogin = async ({login}, dispatch, reset) => {
 			displayName: login,
 		});
 		dispatch(openToast({message: 'Login changed', type: 'success'}));
+		dispatch(
+			setUser({
+				login,
+				id: authUser.uid,
+			}),
+		);
 		reset();
 	} catch (error) {
 		if (error instanceof Error) {
