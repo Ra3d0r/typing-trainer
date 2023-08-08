@@ -3,6 +3,8 @@ import {useSelector} from 'react-redux';
 
 import {IDataFormChangeLoginUser} from '@types';
 
+import useChangeLogin from '@feature/user/hooks/useChangeLogin';
+
 import ChangeLoginForm from '@components/form/ChangeLoginForm';
 
 import {selectStatusUser} from '../../userSelectors';
@@ -12,14 +14,12 @@ const ChangeLogin = () => {
 		register,
 		handleSubmit,
 		formState: {errors, isValid},
-		// @ts-ignore
 		reset,
 	} = useForm<IDataFormChangeLoginUser>({mode: 'onBlur'});
 	const status = useSelector(selectStatusUser);
-	const onSubmit: SubmitHandler<IDataFormChangeLoginUser> = () => null;
+	const onSubmit: SubmitHandler<IDataFormChangeLoginUser> = useChangeLogin(reset);
 	return (
 		<ChangeLoginForm
-			//@ts-ignore
 			onSubmit={handleSubmit(onSubmit)}
 			register={register}
 			errors={errors}
