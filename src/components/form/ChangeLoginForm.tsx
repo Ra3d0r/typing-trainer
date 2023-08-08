@@ -8,7 +8,7 @@ const ChangeLoginForm = ({onSubmit, register, errors, isValid, status}: IPropsCh
 	return (
 		<form className="flex flex-col" onSubmit={onSubmit}>
 			<div className="flex items-end space-x-2">
-				<div className="w-full">
+				<div className="flex-grow">
 					<InputLabel
 						type="text"
 						name="login"
@@ -28,9 +28,9 @@ const ChangeLoginForm = ({onSubmit, register, errors, isValid, status}: IPropsCh
 					/>
 				</div>
 				{status === 'loading' ? (
-					<SubmitLoading disabled className="w-2/12 h-full" />
+					<SubmitLoading disabled className="h-full w-min" />
 				) : (
-					<Submit disabled={!isValid} className="w-2/12 h-full">
+					<Submit disabled={!isValid} className="h-full w-min">
 						Submit
 					</Submit>
 				)}
