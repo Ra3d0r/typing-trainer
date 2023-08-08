@@ -4,7 +4,6 @@ import {IInitialState, typActionSetUser, typeActionSetStatusUser} from './types/
 
 const initialState: IInitialState = {
 	login: null,
-	token: null,
 	id: null,
 	status: 'idle',
 };
@@ -15,7 +14,6 @@ const userSlice = createSlice({
 	reducers: {
 		setUser: (state, action: typActionSetUser) => {
 			state.login = action.payload.login;
-			state.token = action.payload.token;
 			state.id = action.payload.id;
 			state.status = 'fulfilled';
 		},

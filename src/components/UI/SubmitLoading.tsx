@@ -1,8 +1,16 @@
-const SubmitLoading = ({children, ...other}: {children?: React.ReactNode; disabled?: boolean}) => {
+const SubmitLoading = ({
+	children,
+	className,
+	...other
+}: {
+	children?: React.ReactNode;
+	disabled?: boolean;
+	className?: string;
+}) => {
 	return (
 		<button
 			type="submit"
-			className="w-full text-white bg-gray-600 hover:enabled:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 text-center dark:bg-gray-600 dark:enabled:hover:bg-gray-700 dark:focus:ring-gray-800 disabled:bg-gray-500 disabled:text-white disabled:border-gray-200 disabled:shadow-none cursor-default enabled:cursor-pointer flex justify-center items-center"
+			className={`w-full text-white bg-gray-600 hover:enabled:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 text-center dark:bg-gray-600 dark:enabled:hover:bg-gray-700 dark:focus:ring-gray-800 disabled:bg-gray-500 disabled:text-white disabled:border-gray-200 disabled:shadow-none cursor-default enabled:cursor-pointer flex justify-center items-center ${className}`}
 			{...other}
 		>
 			<svg

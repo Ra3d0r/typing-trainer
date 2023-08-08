@@ -14,7 +14,7 @@ const useSubscribeAuthState = () => {
 	//Also launch when start an application.
 	onAuthStateChanged(auth, (user) => {
 		if (user?.displayName) {
-			dispatch(setUser({id: user.uid, token: user.refreshToken, login: user.displayName}));
+			dispatch(setUser({id: user.uid, login: user.displayName}));
 		}
 	});
 };
