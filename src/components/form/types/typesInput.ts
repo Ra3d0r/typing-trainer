@@ -12,4 +12,5 @@ export interface IPropsInput {
 	name?: typeInput;
 	disabled?: boolean;
 	label?: string;
+	divClassName?: string;
 }

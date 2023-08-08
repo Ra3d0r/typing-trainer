@@ -17,6 +17,7 @@ const LoginAsync = lazy(() => import('./pages/Login'));
 const RegisterAsync = lazy(() => import('./pages/Register'));
 const AccountAsync = lazy(() => import('./pages/Account'));
 const ForgotPasswordAsync = lazy(() => import('./pages/ForgotPassword'));
+const SecurityAsync = lazy(() => import('./pages/Security'));
 
 const App = () => {
 	useDisablePreloader();
@@ -37,6 +38,7 @@ const App = () => {
 			<Route path="/account" element={<SidebarLayout />}>
 				<Route element={<PrivateRoute />}>
 					<Route index element={<AccountAsync />} />
+					<Route path="security" element={<SecurityAsync />} />
 				</Route>
 			</Route>
 			<Route path="*" element={<NotFoundAsync />} />

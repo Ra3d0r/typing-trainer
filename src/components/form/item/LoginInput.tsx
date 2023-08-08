@@ -2,9 +2,9 @@ import InputLabel from '@components/compose/InputLabel';
 
 import {IPropsInput} from '../types/typesInput';
 
-const LoginInput = ({register, errors, options, ...other}: IPropsInput) => {
+const LoginInput = ({register, errors, options, divClassName, ...other}: IPropsInput) => {
 	return (
-		<div>
+		<div className={divClassName}>
 			<InputLabel
 				type="text"
 				name="login"
