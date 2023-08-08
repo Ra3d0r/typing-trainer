@@ -14,6 +14,7 @@ export interface IPropsInput {
 		| UseFormRegister<IDataFormCreateUser>
 		| UseFormRegister<IDataFormLoginUser>
 		| UseFormRegister<IDataFormResetPassword>
+		| UseFormRegister<IDataFormChangeLoginUser>
 		| UseFormRegister<IDataFormChangeLoginUser>;
 	options: FieldValues | undefined;
 }
