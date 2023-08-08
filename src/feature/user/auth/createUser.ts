@@ -46,7 +46,6 @@ const createUser: typeCreateUser = async (
 			setUser({
 				login,
 				id: authUser.uid,
-				token: authUser.refreshToken,
 			}),
 		);
 		navigate('/account');
