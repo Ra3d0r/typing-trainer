@@ -72,11 +72,11 @@ const Table = ({
 									{millisecondsToDigitTime(column.val()['time'])}
 								</td>
 								<td className="px-6 py-4 text-center">{column.val()['typos']}</td>
-								<td
-									className="px-6 py-4 text-right"
-									onClick={() => action({id: column.val().id, mode})}
-								>
-									<span className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer">
+								<td className="px-6 py-4 text-right">
+									<span
+										className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
+										onClick={() => action({id: column.val().id, mode})}
+									>
 										Remove
 									</span>
 								</td>
