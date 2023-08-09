@@ -97,6 +97,11 @@ npm start
 
 After building the project, the server will automatically start with webpack dev server and open the project in the default browser.
 
+4. Authorization data for testing:
+
+- login: test@gmail.com
+- password: 123456
+
 
 
 
