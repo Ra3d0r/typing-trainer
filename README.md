@@ -16,7 +16,7 @@
 The web application allows you to practice typing on the keyboard in different modes. Custom mode allows you to add your own text and practice on it. You need to register/login to save the results of metrics. All results of metrics are saved on firebase and you can manage them.
 
 # [View demo](https://link)
-![Example of a typing trainer](https://raw.githubusercontent.com/Ra3d0r/repo/gif/example.gif)
+![Example of a typing trainer](https://raw.githubusercontent.com/Ra3d0r/typing-trainer/gif/example.gif)
 
 
 <a name="theology"><h3 style="text-align: center">Technologies</h3></a>
