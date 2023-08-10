@@ -1,0 +1,39 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"outDir": "./dist/",
+		"noImplicitAny": true,
+		"module": "ESNext",
+		"jsx": "preserve",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowUnreachableCode": true,
+		"noUncheckedIndexedAccess": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noImplicitOverride": true,
+		"paths": {
+			"@public/*": ["public/*"],
+			"@test/*": ["test/*"],
+			"@types": ["src/types"],
+			"@components/*": ["src/components/*"],
+			"@feature/*": ["src/feature/*"],
+			"@pages/*": ["src/pages/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@helpers/*": ["src/helpers/*"],
+			"@store/*": ["src/store/*"],
+			"@api/*": ["src/api/*"],
+		}
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
+	}
+}

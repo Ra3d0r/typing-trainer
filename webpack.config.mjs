@@ -1,9 +1,11 @@
-import path from 'path';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import webpack from 'webpack';
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
+import webpack from 'webpack';
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -15,7 +17,7 @@ export default {
 	devtool,
 	target,
 
-	entry: './src/index.js',
+	entry: './src/index.tsx',
 
 	output: {
 		filename: devMode ? '[name].js' : '[name].[contenthash].js',
@@ -30,17 +32,21 @@ export default {
 	},
 
 	resolve: {
-		extensions: ['.js', '.jsx'],
+		extensions: ['.js', '.jsx', '.tsx', '.ts'],
 	},
 
 	optimization: {
 		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
 	},
 
+	watchOptions: {
+		ignored: /node_modules/,
+	},
+
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.[jt]sx?$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
@@ -68,42 +74,12 @@ export default {
 					filename: 'fonts/[name][ext]',
 				},
 			},
-
-			{
-				test: /\.(jpe?g|png|webp|gif|svg)$/,
-				use: devMode
-					? []
-					: [
-							{
-								loader: 'image-webpack-loader',
-								options: {
-									mozjpeg: {
-										progressive: true,
-									},
-									optipng: {
-										enabled: false,
-									},
-									pngquant: {
-										quality: [0.65, 0.9],
-										speed: 4,
-									},
-									gifsicle: {
-										interlaced: false,
-									},
-									webp: {
-										quality: 75,
-									},
-								},
-							},
-					  ],
-				type: 'asset/resource',
-			},
 		],
 	},
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(path.dirname('./'), 'src', 'index.html'),
+			template: path.resolve(path.dirname('./'), 'public', 'index.html'),
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true,
@@ -116,6 +92,17 @@ export default {
 		}),
 		new webpack.ProvidePlugin({
 			React: 'react',
+		}),
+		new Dotenv({
+			path: './.env.local',
+		}),
+		new ForkTsCheckerWebpackPlugin({
+			typescript: {
+				diagnosticOptions: {
+					semantic: true,
+					syntactic: true,
+				},
+			},
 		}),
 	],
 };

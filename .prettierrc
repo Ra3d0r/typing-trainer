@@ -12,5 +12,20 @@
 	"insertPragma": false,
 	"quoteProps": "as-needed",
 	"requirePragma": false,
-	"useTabs": true
+	"useTabs": true,
+	"importOrder": [
+		"^@public/(.*)$",
+		"^@?src/(.*)$",
+		"^@types$",
+		"^@feature/(.*)$",
+		"^@hooks/(.*)$",
+		"^@helpers/(.*)$",
+		"^@store/(.*)$",
+		"^@api/(.*)$",
+		"^@pages/(.*)$",
+		"^@components/(.*)$",
+		"^[./]"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
 }
