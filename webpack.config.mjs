@@ -95,6 +95,7 @@ export default {
 		}),
 		new Dotenv({
 			path: './.env.local',
+			systemvars: true,
 		}),
 		new ForkTsCheckerWebpackPlugin({
 			typescript: {
