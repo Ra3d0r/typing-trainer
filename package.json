@@ -41,7 +41,6 @@
     "fork-ts-checker-webpack-plugin": "^8.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.1",
-    "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.23",
     "postcss-import": "^15.1.0",
