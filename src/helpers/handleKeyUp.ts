@@ -64,19 +64,14 @@ const handleKeyUp: typeHandleKeyUp = ({
 		return;
 	}
 
-	const {textKey} = textEng;
-
 	if (currentTextIndex < currentText.length - 1) {
 		dispatch(nextLetter({mode}));
 		return;
 	}
 
-	if (isAuth) {
-		dispatch(postScore({mode}));
-	}
-
 	if (mode !== 'custom') {
-		const text = randomTextFromArray(allText, mode, textKey);
+		const text = randomTextFromArray(allText, mode, textEng.textKey);
+		isAuth && dispatch(postScore({mode}));
 		dispatch(addCurrentText({text, mode}));
 		return;
 	}
