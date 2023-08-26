@@ -10,7 +10,7 @@ const randomTextFromArray: typeRandomTextFromArray = (array, mode, textKey) => {
 		);
 	}
 
-	const randomNumber = randomIntFromInterval(0, array.length);
+	const randomNumber = randomIntFromInterval(0, array.length - 1);
 	const text = array[randomNumber];
 
 	if (key === null && typeof text === 'string') {
