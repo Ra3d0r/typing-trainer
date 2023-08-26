@@ -22,6 +22,7 @@ const randomTextFromArray: typeRandomTextFromArray = (array, mode, textKey) => {
 		if (typeof result === 'string') {
 			return result;
 		}
+		throw new Error('Text for typing must been string');
 	}
 
 	throw new Error('The text by key written in textKey in config.ts is not found');
