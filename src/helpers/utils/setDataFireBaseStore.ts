@@ -1,7 +1,7 @@
 import {nanoid} from '@reduxjs/toolkit';
 import {ref, set} from 'firebase/database';
 
-import {auth, db} from '../firebase';
+import {auth, db} from '../../firebase';
 
 const setDataFireBaseStore = (path: string, subpath?: string) => {
 	const uid = auth.currentUser?.uid;

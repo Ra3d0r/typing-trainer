@@ -1,26 +1,10 @@
-import {DataSnapshot} from 'firebase/database';
-
-import {typeModeUnion} from '@types';
-
 import millisecondsToDigitTime from '@helpers/millisecondsToDigitTime';
 
 import Loading from '@components/status/Loading';
 
-const Table = ({
-	headers,
-	columns,
-	mode,
-	action,
-	loading,
-	error,
-}: {
-	headers: string[];
-	columns: DataSnapshot[] | undefined;
-	mode: typeModeUnion;
-	action: ({id, mode}: {id: string; mode: typeModeUnion}) => void;
-	loading?: boolean;
-	error?: Error | undefined;
-}) => {
+import {IPropsTableScore} from './types/typesTableScore';
+
+const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTableScore) => {
 	return (
 		<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 			<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -95,4 +79,4 @@ const Table = ({
 	);
 };
 
-export default Table;
+export default TableScore;

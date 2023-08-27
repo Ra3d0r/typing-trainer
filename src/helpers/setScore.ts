@@ -1,6 +1,6 @@
 import {typeModeUnion} from '@types';
 
-import setDataFireBaseStore from './setDataFireBaseStore';
+import setDataFireBaseStore from './utils/setDataFireBaseStore';
 
 interface IScore {
 	chars: number;

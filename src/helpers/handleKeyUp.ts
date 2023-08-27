@@ -4,10 +4,10 @@ import {typingActions} from '@feature/typing/typingSlice';
 import postScore from '@feature/userScore/postScore';
 
 import {textEng} from '../config';
-import checkKeyboardLayout from './checkKeyboardLayout';
 import keyIdButtons from './keyIdButtons';
 import randomTextFromArray from './randomTextFromArray';
 import {typeHandleKeyUp} from './types/typeHandleKeyUp';
+import checkKeyboardLayout from './utils/checkKeyboardLayout';
 
 const {addCurrentText, addErrorIndex, changeStatusCustomMode, nextLetter, resetCustomModeText} =
 	typingActions;
@@ -34,7 +34,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 
 	setEventKeyCode('');
 
-	if (!checkKeyboardLayout('en', event)) {
+	if (!checkKeyboardLayout('en', event.key)) {
 		dispatch(openToast({message: 'Change the keyboard layout', type: 'warning'}));
 		return;
 	}

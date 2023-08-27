@@ -1,6 +1,6 @@
-import findValue from './findValue';
-import randomIntFromInterval from './randomIntFromInterval';
 import {typeRandomTextFromArray} from './types/typeRandomTextFromArray';
+import findValue from './utils/findValue';
+import randomIntFromInterval from './utils/randomIntFromInterval';
 
 const randomTextFromArray: typeRandomTextFromArray = (array, mode, textKey) => {
 	const key: null | string | undefined = textKey[mode];
