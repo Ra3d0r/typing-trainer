@@ -10,4 +10,10 @@ describe('millisecondsToDigitTime', () => {
 	it('should return "00:12"', () => {
 		expect(millisecondsToDigitTime(12500)).toEqual('00:12');
 	});
+	it('should return "00:00"', () => {
+		expect(millisecondsToDigitTime(-5000)).toEqual('00:00');
+	});
+	it('should return "00:00"', () => {
+		expect(millisecondsToDigitTime(0)).toEqual('00:00');
+	});
 });
