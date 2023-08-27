@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+/*eslint-env node*/
 module.exports = {
 	darkMode: 'media',
 	content: ['./src/**/*.{js,jsx,ts,tsx}', './node_modules/flowbite/**/*.js'],
