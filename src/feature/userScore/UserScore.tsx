@@ -7,9 +7,10 @@ import {typeModeUnion} from '@types';
 
 import useScoreFireBase from '@hooks/useScoreFireBase';
 
-import Pagination from './Pagination';
-import Table from './Table';
-import Tabs from './Tabs';
+import Pagination from '@components/pagination/Pagination';
+import Table from '@components/tables/TableScore';
+import Tabs from '@components/tabs/Tabs';
+
 import deleteScore from './deleteScore';
 
 const UserScore = () => {
