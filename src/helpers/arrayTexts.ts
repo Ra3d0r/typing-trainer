@@ -1,5 +1,5 @@
-import findValue from './findValue';
 import {typeArrayTexts} from './types/typeArrayTexts';
+import findValue from './utils/findValue';
 
 const arrayTexts: typeArrayTexts = (object, mode, TextsByKey) => {
 	const key: null | string | undefined = TextsByKey[mode];

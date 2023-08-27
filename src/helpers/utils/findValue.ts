@@ -1,4 +1,4 @@
-import {typeFindValue} from './types/typeFindValue';
+import {typeFindValue} from '../types/typeFindValue';
 
 const findValue: typeFindValue = (obj, key) => {
 	if (obj === null) {
