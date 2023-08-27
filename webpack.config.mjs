@@ -1,3 +1,4 @@
+/*eslint-env node*/
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
