@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --open",
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack"
+    "dev": "webpack",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
