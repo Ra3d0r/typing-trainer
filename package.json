@@ -8,7 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack",
     "test": "jest",
-    "type": "tsc --noEmit --skipLibCheck"
+    "type": "tsc --noEmit --skipLibCheck",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +27,7 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
+    "@typescript-eslint/parser": "^6.5.0",
     "autoprefixer": "^10.4.14",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^9.1.2",
@@ -36,7 +37,7 @@
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
     "dotenv-webpack": "^8.0.1",
-    "eslint": "^8.39.0",
+    "eslint": "^8.48.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",

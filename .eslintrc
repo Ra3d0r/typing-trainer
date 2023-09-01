@@ -37,5 +37,10 @@
         "@typescript-eslint/ban-ts-comment": "off",
         "object-curly-spacing": "off"
     },
-    "root": true
+    "root": true,
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
 }
