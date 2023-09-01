@@ -7,7 +7,8 @@
     "start": "webpack serve --open",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "type": "tsc --noEmit --skipLibCheck"
   },
   "keywords": [],
   "author": "",
