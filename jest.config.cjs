@@ -3,5 +3,8 @@
 /*eslint-env node*/
 module.exports = {
 	preset: 'ts-jest',
-	testEnvironment: 'node',
+	testEnvironment: 'jest-environment-jsdom',
+	transform: {
+		'\\.[jt]sx?$': 'babel-jest',
+	},
 };
