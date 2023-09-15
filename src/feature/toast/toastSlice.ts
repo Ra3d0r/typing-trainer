@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 import {IInitialState, typeActionOpenToast} from './types/typesSlice';
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
 	message: null,
 	type: 'info',
 };

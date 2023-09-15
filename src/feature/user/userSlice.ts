@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 import {IInitialState, typActionSetUser, typeActionSetStatusUser} from './types/typesSlice';
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
 	login: null,
 	id: null,
 	status: 'idle',
