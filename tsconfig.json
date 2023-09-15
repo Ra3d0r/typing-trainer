@@ -21,7 +21,7 @@
 		"noImplicitOverride": true,
 		"paths": {
 			"@public/*": ["public/*"],
-			"@test/*": ["test/*"],
+			"@tests/*": ["src/tests/*"],
 			"@types": ["src/types"],
 			"@components/*": ["src/components/*"],
 			"@feature/*": ["src/feature/*"],
