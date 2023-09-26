@@ -9,7 +9,7 @@ import {
 	typeInitialState,
 } from './types/typesSlice';
 
-const initialState: typeInitialState = {
+export const initialState: typeInitialState = {
 	easy: {
 		accuracy: 100,
 		typos: 0,

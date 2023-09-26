@@ -7,7 +7,10 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "prettier",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:testing-library/react",
+        "plugin:testing-library/dom",
+        "plugin:jest-dom/recommended"
     ],
     "parser": "@typescript-eslint/parser", 
     "parserOptions": {
@@ -21,7 +24,9 @@
         "react", 
         "prettier",
         "react-hooks",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "testing-library",
+        "jest-dom"
     ],
     "rules": {
         "prettier/prettier": "error",

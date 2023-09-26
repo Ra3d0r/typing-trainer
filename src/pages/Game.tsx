@@ -5,7 +5,6 @@ import {typeModeUnion} from '@types';
 
 import Keyboard from '@feature/keyboard/components/main/Keyboard';
 import Score from '@feature/score/components/main/Score';
-import Toast from '@feature/toast/Toast';
 import Text from '@feature/typing/components/main/Text';
 
 import LoadingFullScreen from '@components/compose/LoadingFullScreen';
@@ -33,7 +32,6 @@ const Game = () => {
 
 	return (
 		<>
-			<Toast />
 			<LazyCustomMode mode={mode} />
 			<Score mode={mode} />
 			<Text mode={mode} />

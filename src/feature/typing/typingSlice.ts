@@ -24,7 +24,7 @@ export const requestText = createAsyncThunk<IReturnThunk, IConfigText, IConfigTh
 	},
 );
 
-const initialState: typeInitialState = {
+export const initialState: typeInitialState = {
 	easy: {
 		currentText: [],
 		currentTextIndex: 0,
