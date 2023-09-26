@@ -18,13 +18,17 @@ const classNameKey = (
 		case keyId === targetKeyId:
 			return 'target';
 
-		case currentLetter && keyId === 'ShiftLeft' && /[A-Z]/.test(currentLetter as string):
-		case currentLetter && keyId === 'ShiftRight' && /[A-Z]/.test(currentLetter as string):
+		case currentLetter && keyId === 'ShiftLeft' && isShiftLetter(currentLetter as string):
+		case currentLetter && keyId === 'ShiftRight' && isShiftLetter(currentLetter as string):
 			return 'target';
 
 		default:
 			return 'untyped';
 	}
 };
+
+function isShiftLetter(currentLetter: string): boolean {
+	return /[A-Z]|[@#$%^&*()_+{}|:"<>?~]/.test(currentLetter as string);
+}
 
 export default classNameKey;
