@@ -1,16 +1,25 @@
-const classNameKey = (id: string, eventKey: string, keyTarget: string | null): string => {
+const classNameKey = (
+	keyId: string,
+	eventKeyId: string,
+	targetKeyId: string | null,
+	currentLetter: string | undefined,
+): string => {
 	switch (true) {
-		case eventKey === keyTarget && id === eventKey:
+		case eventKeyId === targetKeyId && keyId === eventKeyId:
 			return 'target-typed';
 
-		case id === 'ShiftLeft' && id === eventKey:
-		case id === 'ShiftRight' && id === eventKey:
-		case id === 'Backspace' && id === eventKey:
+		case keyId === 'ShiftLeft' && keyId === eventKeyId:
+		case keyId === 'ShiftRight' && keyId === eventKeyId:
+		case keyId === 'Backspace' && keyId === eventKeyId:
 			return 'special';
 
-		case id === eventKey:
+		case keyId === eventKeyId:
 			return 'mis-typed';
-		case id === keyTarget:
+		case keyId === targetKeyId:
+			return 'target';
+
+		case currentLetter && keyId === 'ShiftLeft' && /[A-Z]/.test(currentLetter as string):
+		case currentLetter && keyId === 'ShiftRight' && /[A-Z]/.test(currentLetter as string):
 			return 'target';
 
 		default:
