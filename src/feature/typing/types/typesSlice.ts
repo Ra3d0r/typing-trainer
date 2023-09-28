@@ -11,7 +11,7 @@ type Mapping<T, N> = {
 interface game {
 	currentText: string[];
 	currentTextIndex: number;
-	errorsIndex: number[];
+	errorsIndex: Record<number, 'error'>;
 	allText: string[] | Record<string, unknown>[];
 	status: typeStatus;
 	error: null | string;
