@@ -7,6 +7,7 @@ import {
 	typeActionCurrentText,
 	typeActionErrorIndex,
 	typeActionNextLetter,
+	typeActionPreviousLetter,
 	typeActionStatusCustom,
 	typeInitialState,
 } from './types/typesSlice';
@@ -71,9 +72,13 @@ const typingSlice = createSlice({
 		nextLetter: (state, {payload: {mode}}: typeActionNextLetter) => {
 			state[mode].currentTextIndex++;
 		},
-		previousLetter: (state, {payload: {mode}}: typeActionNextLetter) => {
+		previousLetter: (state, {payload: {mode, currentTextIndex}}: typeActionPreviousLetter) => {
 			if (state[mode].currentTextIndex >= 1) {
 				state[mode].currentTextIndex--;
+			}
+
+			if (currentTextIndex - 1 in state[mode].errorsIndex) {
+				delete state[mode].errorsIndex[currentTextIndex - 1];
 			}
 		},
 		addErrorIndex: (state, {payload: {currentTextIndex, mode}}: typeActionErrorIndex) => {

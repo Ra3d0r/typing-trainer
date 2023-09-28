@@ -59,7 +59,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	}
 
 	if (event.key === 'Backspace') {
-		dispatch(previousLetter({mode}));
+		dispatch(previousLetter({mode, currentTextIndex}));
 		return;
 	}
 
