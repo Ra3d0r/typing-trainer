@@ -72,6 +72,7 @@ const keyIdButtons = (key: string | undefined): string | null => {
 		'{': 'BracketLeft',
 		'}': 'BracketRight',
 		'|': 'Backslash',
+		backspace: 'Backspace',
 	};
 
 	const result: string | undefined = keyId[key?.toLowerCase()];

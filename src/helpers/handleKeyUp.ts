@@ -9,8 +9,14 @@ import randomTextFromArray from './randomTextFromArray';
 import {typeHandleKeyUp} from './types/typeHandleKeyUp';
 import checkKeyboardLayout from './utils/checkKeyboardLayout';
 
-const {addCurrentText, addErrorIndex, changeStatusCustomMode, nextLetter, resetCustomModeText} =
-	typingActions;
+const {
+	addCurrentText,
+	addErrorIndex,
+	changeStatusCustomMode,
+	nextLetter,
+	resetCustomModeText,
+	previousLetter,
+} = typingActions;
 
 const {openToast} = toastActions;
 
@@ -49,6 +55,11 @@ const handleKeyUp: typeHandleKeyUp = ({
 	}
 
 	if (!currentText.length) {
+		return;
+	}
+
+	if (event.key === 'Backspace') {
+		dispatch(previousLetter({mode}));
 		return;
 	}
 

@@ -71,6 +71,11 @@ const typingSlice = createSlice({
 		nextLetter: (state, {payload: {mode}}: typeActionNextLetter) => {
 			state[mode].currentTextIndex++;
 		},
+		previousLetter: (state, {payload: {mode}}: typeActionNextLetter) => {
+			if (state[mode].currentTextIndex >= 1) {
+				state[mode].currentTextIndex--;
+			}
+		},
 		addErrorIndex: (state, {payload: {currentTextIndex, mode}}: typeActionErrorIndex) => {
 			state[mode].errorsIndex = {...state[mode].errorsIndex, [currentTextIndex]: 'error'};
 		},
