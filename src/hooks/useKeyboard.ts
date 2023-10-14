@@ -15,7 +15,7 @@ import useKeyboardEvent from './utils/useKeyboardEvent';
 const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean, string] => {
 	const [isShiftPressed, setIsShiftPressed] = useState(false);
 	const [eventKeyCode, setEventKeyCode] = useState('');
-	const {allText, currentText, currentTextIndex, status} = useAppSelector((state) =>
+	const {allText, currentText, currentTextIndex, status, errorsIndex} = useAppSelector((state) =>
 		selectAllInfoText(state, mode),
 	);
 	const isAuth = useAppSelector(selectUserAuth);
@@ -36,6 +36,7 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 			mode,
 			allText,
 			isAuth,
+			errorsIndex,
 		}),
 	);
 
