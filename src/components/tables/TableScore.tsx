@@ -89,6 +89,13 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 							</tr>
 						);
 					})}
+				{columns?.length === 0 && !loading && (
+					<tr>
+						<td colSpan={headers.length} className="pt-2 h-20">
+							{<strong className="flex justify-center font-medium">No data</strong>}
+						</td>
+					</tr>
+				)}
 				<tr>
 					<td></td>
 					<td></td>
@@ -98,13 +105,6 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 					<td></td>
 					<td></td>
 				</tr>
-				{columns?.length === 0 && !loading && (
-					<tr>
-						<td colSpan={headers.length} className="pt-2 h-20">
-							{<strong className="flex justify-center font-medium">No data</strong>}
-						</td>
-					</tr>
-				)}
 			</tbody>
 		</Table>
 	);
