@@ -4,6 +4,15 @@ import Loading from '@components/status/Loading';
 
 import {IPropsTableScore} from './types/typesTableScore';
 
+const handleCorrectness = (column: unknown) => {
+	if (!column) {
+		return '-';
+	}
+	if (typeof column === 'number') {
+		return column + '%';
+	}
+};
+
 const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTableScore) => {
 	return (
 		<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -56,6 +65,9 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 									{millisecondsToDigitTime(column.val()['time'])}
 								</td>
 								<td className="px-6 py-4 text-center">{column.val()['typos']}</td>
+								<td className="px-6 py-4 text-center">
+									{handleCorrectness(column.val()['correctness'])}
+								</td>
 								<td className="px-6 py-4 text-right">
 									<span
 										className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"

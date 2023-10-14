@@ -32,7 +32,15 @@ const UserScore = () => {
 			<Tabs tabs={mode} onClick={setCurrentMode} currentMode={currentMode} />
 			<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 				<Table
-					headers={['Date of play', 'Total chars', 'Accuracy', 'Time', 'Typos', 'Action']}
+					headers={[
+						'Date of play',
+						'Total chars',
+						'Accuracy',
+						'Time',
+						'Typos',
+						'Correctness',
+						'Action',
+					]}
 					columns={snapshots?.slice(startIndex, endIndex + 1)}
 					mode={currentMode}
 					action={deleteScore}
