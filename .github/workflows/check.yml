@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ develop, main ]
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

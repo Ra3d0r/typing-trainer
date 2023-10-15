@@ -7,6 +7,7 @@ import {
 	typeActionCurrentText,
 	typeActionErrorIndex,
 	typeActionNextLetter,
+	typeActionPreviousLetter,
 	typeActionStatusCustom,
 	typeInitialState,
 } from './types/typesSlice';
@@ -28,7 +29,7 @@ export const initialState: typeInitialState = {
 	easy: {
 		currentText: [],
 		currentTextIndex: 0,
-		errorsIndex: [],
+		errorsIndex: {},
 		allText: [],
 		status: 'idle',
 		error: null,
@@ -36,7 +37,7 @@ export const initialState: typeInitialState = {
 	normal: {
 		currentText: [],
 		currentTextIndex: 0,
-		errorsIndex: [],
+		errorsIndex: {},
 		allText: [],
 		status: 'idle',
 		error: null,
@@ -44,7 +45,7 @@ export const initialState: typeInitialState = {
 	hard: {
 		currentText: [],
 		currentTextIndex: 0,
-		errorsIndex: [],
+		errorsIndex: {},
 		allText: [],
 		status: 'idle',
 		error: null,
@@ -52,7 +53,7 @@ export const initialState: typeInitialState = {
 	custom: {
 		currentText: [],
 		currentTextIndex: 0,
-		errorsIndex: [],
+		errorsIndex: {},
 		allText: [],
 		status: 'idle',
 		error: null,
@@ -71,8 +72,17 @@ const typingSlice = createSlice({
 		nextLetter: (state, {payload: {mode}}: typeActionNextLetter) => {
 			state[mode].currentTextIndex++;
 		},
+		previousLetter: (state, {payload: {mode, currentTextIndex}}: typeActionPreviousLetter) => {
+			if (state[mode].currentTextIndex >= 1) {
+				state[mode].currentTextIndex--;
+			}
+
+			if (currentTextIndex - 1 in state[mode].errorsIndex) {
+				delete state[mode].errorsIndex[currentTextIndex - 1];
+			}
+		},
 		addErrorIndex: (state, {payload: {currentTextIndex, mode}}: typeActionErrorIndex) => {
-			state[mode].errorsIndex.push(currentTextIndex);
+			state[mode].errorsIndex = {...state[mode].errorsIndex, [currentTextIndex]: 'error'};
 		},
 		changeStatusCustomMode: (state, action: typeActionStatusCustom) => {
 			state.custom.status = action.payload;

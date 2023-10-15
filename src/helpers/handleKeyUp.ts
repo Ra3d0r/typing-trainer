@@ -9,12 +9,18 @@ import randomTextFromArray from './randomTextFromArray';
 import {typeHandleKeyUp} from './types/typeHandleKeyUp';
 import checkKeyboardLayout from './utils/checkKeyboardLayout';
 
-const {addCurrentText, addErrorIndex, changeStatusCustomMode, nextLetter, resetCustomModeText} =
-	typingActions;
+const {
+	addCurrentText,
+	addErrorIndex,
+	changeStatusCustomMode,
+	nextLetter,
+	resetCustomModeText,
+	previousLetter,
+} = typingActions;
 
 const {openToast} = toastActions;
 
-const {increaseTypos} = scoreActions;
+const {increaseTypos, updateCorrectness} = scoreActions;
 
 const handleKeyUp: typeHandleKeyUp = ({
 	event,
@@ -27,6 +33,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	mode,
 	allText,
 	isAuth,
+	errorsIndex,
 }) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(false);
@@ -52,9 +59,16 @@ const handleKeyUp: typeHandleKeyUp = ({
 		return;
 	}
 
+	if (event.key === 'Backspace') {
+		dispatch(previousLetter({mode, currentTextIndex}));
+		dispatch(updateCorrectness({mode, errorsIndex, currentTextIndex}));
+		return;
+	}
+
 	if (target !== event.key) {
 		dispatch(addErrorIndex({currentTextIndex, mode}));
 		dispatch(increaseTypos({mode}));
+		dispatch(updateCorrectness({mode, errorsIndex, currentTextIndex, isIncreaseTypos: true}));
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {

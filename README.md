@@ -46,31 +46,12 @@ Others:
 
 <a name="functional" ><h3 style="text-align: center">Functional</h3></a>
 
-1. Uploading text via API for different mode
-2. Lazy loading pages and components
-3. Indicator of loading between lazy loading of pages 
-4. Indicator of preloading before React loaded
-5. Adding personal text for custom mode
-6. Highlighting character in the text when correct and incorrect keystrokes on the keyboard
-7. Highlighting the button in the virtual keyboard when correct and incorrect keystrokes on the keyboard
-8. Highlighting the special button in the virtual keyboard
-9. Highlighting currently character in the text and the currently button in the virtual keyboard
-10. Change the symbol of the button in the virtual keyboard when press shift
-11. Real-time calculation of typing metrics
-12. Notifications when the keyboard layout is incorrect for text
-13. SPA routing
-14. Private routing for account pages
-15. Closed route to authorization pages of authorized users
-16. Validation for authorization data
-17. Visualization of loading status at authorization on special pages
-18. User notifications about authorization/registration result
-19. Redirection after successful authorization
-20. Reset password
-21. Indicator of loading user in header
-22. Pagination in user table of metrics results
-23. Filtering by modes in the user table
-24. Changing authorization data on a special page
-25. Responsive Web Design for mobile
+1. Displaying pressed keys on the virtual keyboard
+2. Displaying correct and incorrect input on the virtual keyboard and text
+3. Manual deletion of previously written characters
+4. Calculation of input results in real time
+5. Saving the result of text typing after entering the last character in the text for authorized users.
+ 
 
 Text for mode: 
 - easy: https://type.fit/api/quotes
