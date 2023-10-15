@@ -40,6 +40,7 @@ const Keyboard = ({mode}: {mode: typeModeUnion}) => {
 					isShiftPressed={isShiftPressed}
 					eventKeyCode={eventKeyCode}
 					currentKeyId={currentKeyId}
+					currentLetter={currentLetter}
 				/>
 			</KeyboardPanel>
 		</KeyboardContainer>

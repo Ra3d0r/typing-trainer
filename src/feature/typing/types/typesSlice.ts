@@ -11,7 +11,7 @@ type Mapping<T, N> = {
 interface game {
 	currentText: string[];
 	currentTextIndex: number;
-	errorsIndex: number[];
+	errorsIndex: Record<number, 'error'>;
 	allText: string[] | Record<string, unknown>[];
 	status: typeStatus;
 	error: null | string;
@@ -25,6 +25,11 @@ interface addCurrentText {
 interface addErrorIndex {
 	currentTextIndex: number;
 	mode: typeModeUnion;
+}
+
+interface ActionPreviousLetter {
+	mode: typeModeUnion;
+	currentTextIndex: number;
 }
 
 type excludeType = Exclude<typeModeUnion, 'custom'>;
@@ -51,4 +56,5 @@ export type typeInitialState = Mapping<typeMode, game>;
 export type typeActionCurrentText = PayloadAction<addCurrentText>;
 export type typeActionErrorIndex = PayloadAction<addErrorIndex>;
 export type typeActionNextLetter = PayloadAction<{mode: typeModeUnion}>;
+export type typeActionPreviousLetter = PayloadAction<ActionPreviousLetter>;
 export type typeActionStatusCustom = PayloadAction<typeStatus>;

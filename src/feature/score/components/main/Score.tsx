@@ -5,6 +5,7 @@ import {typeModeUnion} from '@types';
 import useUpdateScore from '@hooks/useUpdateScore';
 
 import Accuracy from '../item/Accuracy';
+import Correctness from '../item/Correctness';
 import Time from '../item/Time';
 import TotalChars from '../item/TotalChars';
 import Typos from '../item/Typos';
@@ -28,6 +29,7 @@ const Score = ({mode}: {mode: typeModeUnion}) => {
 			<Time mode={mode} />
 			<Typos mode={mode} />
 			<TotalChars mode={mode} />
+			<Correctness mode={mode} />
 		</Container>
 	);
 };

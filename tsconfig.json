@@ -1,4 +1,5 @@
 {
+	"exclude": ["./node_modules", "./dist"],
 	"compilerOptions": {
 		"baseUrl": "./",
 		"outDir": "./dist/",
@@ -20,7 +21,7 @@
 		"noImplicitOverride": true,
 		"paths": {
 			"@public/*": ["public/*"],
-			"@test/*": ["test/*"],
+			"@tests/*": ["src/tests/*"],
 			"@types": ["src/types"],
 			"@components/*": ["src/components/*"],
 			"@feature/*": ["src/feature/*"],

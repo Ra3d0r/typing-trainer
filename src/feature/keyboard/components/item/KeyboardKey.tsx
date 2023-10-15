@@ -5,10 +5,11 @@ interface props {
 	eventKey: string;
 	id: string;
 	keyTarget: string | null;
+	currentLetter: string | undefined;
 }
 
-const KeyboardKey = ({kbd, eventKey, id, keyTarget}: props) => {
-	const className = classNameKey(id, eventKey, keyTarget);
+const KeyboardKey = ({kbd, eventKey, id, keyTarget, currentLetter}: props) => {
+	const className = classNameKey(id, eventKey, keyTarget, currentLetter);
 
 	switch (id) {
 		case 'Space':

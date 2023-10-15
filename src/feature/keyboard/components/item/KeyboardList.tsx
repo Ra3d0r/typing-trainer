@@ -6,9 +6,10 @@ interface props {
 	isShiftPressed: boolean;
 	eventKeyCode: string;
 	currentKeyId: string | null;
+	currentLetter: string | undefined;
 }
 
-const KeyboardList = ({isShiftPressed, eventKeyCode, currentKeyId}: props) => {
+const KeyboardList = ({isShiftPressed, eventKeyCode, currentKeyId, currentLetter}: props) => {
 	return buttonsKeyboard.map((board, rowIndex) => {
 		return (
 			<div key={rowIndex} className="space-x-0.5 space-y-0.5 flex grow">
@@ -20,6 +21,7 @@ const KeyboardList = ({isShiftPressed, eventKeyCode, currentKeyId}: props) => {
 							kbd={isShiftPressed ? key.shift : key.nonShift}
 							eventKey={eventKeyCode}
 							keyTarget={currentKeyId}
+							currentLetter={currentLetter}
 						/>
 					);
 				})}

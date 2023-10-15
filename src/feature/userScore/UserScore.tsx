@@ -28,11 +28,19 @@ const UserScore = () => {
 	} = usePagination({totalItems: snapshots?.length ?? 0, initialPageSize: 10});
 
 	return (
-		<div className="w-full my-16 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+		<div className="w-full h-[720px] my-16 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 			<Tabs tabs={mode} onClick={setCurrentMode} currentMode={currentMode} />
 			<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
 				<Table
-					headers={['Date of play', 'Total chars', 'Accuracy', 'Time', 'Typos', 'Action']}
+					headers={[
+						'Date of play',
+						'Total chars',
+						'Accuracy',
+						'Time',
+						'Typos',
+						'Correctness',
+						'Action',
+					]}
 					columns={snapshots?.slice(startIndex, endIndex + 1)}
 					mode={currentMode}
 					action={deleteScore}

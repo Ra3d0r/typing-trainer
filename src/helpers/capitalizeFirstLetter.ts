@@ -1,7 +1,8 @@
-const capitalizeFirstLetter = (string: string | undefined | null) => {
-	if (!string) {
-		return string;
+const capitalizeFirstLetter = (string: string): string => {
+	if (typeof string !== 'string') {
+		return '';
 	}
+
 	if (string.length === 0) {
 		return string;
 	}

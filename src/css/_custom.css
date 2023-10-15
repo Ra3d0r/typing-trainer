@@ -22,19 +22,19 @@
 
 	/* Text */
 	.mis-letter {
-		@apply text-xl font-semibold text-red-600/100 dark:text-red-500/100;
+		@apply text-xl font-semibold text-red-600/100 dark:text-red-500/100 tracking-wide;
 	}
 
 	.great-letter {
-		@apply text-xl font-semibold text-blue-600/100 dark:text-blue-500/100;
+		@apply text-xl font-semibold text-blue-600/100 dark:text-blue-500/100 tracking-wide;
 	}
 
 	.current-letter {
-		@apply animate-select text-xl font-semibold text-gray-600/100 dark:text-gray-500/100;
+		@apply animate-select text-xl font-semibold text-gray-600/100 dark:text-gray-500/100 tracking-wide;
 	}
 
 	.untyped-letter {
-		@apply text-xl font-semibold text-gray-600/100 dark:text-gray-500/100;
+		@apply text-xl font-semibold text-gray-600/100 dark:text-gray-500/100 tracking-wide;
 	}
 }
 

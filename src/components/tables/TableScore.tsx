@@ -1,12 +1,31 @@
+import tw from 'twin.macro';
+
 import millisecondsToDigitTime from '@helpers/millisecondsToDigitTime';
 
 import Loading from '@components/status/Loading';
 
 import {IPropsTableScore} from './types/typesTableScore';
 
+const Table = ({children}: {children: React.ReactNode}) => {
+	return (
+		<table css={tw`w-full h-[680px] text-sm text-left text-gray-500 dark:text-gray-400`}>
+			{children}
+		</table>
+	);
+};
+
+const handleCorrectness = (column: unknown) => {
+	if (!column) {
+		return '-';
+	}
+	if (typeof column === 'number') {
+		return column + '%';
+	}
+};
+
 const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTableScore) => {
 	return (
-		<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+		<Table>
 			<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 				<tr>
 					{headers.map((header) => {
@@ -37,7 +56,7 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 					columns.map((column) => {
 						return (
 							<tr
-								className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+								className="h-16 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
 								key={column.val().id}
 							>
 								<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
@@ -56,6 +75,9 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 									{millisecondsToDigitTime(column.val()['time'])}
 								</td>
 								<td className="px-6 py-4 text-center">{column.val()['typos']}</td>
+								<td className="px-6 py-4 text-center">
+									{handleCorrectness(column.val()['correctness'])}
+								</td>
 								<td className="px-6 py-4 text-right">
 									<span
 										className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
@@ -74,8 +96,17 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 						</td>
 					</tr>
 				)}
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
 			</tbody>
-		</table>
+		</Table>
 	);
 };
 

@@ -1,12 +1,12 @@
 export interface ItextItem {
 	letter: string;
 	index: number;
-	errorsIndex: number[];
+	errorsIndex: Record<number, 'error'>;
 	currentTextIndex: number;
 }
 
 export interface ItextList {
-	errorsIndex: number[];
+	errorsIndex: Record<number, 'error'>;
 	currentText: string[];
 	currentTextIndex: number;
 }
