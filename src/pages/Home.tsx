@@ -1,3 +1,4 @@
+import {Trans, useTranslation} from 'react-i18next';
 import tw from 'twin.macro';
 
 import GameModeCard from '../components/card/GameModeCard';
@@ -17,10 +18,13 @@ const Mark = ({children}: {children: React.ReactNode}) => {
 };
 
 const Home = () => {
+	const {t} = useTranslation([]);
 	return (
 		<>
 			<Title>
-				Choose a&nbsp;<Mark>game</Mark>&nbsp;mode
+				<Trans t={t}>
+					Choose a <Mark>game</Mark> mode
+				</Trans>
 			</Title>
 
 			<GameModeCard />
