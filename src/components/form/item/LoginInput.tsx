@@ -1,8 +1,11 @@
+import {useTranslation} from 'react-i18next';
+
 import InputLabel from '@components/compose/InputLabel';
 
 import {IPropsInput} from '../types/typesInput';
 
 const LoginInput = ({register, errors, options, divClassName, ...other}: IPropsInput) => {
+	const {t} = useTranslation('translation');
 	return (
 		<div className={divClassName}>
 			<InputLabel
@@ -10,15 +13,15 @@ const LoginInput = ({register, errors, options, divClassName, ...other}: IPropsI
 				name="login"
 				placeholder="username"
 				register={register}
-				label={'Login'}
+				label={t('login')}
 				options={{
 					required: {
 						value: true,
-						message: 'Fill in this field',
+						message: t('fillFields'),
 					},
 					minLength: {
 						value: 3,
-						message: 'Login must be at least 3 characters',
+						message: t('loginLength'),
 					},
 					...options,
 				}}

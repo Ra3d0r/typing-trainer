@@ -1,8 +1,11 @@
+import {useTranslation} from 'react-i18next';
+
 import InputLabel from '@components/compose/InputLabel';
 
 import {IPropsInput} from '../types/typesInput';
 
 const EmailInput = ({register, errors, options, ...other}: IPropsInput) => {
+	const {t} = useTranslation('translation');
 	return (
 		<div>
 			<InputLabel
@@ -10,15 +13,15 @@ const EmailInput = ({register, errors, options, ...other}: IPropsInput) => {
 				name="email"
 				placeholder="name@company.com"
 				register={register}
-				label={'Email'}
+				label={t('email')}
 				options={{
 					required: {
 						value: true,
-						message: 'Fill in this field',
+						message: t('fillFields'),
 					},
 					pattern: {
 						value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-						message: 'Invalid email address',
+						message: t('emailError'),
 					},
 					...options,
 				}}

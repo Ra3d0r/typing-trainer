@@ -1,4 +1,5 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
+import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 
 import {IDataFormLoginUser} from '@types';
@@ -18,12 +19,13 @@ const SignIn = () => {
 		formState: {errors, isValid},
 		reset,
 	} = useForm<IDataFormLoginUser>({mode: 'onBlur'});
+	const {t} = useTranslation('translation');
 	const status = useSelector(selectStatusUser);
 	const onSubmit: SubmitHandler<IDataFormLoginUser> = useSingIn(reset);
 	return (
 		<Background>
 			<ContainerInner>
-				<Title>Sign in to your account</Title>
+				<Title>{t('titleSignIn')}</Title>
 				<LoginForm
 					onSubmit={handleSubmit(onSubmit)}
 					register={register}
