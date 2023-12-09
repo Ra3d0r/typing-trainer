@@ -1,6 +1,8 @@
 import {Trans, useTranslation} from 'react-i18next';
 import tw from 'twin.macro';
 
+import {typeLang} from '@types';
+
 import GameModeCard from '../components/card/GameModeCard';
 
 const Title = ({children}: {children: React.ReactNode}) => {
@@ -18,7 +20,7 @@ const Mark = ({children}: {children: React.ReactNode}) => {
 };
 
 const Home = () => {
-	const {t} = useTranslation([]);
+	const {t, i18n} = useTranslation([]);
 	return (
 		<>
 			<Title>
@@ -27,7 +29,7 @@ const Home = () => {
 				</Trans>
 			</Title>
 
-			<GameModeCard />
+			<GameModeCard language={i18n.language as typeLang} buttonText={t('playButton')} />
 		</>
 	);
 };

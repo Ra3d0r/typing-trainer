@@ -5,7 +5,7 @@ import GameModeCard from '../GameModeCard';
 
 describe('GameModeCard', () => {
 	it('should render', () => {
-		render(<GameModeCard />, {wrapper: BrowserRouter});
+		render(<GameModeCard language="en" buttonText="play" />, {wrapper: BrowserRouter});
 		expect(screen.getByText(/easy/i)).toBeInTheDocument();
 	});
 });
