@@ -8,11 +8,11 @@ i18n.use(initReactI18next).init({
 	fallbackLng: 'en',
 	debug: true,
 	resources: {
-		en: {main: langEn},
-		ru: {main: langRu},
+		en: {translation: langEn},
+		ru: {translation: langRu},
 	},
-	defaultNS: 'main',
-	ns: ['main'],
+	defaultNS: 'translation',
+	ns: ['translation'],
 });
 
 export default i18n;
