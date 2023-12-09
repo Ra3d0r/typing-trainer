@@ -3,11 +3,12 @@ import {toastActions} from '@feature/toast/toastSlice';
 import {typingActions} from '@feature/typing/typingSlice';
 import postScore from '@feature/userScore/postScore';
 
-import {textEng} from '../config';
+import {textEng, textRu} from '../config';
 import keyIdButtons from './keyIdButtons';
 import randomTextFromArray from './randomTextFromArray';
 import {typeHandleKeyUp} from './types/typeHandleKeyUp';
 import checkKeyboardLayout from './utils/checkKeyboardLayout';
+import deleteWords from './utils/deleteWords';
 
 const {
 	addCurrentText,
@@ -34,6 +35,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	allText,
 	isAuth,
 	errorsIndex,
+	lang,
 }) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(false);
@@ -84,9 +86,14 @@ const handleKeyUp: typeHandleKeyUp = ({
 	}
 
 	if (mode !== 'custom') {
-		const text = randomTextFromArray(allText, mode, textEng.textKey);
+		const text = randomTextFromArray(
+			allText,
+			mode,
+			lang === 'en' ? textEng.textKey : textRu.textKey,
+		);
 		isAuth && dispatch(postScore({mode}));
-		dispatch(addCurrentText({text, mode}));
+		const changedText = lang === 'ru' ? deleteWords(text, '\r') : text;
+		dispatch(addCurrentText({text: changedText, mode}));
 		return;
 	}
 

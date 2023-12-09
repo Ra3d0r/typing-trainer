@@ -1,13 +1,13 @@
 import arrayTexts from '@helpers/arrayTexts';
 import randomTextFromArray from '@helpers/randomTextFromArray';
 
-import {textEng} from '../config';
+import {textEng, textRu} from '../config';
 import client from './client';
 import {dataLoadingText, typeLoadText} from './types/typeApi';
 
-export const loadText: typeLoadText = async (mode) => {
+export const loadText: typeLoadText = async (mode, lang) => {
 	try {
-		const {TextsByKey, url, headers, textKey} = textEng;
+		const {TextsByKey, url, headers, textKey} = lang === 'en' ? textEng : textRu;
 		const head = headers[mode];
 
 		const data: dataLoadingText = await client.get(url[mode], {headers: head});
