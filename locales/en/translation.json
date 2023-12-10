@@ -26,6 +26,7 @@
 	"resetPassword": "Reset password",
 	"changeEmail": "Change email",
 	"changeLogin": "Change login",
+	"changePassword": "Change password",
 	"titleResetPassword": "Reset password by email",
 	"accuracy": "Accuracy",
 	"correctness": "Correctness",

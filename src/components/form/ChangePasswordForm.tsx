@@ -23,7 +23,7 @@ const ChangePasswordForm = ({
 						name="password"
 						placeholder="••••••••"
 						register={register}
-						label={'Change password'}
+						label={t('changePassword')}
 						options={{
 							required: {
 								value: true,
