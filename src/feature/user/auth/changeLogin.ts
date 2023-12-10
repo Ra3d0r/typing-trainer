@@ -9,14 +9,14 @@ const {setStatusUser, setUser} = userActions;
 
 const {openToast} = toastActions;
 
-const changeLogin: typeChangeLogin = async ({login}, dispatch, reset) => {
+const changeLogin: typeChangeLogin = async ({login}, dispatch, reset, t) => {
 	try {
 		dispatch(setStatusUser('loading'));
 		const authUser = auth.currentUser as User;
 		await updateProfile(authUser, {
 			displayName: login,
 		});
-		dispatch(openToast({message: 'Login changed', type: 'success'}));
+		dispatch(openToast({message: t('loginMessage'), type: 'success'}));
 		dispatch(
 			setUser({
 				login,

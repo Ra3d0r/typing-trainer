@@ -49,5 +49,12 @@
 	"overview": "Overview",
 	"security": "Security",
 	"signOut": "Sign out",
-	"noData": "No data"
+	"noData": "No data",
+	"signOutMessage": "Sign out successful!",
+	"emailMessage": "Email changed",
+	"loginMessage": "Login changed",
+	"passwordMessage": "Password changed",
+	"verifyMessage": "Verification email sent",
+	"resetPasswordMessage": "Reset password email sent",
+	"changeKeyboard": "Change the keyboard layout"
 }

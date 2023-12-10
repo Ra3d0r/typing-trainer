@@ -9,12 +9,12 @@ const {setStatusUser} = userActions;
 
 const {openToast} = toastActions;
 
-const resetPassword: typeResetPassword = ({email}, dispatch, reset) => {
+const resetPassword: typeResetPassword = ({email}, dispatch, reset, t) => {
 	dispatch(setStatusUser('loading'));
 	sendPasswordResetEmail(auth, email)
 		.then(() => {
 			reset();
-			dispatch(openToast({message: 'Password reset email sent!', type: 'success'}));
+			dispatch(openToast({message: t('resetPasswordMessage'), type: 'success'}));
 			dispatch(setStatusUser('idle'));
 		})
 		.catch((error) => {

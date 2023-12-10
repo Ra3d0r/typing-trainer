@@ -21,6 +21,7 @@ const createUser: typeCreateUser = async (
 	dispatch,
 	navigate,
 	reset,
+	t,
 ) => {
 	try {
 		dispatch(setStatusUser('loading'));
@@ -31,7 +32,7 @@ const createUser: typeCreateUser = async (
 
 		await sendEmailVerification(authUser);
 
-		dispatch(openToast({message: 'Verification email sent!', type: 'info'}));
+		dispatch(openToast({message: t('verifyMessage'), type: 'info'}));
 
 		await updateProfile(authUser, {
 			displayName: login,

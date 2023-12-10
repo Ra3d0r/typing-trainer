@@ -1,3 +1,5 @@
+import {t} from 'i18next';
+
 import {scoreActions} from '@feature/score/scoreSlice';
 import {toastActions} from '@feature/toast/toastSlice';
 import {typingActions} from '@feature/typing/typingSlice';
@@ -44,7 +46,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	setEventKeyCode('');
 
 	if (!checkKeyboardLayout(lang, event.key)) {
-		dispatch(openToast({message: 'Change the keyboard layout', type: 'warning'}));
+		dispatch(openToast({message: t('changeKeyboard'), type: 'warning'}));
 		return;
 	}
 

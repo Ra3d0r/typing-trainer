@@ -1,3 +1,4 @@
+import {TFunction} from 'i18next';
 import {UseFormReset} from 'react-hook-form';
 import {NavigateFunction} from 'react-router-dom';
 
@@ -10,4 +11,5 @@ export type typeCreateUser = (
 	dispatch: AppDispatch,
 	navigate: NavigateFunction,
 	reset: UseFormReset<IDataFormCreateUser>,
+	t: TFunction<'translation'>,
 ) => void;

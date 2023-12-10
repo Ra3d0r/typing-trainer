@@ -21,7 +21,7 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 	);
 	const isAuth = useAppSelector(selectUserAuth);
 	const dispatch = useAppDispatch();
-	const {i18n} = useTranslation();
+	const {i18n, t} = useTranslation();
 
 	useKeyboardEvent('keydown', (event: KeyboardEvent) =>
 		handleKeyDown({event, setIsShiftPressed, setEventKeyCode, status}),
@@ -40,6 +40,7 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 			isAuth,
 			errorsIndex,
 			lang: i18n.language as typeLang,
+			t,
 		}),
 	);
 
