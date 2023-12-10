@@ -1,11 +1,12 @@
 import {typeLang} from '@types';
 
 const checkKeyboardLayout = (lang: typeLang, char: string): boolean => {
+	console.log(char);
 	switch (lang) {
 		case 'en':
 			return /\d|\w|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_\#| ]/g.test(char);
 		case 'ru':
-			return /\d|[А-Яа-я]|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_\#| |№|ё|Ё]|Shift|Tab|Backspace|Enter|CapsLock/g.test(
+			return /\d|[А-Яа-я]|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_\#| |№|ё|Ё]|Shift|Tab|Backspace|Enter|CapsLock|Alt|AltGraph|Control/g.test(
 				char,
 			);
 		default:
