@@ -31,5 +31,17 @@
 	"correctness": "Correctness",
 	"time": "Time",
 	"totalChars": "Total chars",
-	"typos": "Typos"
+	"typos": "Typos",
+	"lang": "Lang",
+	"action": "Action",
+	"dateOfPlay": "Date of play",
+	"remove": "Remove",
+	"easy": "Easy",
+	"normal": "Normal",
+	"hard": "Hard",
+	"custom": "Custom",
+	"page": "Page",
+	"of": "of",
+	"next": "Next",
+	"prev": "Previos"
 }

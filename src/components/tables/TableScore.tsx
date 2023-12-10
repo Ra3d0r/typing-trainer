@@ -1,3 +1,4 @@
+import {useTranslation} from 'react-i18next';
 import tw from 'twin.macro';
 
 import millisecondsToDigitTime from '@helpers/millisecondsToDigitTime';
@@ -24,6 +25,7 @@ const handleCorrectness = (column: unknown) => {
 };
 
 const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTableScore) => {
+	const {t, i18n} = useTranslation('translation');
 	return (
 		<Table>
 			<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -60,7 +62,7 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 								key={column.val().id}
 							>
 								<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
-									{new Date(column.val()['createdAt']).toLocaleDateString([], {
+									{new Date(column.val()['createdAt']).toLocaleDateString([i18n.language], {
 										month: 'short',
 										day: 'numeric',
 										year: 'numeric',
@@ -84,7 +86,7 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 										className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"
 										onClick={() => action({id: column.val().id, mode})}
 									>
-										Remove
+										{t('remove')}
 									</span>
 								</td>
 							</tr>
