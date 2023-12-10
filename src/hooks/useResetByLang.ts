@@ -23,9 +23,9 @@ const useResetByLang = (mode: typeModeUnion | undefined) => {
 			return;
 		}
 
-		if (lang !== i18n.language) {
+		if (lang !== i18n.language && mode !== 'custom') {
 			dispatch(reset({mode}));
-			mode !== 'custom' && dispatch(requestText({mode, lang: i18n.language as typeLang}));
+			dispatch(requestText({mode, lang: i18n.language as typeLang}));
 			dispatch(setLang({lang: i18n.language as typeLang}));
 		}
 		// eslint-disable-next-line
