@@ -5,7 +5,7 @@ const checkKeyboardLayout = (lang: typeLang, char: string): boolean => {
 		case 'en':
 			return /\d|\w|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_\#| ]/g.test(char);
 		case 'ru':
-			return /\d|\w|[А-Яа-я]|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_\#| |№]/g.test(
+			return /\d|[А-Яа-я]|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_\#| |№|ё|Ё]|Shift|Tab|Backspace|Enter|CapsLock/g.test(
 				char,
 			);
 		default:
