@@ -43,5 +43,9 @@
 	"page": "Page",
 	"of": "of",
 	"next": "Next",
-	"prev": "Previos"
+	"prev": "Previos",
+	"home": "Home",
+	"overview": "Overview",
+	"security": "Security",
+	"signOut": "Sign out"
 }
