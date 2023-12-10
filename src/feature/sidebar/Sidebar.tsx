@@ -1,5 +1,5 @@
 import {useTranslation} from 'react-i18next';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import useSingOut from '@hooks/useSingOut';
 
@@ -11,6 +11,8 @@ function Sidebar() {
 	const singOut = useSingOut();
 	const [isOpen, setIsOpen] = useOpenSidebar();
 	const {t} = useTranslation();
+	const location = useLocation();
+	const isSecurity = location.pathname.includes('security');
 
 	return (
 		<>
@@ -72,7 +74,11 @@ function Sidebar() {
 						<li>
 							<Link
 								to="/account"
-								className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+								className={`flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white ${
+									!isSecurity
+										? 'bg-gray-100 dark:bg-gray-700 hover:cursor-default'
+										: 'hover:bg-gray-100 dark:hover:bg-gray-700 group'
+								}`}
 							>
 								<svg
 									aria-hidden="true"
@@ -89,7 +95,11 @@ function Sidebar() {
 						</li>
 						<li>
 							<Link
-								className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+								className={`flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white ${
+									isSecurity
+										? 'bg-gray-100 dark:bg-gray-700 hover:cursor-default'
+										: 'hover:bg-gray-100 dark:hover:bg-gray-700 group'
+								}`}
 								to="/account/security"
 							>
 								<svg
