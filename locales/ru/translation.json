@@ -26,5 +26,10 @@
 	"resetPassword": "Сбросить пароль",
 	"changeEmail": "Изменить почту",
 	"changeLogin": "Изменить логин",
-	"titleResetPassword": "Сбросить пароль по почте"
+	"titleResetPassword": "Сбросить пароль по почте",
+	"accuracy": "Точность",
+	"correctness": "Правильность",
+	"time": "Время",
+	"totalChars": "Всего символов",
+	"typos": "Ошибки"
 }

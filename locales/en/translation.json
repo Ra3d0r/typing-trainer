@@ -26,5 +26,10 @@
 	"resetPassword": "Reset password",
 	"changeEmail": "Change email",
 	"changeLogin": "Change login",
-	"titleResetPassword": "Reset password by email"
+	"titleResetPassword": "Reset password by email",
+	"accuracy": "Accuracy",
+	"correctness": "Correctness",
+	"time": "Time",
+	"totalChars": "Total chars",
+	"typos": "Typos"
 }
