@@ -43,7 +43,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 
 	setEventKeyCode('');
 
-	if (!checkKeyboardLayout('en', event.key)) {
+	if (!checkKeyboardLayout(lang, event.key)) {
 		dispatch(openToast({message: 'Change the keyboard layout', type: 'warning'}));
 		return;
 	}

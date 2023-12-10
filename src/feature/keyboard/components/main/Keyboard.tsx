@@ -1,6 +1,7 @@
+import {useTranslation} from 'react-i18next';
 import tw from 'twin.macro';
 
-import {typeModeUnion} from '@types';
+import {typeLang, typeModeUnion} from '@types';
 
 import {selectCurrentLetter} from '@feature/typing/typingSelectors';
 
@@ -27,6 +28,7 @@ const KeyboardPanel = ({children}: {children: React.ReactNode}) => {
 };
 
 const Keyboard = ({mode}: {mode: typeModeUnion}) => {
+	const {i18n} = useTranslation();
 	const currentLetter: string | undefined = useAppSelector((state) =>
 		selectCurrentLetter(state, mode),
 	);
@@ -41,6 +43,7 @@ const Keyboard = ({mode}: {mode: typeModeUnion}) => {
 					eventKeyCode={eventKeyCode}
 					currentKeyId={currentKeyId}
 					currentLetter={currentLetter}
+					lang={i18n.language as typeLang}
 				/>
 			</KeyboardPanel>
 		</KeyboardContainer>
