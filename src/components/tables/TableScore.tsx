@@ -78,6 +78,7 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 								<td className="px-6 py-4 text-center">
 									{handleCorrectness(column.val()['correctness'])}
 								</td>
+								<td className="px-6 py-4 text-center">{column.val()['lang'] || 'en'}</td>
 								<td className="px-6 py-4 text-right">
 									<span
 										className="font-medium text-red-600 dark:text-red-500 hover:underline hover:cursor-pointer"

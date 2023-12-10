@@ -39,6 +39,7 @@ const UserScore = () => {
 						'Time',
 						'Typos',
 						'Correctness',
+						'Lang',
 						'Action',
 					]}
 					columns={snapshots?.slice(startIndex, endIndex + 1)}

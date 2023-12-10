@@ -74,7 +74,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
-		isAuth && dispatch(postScore({mode}));
+		isAuth && dispatch(postScore({mode, lang}));
 		dispatch(changeStatusCustomMode('idle'));
 		dispatch(resetCustomModeText());
 		return;
@@ -91,7 +91,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 			mode,
 			lang === 'en' ? textEng.textKey : textRu.textKey,
 		);
-		isAuth && dispatch(postScore({mode}));
+		isAuth && dispatch(postScore({mode, lang}));
 		const changedText = lang === 'ru' ? deleteWords(text, '\r') : text;
 		dispatch(addCurrentText({text: changedText, mode}));
 		return;
