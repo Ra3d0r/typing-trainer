@@ -95,7 +95,7 @@ const TableScore = ({headers, columns, mode, action, loading, error}: IPropsTabl
 				{columns?.length === 0 && !loading && (
 					<tr>
 						<td colSpan={headers.length} className="pt-2 h-20">
-							{<strong className="flex justify-center font-medium">No data</strong>}
+							{<strong className="flex justify-center font-medium">{t('noData')}</strong>}
 						</td>
 					</tr>
 				)}

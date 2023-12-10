@@ -47,5 +47,6 @@
 	"home": "Home",
 	"overview": "Overview",
 	"security": "Security",
-	"signOut": "Sign out"
+	"signOut": "Sign out",
+	"noData": "No data"
 }
