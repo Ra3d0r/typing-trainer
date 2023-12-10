@@ -56,5 +56,10 @@
 	"passwordMessage": "Password changed",
 	"verifyMessage": "Verification email sent",
 	"resetPasswordMessage": "Reset password email sent",
-	"changeKeyboard": "Change the keyboard layout"
+	"changeKeyboard": "Change the keyboard layout",
+	"addText": "Add text",
+	"customText": "Enter your text",
+	"enterText": "Enter text",
+	"cancel": "Cancel",
+	"writeHere": "Write your text here..."
 }
