@@ -22,7 +22,7 @@ const resetPassword: typeResetPassword = ({email}, dispatch, reset, t) => {
 			const errorMessage = error.message;
 			dispatch(openToast({message: errorMessage, type: 'error'}));
 			dispatch(setStatusUser('error'));
-			console.log(errorCode, errorMessage);
+			console.error(errorCode, errorMessage);
 		});
 };
 

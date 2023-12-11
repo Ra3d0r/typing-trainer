@@ -11,7 +11,6 @@ const {openToast} = toastActions;
 
 const changeEmail: typeChangeEmail = async ({email}, dispatch, reset, t) => {
 	try {
-		console.log(email);
 		dispatch(setStatusUser('loading'));
 		const authUser = auth.currentUser as User;
 		await updateEmail(authUser, email);

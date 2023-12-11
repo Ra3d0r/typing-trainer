@@ -1,7 +1,6 @@
 import {typeLang} from '@types';
 
 const checkKeyboardLayout = (lang: typeLang, char: string): boolean => {
-	console.log(char);
 	switch (lang) {
 		case 'en':
 			return /\d|\w|[\.\$@\*\\\/\+\-\^\!\(\)\[\]\~\%\&\=\?\>\<\{\}\"\'\,\:\;\_\#| ]/g.test(char);

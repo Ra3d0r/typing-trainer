@@ -108,6 +108,7 @@ const keyIdButtons = (key: string | undefined): string | null => {
 		ю: 'Period',
 		'//': 'Slash',
 		'№': 'Digit3',
+		ё: 'Backquote',
 	};
 
 	const result: string | undefined = keyId[key?.toLowerCase()];

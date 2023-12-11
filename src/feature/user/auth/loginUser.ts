@@ -24,7 +24,7 @@ const loginUser: typeLoginUser = ({email, password, remember}, dispatch, navigat
 			const errorMessage = error.message;
 			dispatch(setStatusUser('error'));
 			dispatch(openToast({message: errorMessage, type: 'error'}));
-			console.log(errorCode, errorMessage);
+			console.error(errorCode, errorMessage);
 		});
 };
 

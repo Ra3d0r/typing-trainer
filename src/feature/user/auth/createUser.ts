@@ -55,7 +55,7 @@ const createUser: typeCreateUser = async (
 			const errorMessage = error.message;
 			dispatch(setStatusUser('error'));
 			dispatch(openToast({message: errorMessage, type: 'error'}));
-			console.log(errorMessage);
+			console.error(errorMessage);
 		}
 	}
 };
