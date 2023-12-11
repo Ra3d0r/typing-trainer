@@ -1,4 +1,6 @@
-const keyIdButtons = (key: string | undefined): string | null => {
+import {typeLang} from '@types';
+
+const keyIdButtons = (key: string | undefined, lang?: typeLang): string | null => {
 	if (key === undefined) {
 		return null;
 	}
@@ -110,6 +112,15 @@ const keyIdButtons = (key: string | undefined): string | null => {
 		'№': 'Digit3',
 		ё: 'Backquote',
 	};
+
+	const ruObj = {
+		'.': 'Slash',
+		',': 'Slash',
+	};
+
+	if (lang === 'ru' && (key === '.' || key === ',')) {
+		return ruObj[key] || null;
+	}
 
 	const result: string | undefined = keyId[key?.toLowerCase()];
 	return result ? result : null;

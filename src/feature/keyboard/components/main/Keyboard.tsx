@@ -33,7 +33,7 @@ const Keyboard = ({mode}: {mode: typeModeUnion}) => {
 		selectCurrentLetter(state, mode),
 	);
 	const [isShiftPressed, eventKeyCode] = useKeyboard(currentLetter, mode);
-	const currentKeyId = keyIdButtons(currentLetter);
+	const currentKeyId = keyIdButtons(currentLetter, i18n.language as typeLang);
 
 	return (
 		<KeyboardContainer>
