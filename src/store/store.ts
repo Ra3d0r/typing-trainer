@@ -16,7 +16,7 @@ const store = configureStore({
 		toast: toastReducer,
 		lang: langReducer,
 	},
-	devTools: true,
+	devTools: process.env['NODE_ENV'] === 'production' ? false : true,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			thunk: {

@@ -6,7 +6,7 @@ import langRu from '../locales/ru/translation.json';
 
 i18n.use(initReactI18next).init({
 	fallbackLng: 'en',
-	debug: true,
+	debug: process.env['NODE_ENV'] === 'production' ? false : true,
 	resources: {
 		en: {translation: langEn},
 		ru: {translation: langRu},
