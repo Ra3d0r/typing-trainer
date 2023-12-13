@@ -1,4 +1,6 @@
-const keyIdButtons = (key: string | undefined): string | null => {
+import {typeLang} from '@types';
+
+const keyIdButtons = (key: string | undefined, lang?: typeLang): string | null => {
 	if (key === undefined) {
 		return null;
 	}
@@ -73,7 +75,52 @@ const keyIdButtons = (key: string | undefined): string | null => {
 		'}': 'BracketRight',
 		'|': 'Backslash',
 		backspace: 'Backspace',
+		й: 'KeyQ',
+		ц: 'KeyW',
+		у: 'KeyE',
+		к: 'KeyR',
+		е: 'KeyT',
+		н: 'KeyY',
+		г: 'KeyU',
+		ш: 'KeyI',
+		щ: 'KeyO',
+		з: 'KeyP',
+		х: 'BracketLeft',
+		ъ: 'BracketRight',
+		'/\\': 'Backslash',
+		ф: 'KeyA',
+		ы: 'KeyS',
+		в: 'KeyD',
+		а: 'KeyF',
+		п: 'KeyG',
+		р: 'KeyH',
+		о: 'KeyJ',
+		л: 'KeyK',
+		д: 'KeyL',
+		ж: 'Semicolon',
+		э: 'Quote',
+		я: 'KeyZ',
+		ч: 'KeyX',
+		с: 'KeyC',
+		м: 'KeyV',
+		и: 'KeyB',
+		т: 'KeyN',
+		ь: 'KeyM',
+		б: 'Comma',
+		ю: 'Period',
+		'//': 'Slash',
+		'№': 'Digit3',
+		ё: 'Backquote',
 	};
+
+	const ruObj = {
+		'.': 'Slash',
+		',': 'Slash',
+	};
+
+	if (lang === 'ru' && (key === '.' || key === ',')) {
+		return ruObj[key] || null;
+	}
 
 	const result: string | undefined = keyId[key?.toLowerCase()];
 	return result ? result : null;

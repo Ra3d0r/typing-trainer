@@ -1,3 +1,4 @@
+import {useTranslation} from 'react-i18next';
 import tw from 'twin.macro';
 
 import {typeModeUnion} from '@types';
@@ -23,12 +24,13 @@ const Text = ({mode}: {mode: typeModeUnion}) => {
 	const {errorsIndex, currentTextIndex, status, error} = useAppSelector((state) =>
 		selectAllInfoText(state, mode),
 	);
+	const {t} = useTranslation('translation');
 	const isTextNullCustomMode = mode == 'custom' && status == 'idle';
 	const isTextReady = status === 'fulfilled' && Array.isArray(currentText);
 
 	return (
 		<TextContainer>
-			{isTextNullCustomMode && <Button onClick={setStatusLoadingCustomMode}>Add text</Button>}
+			{isTextNullCustomMode && <Button onClick={setStatusLoadingCustomMode}>{t('addText')}</Button>}
 			{status === 'loading' && <Loading />}
 			{error && <Error message={error} />}
 			{isTextReady && (

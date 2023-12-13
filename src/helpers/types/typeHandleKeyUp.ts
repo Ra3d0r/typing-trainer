@@ -1,4 +1,6 @@
-import {typeModeUnion} from '@types';
+import {TFunction} from 'i18next';
+
+import {typeLang, typeModeUnion} from '@types';
 
 import {AppDispatch} from '@store/store';
 
@@ -14,6 +16,8 @@ interface params {
 	allText: string[] | Record<string, unknown>[];
 	isAuth: boolean;
 	errorsIndex: Record<number, 'error'>;
+	lang: typeLang;
+	t: TFunction<'translation'>;
 }
 
 export type typeHandleKeyUp = (arg: params) => void;

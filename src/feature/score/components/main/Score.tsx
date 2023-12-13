@@ -13,7 +13,7 @@ import Typos from '../item/Typos';
 const Container = ({children}: {children: React.ReactNode}) => {
 	return (
 		<div
-			css={tw`text-center text-blue-500 flex space-x-2 sm:space-x-10 justify-center flex-wrap gap-y-2`}
+			css={tw`text-center text-blue-500 flex gap-x-6 sm:gap-x-10 justify-center flex-wrap gap-y-6`}
 		>
 			{children}
 		</div>

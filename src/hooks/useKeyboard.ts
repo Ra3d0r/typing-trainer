@@ -1,6 +1,7 @@
 import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 
-import {typeModeUnion} from '@types';
+import {typeLang, typeModeUnion} from '@types';
 
 import {selectAllInfoText} from '@feature/typing/typingSelectors';
 import {selectUserAuth} from '@feature/user/userSelectors';
@@ -20,6 +21,7 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 	);
 	const isAuth = useAppSelector(selectUserAuth);
 	const dispatch = useAppDispatch();
+	const {i18n, t} = useTranslation();
 
 	useKeyboardEvent('keydown', (event: KeyboardEvent) =>
 		handleKeyDown({event, setIsShiftPressed, setEventKeyCode, status}),
@@ -37,6 +39,8 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 			allText,
 			isAuth,
 			errorsIndex,
+			lang: i18n.language as typeLang,
+			t,
 		}),
 	);
 

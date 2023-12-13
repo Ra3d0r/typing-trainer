@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import {selectTypingStatus} from '@feature/typing/typingSelectors';
 import {typingActions} from '@feature/typing/typingSlice';
 
@@ -10,12 +12,13 @@ const {changeStatusCustomMode, addCurrentText} = typingActions;
 const useCustomMode = (): typeReturnCustomMode => {
 	const dispatch = useAppDispatch();
 	const status = useAppSelector((state) => selectTypingStatus(state, 'custom'));
+	const {t} = useTranslation('translation');
 
 	const closeModal = () => dispatch(changeStatusCustomMode('idle'));
 
 	const addText: typeAddText = (textAreaValue, setTextAreaValue, setErrorMessage) => {
 		if (!textAreaValue) {
-			setErrorMessage('Enter the text');
+			setErrorMessage(t('enterText'));
 			return;
 		}
 		dispatch(addCurrentText({text: textAreaValue.trim(), mode: 'custom'}));

@@ -1,5 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 
+import {initialState as initialStateLang, langReducer} from '@feature/lang/langSlice';
 import {initialState as initialStateScore, scoreReducer} from '@feature/score/scoreSlice';
 import {initialState as initialStateToast, toastReducer} from '@feature/toast/toastSlice';
 import {initialState as initialStateTyping, typingReducer} from '@feature/typing/typingSlice';
@@ -10,6 +11,7 @@ const reducer = {
 	score: scoreReducer,
 	user: userReducer,
 	toast: toastReducer,
+	lang: langReducer,
 };
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
 	score: initialStateScore,
 	user: initialStateUser,
 	toast: initialStateToast,
+	lang: initialStateLang,
 };
 
 export type typeInitialState = typeof initialState;

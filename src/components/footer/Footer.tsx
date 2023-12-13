@@ -1,4 +1,5 @@
 import {useRef} from 'react';
+import {useTranslation} from 'react-i18next';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
 
@@ -21,9 +22,7 @@ const Logo = ({children}: {children: React.ReactNode}) => {
 };
 
 const LinksContainer = ({children}: {children: React.ReactNode}) => {
-	return (
-		<div css={tw`flex mt-4 space-x-6  sm:mt-0 gap-4 flex-grow-[0.5] justify-end`}>{children}</div>
-	);
+	return <div css={tw`flex space-x-6  gap-4 flex-grow-[0.5] justify-end`}>{children}</div>;
 };
 
 const LinkHTML = ({children, href}: {children: React.ReactNode; href: string}) => {
@@ -48,6 +47,7 @@ const GitHub = () => {
 
 const Footer = () => {
 	const dateRef = useRef(new Date());
+	const {i18n} = useTranslation();
 	return (
 		<FooterHTML>
 			<Logo>© {dateRef.current.getFullYear()} Typing Trainer</Logo>
@@ -57,6 +57,14 @@ const Footer = () => {
 					<span className="sr-only">GitHub account</span>
 				</LinkHTML>
 			</LinksContainer>
+			<button
+				type="button"
+				data-dropdown-toggle="language-dropdown"
+				className="inline-flex p-1 justify-center text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+				onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en')}
+			>
+				{i18n.language?.toUpperCase()}
+			</button>
 		</FooterHTML>
 	);
 };

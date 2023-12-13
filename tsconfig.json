@@ -19,6 +19,7 @@
 		"noUncheckedIndexedAccess": true,
 		"noPropertyAccessFromIndexSignature": true,
 		"noImplicitOverride": true,
+		"resolveJsonModule": true,
 		"paths": {
 			"@public/*": ["public/*"],
 			"@tests/*": ["src/tests/*"],

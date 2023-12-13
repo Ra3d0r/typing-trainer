@@ -9,13 +9,12 @@ const {setStatusUser} = userActions;
 
 const {openToast} = toastActions;
 
-const changeEmail: typeChangeEmail = async ({email}, dispatch, reset) => {
+const changeEmail: typeChangeEmail = async ({email}, dispatch, reset, t) => {
 	try {
-		console.log(email);
 		dispatch(setStatusUser('loading'));
 		const authUser = auth.currentUser as User;
 		await updateEmail(authUser, email);
-		dispatch(openToast({message: 'Email changed', type: 'success'}));
+		dispatch(openToast({message: t('emailMessage'), type: 'success'}));
 		reset();
 		dispatch(setStatusUser('fulfilled'));
 	} catch (error) {

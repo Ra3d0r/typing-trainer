@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import {typeModeUnion} from '@types';
 
 import {useAppSelector} from '@store/redux-hooks';
@@ -28,8 +30,9 @@ const Svg = () => {
 
 const Correctness = ({mode}: {mode: typeModeUnion}) => {
 	const correctness = useAppSelector((state) => selectCorrectness(state, mode));
+	const {t} = useTranslation('translation');
 
-	return <Indicator value={correctness} svg={<Svg />} text="Correctness" measure="%" />;
+	return <Indicator value={correctness} svg={<Svg />} text={t('correctness')} measure="%" />;
 };
 
 export default Correctness;

@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import {typeModeUnion} from '@types';
 
 import useAccuracy from '@hooks/useAccuracy';
@@ -21,8 +23,9 @@ const Svg = () => {
 };
 
 const Accuracy = ({mode}: {mode: typeModeUnion}) => {
+	const {t} = useTranslation('translation');
 	const accuracy = useAccuracy(mode);
-	return <Indicator value={accuracy} svg={<Svg />} text="Accuracy" measure="%" />;
+	return <Indicator value={accuracy} svg={<Svg />} text={t('accuracy')} measure="%" />;
 };
 
 export default Accuracy;

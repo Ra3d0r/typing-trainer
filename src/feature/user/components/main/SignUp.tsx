@@ -1,4 +1,5 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
+import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 
 import {IDataFormCreateUser} from '@types';
@@ -19,12 +20,13 @@ const SignUp = () => {
 		watch,
 		reset,
 	} = useForm<IDataFormCreateUser>({mode: 'onBlur'});
+	const {t} = useTranslation('translation');
 	const status = useSelector(selectStatusUser);
 	const onSubmit: SubmitHandler<IDataFormCreateUser> = useSingUp(reset);
 	return (
 		<Background>
 			<ContainerInner>
-				<Title>Create account</Title>
+				<Title>{t('createAccount')}</Title>
 				<RegisterForm
 					onSubmit={handleSubmit(onSubmit)}
 					register={register}

@@ -1,3 +1,4 @@
+import {useTranslation} from 'react-i18next';
 import tw from 'twin.macro';
 
 import Button from '@components/UI/Button';
@@ -63,21 +64,22 @@ const ModalAddText = ({
 	handleChange,
 	errorMessage,
 }: IPropSModalAddText) => {
+	const {t} = useTranslation('translation');
 	return (
 		<Window>
 			<ModalContainer>
 				<ModalHeader>
-					<Title>Adding text</Title>
+					<Title>{t('customText')}</Title>
 					<Cross onClick={closeModal} />
 				</ModalHeader>
 				<ModalContent>
 					<Error>{errorMessage}</Error>
-					<TextArea value={textAreaValue} onChange={handleChange} />
+					<TextArea value={textAreaValue} onChange={handleChange} placeholder={t('writeHere')} />
 				</ModalContent>
 				<ModalFooter>
-					<Button onClick={addText}>Add text</Button>
+					<Button onClick={addText}>{t('addText')}</Button>
 					<Button isAlternative={true} onClick={closeModal}>
-						Cancel
+						{t('cancel')}
 					</Button>
 				</ModalFooter>
 			</ModalContainer>
