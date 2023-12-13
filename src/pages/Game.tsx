@@ -34,12 +34,12 @@ const Game = () => {
 	}
 
 	return (
-		<>
+		<div className="mt-10">
 			<LazyCustomMode mode={mode} />
 			<Score mode={mode} />
 			<Text mode={mode} />
 			<Keyboard mode={mode} />
-		</>
+		</div>
 	);
 };
 

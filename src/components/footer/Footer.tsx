@@ -22,9 +22,7 @@ const Logo = ({children}: {children: React.ReactNode}) => {
 };
 
 const LinksContainer = ({children}: {children: React.ReactNode}) => {
-	return (
-		<div css={tw`flex mt-4 space-x-6  sm:mt-0 gap-4 flex-grow-[0.5] justify-end`}>{children}</div>
-	);
+	return <div css={tw`flex space-x-6  gap-4 flex-grow-[0.5] justify-end`}>{children}</div>;
 };
 
 const LinkHTML = ({children, href}: {children: React.ReactNode; href: string}) => {
