@@ -18,7 +18,7 @@ describe('Pagination', () => {
 				previousEnabled={true}
 			/>,
 		);
-		await user.click(screen.getByRole('button', {name: /Previous/i}));
+		await user.click(screen.getByRole('button', {name: /prev/i}));
 		expect(handlePrevious).toHaveBeenCalledTimes(1);
 
 		await user.click(screen.getByRole('button', {name: /Next/i}));
@@ -37,6 +37,6 @@ describe('Pagination', () => {
 			/>,
 		);
 		expect(screen.getByRole('button', {name: /Next/i})).toBeDisabled();
-		expect(screen.getByRole('button', {name: /Previous/i})).toBeDisabled();
+		expect(screen.getByRole('button', {name: /prev/i})).toBeDisabled();
 	});
 });

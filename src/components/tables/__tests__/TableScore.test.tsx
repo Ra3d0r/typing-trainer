@@ -4,8 +4,24 @@ import {DataSnapshot} from 'firebase/database';
 
 import TableScore from '../TableScore';
 
+jest.mock('react-i18next', () => ({
+	useTranslation: () => {
+		return {
+			t: (str: string) => str,
+			i18n: {
+				changeLanguage: () => new Promise(() => {}),
+				language: 'en',
+			},
+		};
+	},
+	initReactI18next: {
+		type: '3rdParty',
+		init: () => {},
+	},
+}));
+
 const localDate = (date: string) =>
-	new Date(date).toLocaleDateString([], {
+	new Date(date).toLocaleDateString(['en'], {
 		month: 'short',
 		day: 'numeric',
 		year: 'numeric',
@@ -26,6 +42,7 @@ const columns: DataSnapshot[] = [
 				accuracy: 73,
 				time: 2000,
 				typos: 4,
+				lang: 'en',
 			};
 		},
 	},
@@ -58,7 +75,7 @@ describe('TableScore', () => {
 				loading={false}
 				error={undefined}
 				columns={columns}
-				headers={['Date', 'Chars', 'Accuracy', 'Time', 'Typos', 'Action']}
+				headers={['Date', 'Chars', 'Accuracy', 'Time', 'Typos', 'Action', 'Language']}
 				mode={'easy'}
 			/>,
 		);
@@ -73,10 +90,10 @@ describe('TableScore', () => {
 				loading={false}
 				error={undefined}
 				columns={[]}
-				headers={['Date', 'Chars', 'Accuracy', 'Time', 'Typos', 'Remove']}
+				headers={['Date', 'Chars', 'Accuracy', 'Time', 'Typos', 'Remove', 'Language']}
 				mode={'easy'}
 			/>,
 		);
-		expect(screen.getByText(/no data/i)).toBeInTheDocument();
+		expect(screen.getByText(/noData/i)).toBeInTheDocument();
 	});
 });
