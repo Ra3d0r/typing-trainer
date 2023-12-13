@@ -35,6 +35,13 @@ Frontend:
 Backend: 
 - Firebase
 
+Test:
+- Jest
+- testing-library-react
+  
+DevOps:
+- CI/CD (Github actions, Vercel)
+
 Bundle:
 - Webpack
 
