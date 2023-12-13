@@ -30,9 +30,17 @@ Frontend:
 - PostCSS
 - Twin.macro
 - Flowbite
+- i18next
 
 Backend: 
 - Firebase
+
+Test:
+- Jest
+- testing-library-react
+  
+DevOps:
+- CI/CD (Github actions, Vercel)
 
 Bundle:
 - Webpack
@@ -51,12 +59,16 @@ Others:
 3. Manual deletion of previously written characters
 4. Calculation of input results in real time
 5. Saving the result of text typing after entering the last character in the text for authorized users.
+6. Translate for Russian and English
  
 
 Text for mode: 
+1. EN
 - easy: https://type.fit/api/quotes
 - normal: https://dummyjson.com/posts
 - hard: https://api.api-ninjas.com/v1/exercises
+2. RU
+- https://api.anilibria.tv/v2
 
 
 <a name="init" ><h3 style="text-align: center">Project Launch</h3></a>

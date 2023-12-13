@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import LinkForm from '@components/UI/LinkForm';
 import Submit from '@components/UI/Submit';
 import SubmitLoading from '@components/UI/SubmitLoading';
@@ -9,8 +11,9 @@ import PasswordInput from './item/PasswordInput';
 import {IPropsRegisterForm} from './types/typeRegisterForm';
 
 const RegisterForm = ({onSubmit, register, errors, isValid, watch, status}: IPropsRegisterForm) => {
+	const {t} = useTranslation();
 	const matchPassword = (val: string) =>
-		watch('password') !== val ? 'Your passwords do no match' : undefined;
+		watch('password') !== val ? t('twoPasswordNotMatch') : undefined;
 	return (
 		<form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
 			<LoginInput register={register} errors={errors} disabled={status === 'loading'} />
@@ -20,7 +23,7 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch, status}: IPro
 				register={register}
 				errors={errors}
 				name="confirmPassword"
-				label="Confirm password"
+				label={t('confirmPassword')}
 				options={{
 					validate: matchPassword,
 				}}
@@ -29,23 +32,23 @@ const RegisterForm = ({onSubmit, register, errors, isValid, watch, status}: IPro
 			<CheckboxLabel
 				register={register}
 				name="acceptTerms"
-				label="I accept the"
-				link={{to: '/', text: 'Terms and Conditions'}}
+				label={t('acceptTerms')}
+				link={{to: '/', text: t('termsAndConditions')}}
 				options={{
 					required: {
 						value: true,
-						message: 'You must accept the terms and conditions',
+						message: t('confirmConditions'),
 					},
 				}}
 			/>
-			<CheckboxLabel name="remember" register={register} label={'Remember me'} />
+			<CheckboxLabel name="remember" register={register} label={t('rememberMe')} />
 			{status === 'loading' ? (
 				<SubmitLoading disabled />
 			) : (
-				<Submit disabled={!isValid}>Create an account</Submit>
+				<Submit disabled={!isValid}>{t('createAccount')}</Submit>
 			)}
 			<p className="text-sm font-light text-gray-500 dark:text-gray-400">
-				Already have an account? <LinkForm to="/login">Login here</LinkForm>
+				{t('alreadyHaveAccount')} <LinkForm to="/login">{t('signIn')}</LinkForm>
 			</p>
 		</form>
 	);

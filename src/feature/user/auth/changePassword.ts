@@ -9,12 +9,12 @@ const {setStatusUser} = userActions;
 
 const {openToast} = toastActions;
 
-const changePassword: typeChangePassword = async ({password}, dispatch, reset) => {
+const changePassword: typeChangePassword = async ({password}, dispatch, reset, t) => {
 	try {
 		dispatch(setStatusUser('loading'));
 		const authUser = auth.currentUser as User;
 		await updatePassword(authUser, password);
-		dispatch(openToast({message: 'Password changed', type: 'success'}));
+		dispatch(openToast({message: t('passwordMessage'), type: 'success'}));
 		reset();
 		dispatch(setStatusUser('fulfilled'));
 	} catch (error) {

@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import {typeModeUnion} from '@types';
 
 import {useAppSelector} from '@store/redux-hooks';
@@ -24,8 +26,9 @@ const Svg = () => {
 
 const TotalChars = ({mode}: {mode: typeModeUnion}) => {
 	const totalChars = useAppSelector((state) => selectTotalChars(state, mode));
+	const {t} = useTranslation('translation');
 
-	return <Indicator value={totalChars} svg={<Svg />} text="Chars" />;
+	return <Indicator value={totalChars} svg={<Svg />} text={t('totalChars')} />;
 };
 
 export default TotalChars;

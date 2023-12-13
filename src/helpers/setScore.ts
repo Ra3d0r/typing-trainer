@@ -7,6 +7,7 @@ interface IScore {
 	time: number;
 	typos: number;
 	accuracy: number;
+	lang: string;
 }
 
 const setScore = (score: IScore, mode: typeModeUnion) => {

@@ -28,7 +28,7 @@ const classNameKey = (
 };
 
 function isShiftLetter(currentLetter: string): boolean {
-	return /[A-Z]|[@#$%^&*()_+{}|:"<>?~!]/.test(currentLetter);
+	return /[A-Z]|[@#$%^&*()_+{}|:"<>?~!]|[А-Я]|Ё/.test(currentLetter);
 }
 
 export default classNameKey;

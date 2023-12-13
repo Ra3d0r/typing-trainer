@@ -1,5 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 
+import {langReducer} from '@feature/lang/langSlice';
 import {scoreReducer} from '@feature/score/scoreSlice';
 import {toastReducer} from '@feature/toast/toastSlice';
 import {typingReducer} from '@feature/typing/typingSlice';
@@ -13,8 +14,9 @@ const store = configureStore({
 		score: scoreReducer,
 		user: userReducer,
 		toast: toastReducer,
+		lang: langReducer,
 	},
-	devTools: true,
+	devTools: process.env['NODE_ENV'] === 'production' ? false : true,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			thunk: {

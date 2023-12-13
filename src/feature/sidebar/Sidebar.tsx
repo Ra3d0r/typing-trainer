@@ -1,4 +1,5 @@
-import {Link} from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
+import {Link, useLocation} from 'react-router-dom';
 
 import useSingOut from '@hooks/useSingOut';
 
@@ -9,6 +10,9 @@ import useOpenSidebar from './useOpenSidebar';
 function Sidebar() {
 	const singOut = useSingOut();
 	const [isOpen, setIsOpen] = useOpenSidebar();
+	const {t} = useTranslation();
+	const location = useLocation();
+	const isSecurity = location.pathname.includes('security');
 
 	return (
 		<>
@@ -59,7 +63,7 @@ function Sidebar() {
 									<path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
 								</svg>
 
-								<span className="ml-3 pt-1">Home</span>
+								<span className="ml-3 pt-1">{t('home')}</span>
 							</Link>
 						</li>
 					</ul>
@@ -70,7 +74,11 @@ function Sidebar() {
 						<li>
 							<Link
 								to="/account"
-								className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+								className={`flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white ${
+									!isSecurity
+										? 'bg-gray-100 dark:bg-gray-700 hover:cursor-default'
+										: 'hover:bg-gray-100 dark:hover:bg-gray-700 group'
+								}`}
 							>
 								<svg
 									aria-hidden="true"
@@ -82,12 +90,16 @@ function Sidebar() {
 									<path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
 									<path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
 								</svg>
-								<span className="ml-3">Overview</span>
+								<span className="ml-3">{t('overview')}</span>
 							</Link>
 						</li>
 						<li>
 							<Link
-								className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+								className={`flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white ${
+									isSecurity
+										? 'bg-gray-100 dark:bg-gray-700 hover:cursor-default'
+										: 'hover:bg-gray-100 dark:hover:bg-gray-700 group'
+								}`}
 								to="/account/security"
 							>
 								<svg
@@ -103,13 +115,13 @@ function Sidebar() {
 										clipRule="evenodd"
 									/>
 								</svg>
-								<span className="ml-3">Security</span>
+								<span className="ml-3">{t('security')}</span>
 							</Link>
 						</li>
 					</ul>
 					<div className="mt-auto">
 						<Button onClick={singOut} size="fullMedium">
-							Sign out
+							{t('signOut')}
 						</Button>
 					</div>
 				</div>

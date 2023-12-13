@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import {typeModeUnion} from '@types';
 
 import useTime from '@hooks/useTime';
@@ -22,8 +24,9 @@ const Svg = () => {
 
 const Time = ({mode}: {mode: typeModeUnion}) => {
 	const time = useTime(mode);
+	const {t} = useTranslation('translation');
 
-	return <Indicator value={time} svg={<Svg />} text="Time" />;
+	return <Indicator value={time} svg={<Svg />} text={t('time')} />;
 };
 
 export default Time;

@@ -1,4 +1,5 @@
 import {useAuthState} from 'react-firebase-hooks/auth';
+import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import tw from 'twin.macro';
@@ -22,6 +23,7 @@ const LoginHTML = ({children, to}: {children: React.ReactNode; to: string}) => {
 const Login = () => {
 	const userName = useSelector(selectLogin);
 	const [_, loading] = useAuthState(auth);
+	const {t} = useTranslation('translation');
 
 	if (loading) {
 		return <Loading size="sm" />;
@@ -30,7 +32,7 @@ const Login = () => {
 	return userName ? (
 		<LoginHTML to="/account">{userName}</LoginHTML>
 	) : (
-		<LoginHTML to="/login">Login</LoginHTML>
+		<LoginHTML to="/login">{t('login')}</LoginHTML>
 	);
 };
 

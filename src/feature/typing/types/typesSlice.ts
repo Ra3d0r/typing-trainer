@@ -1,6 +1,6 @@
 import {PayloadAction} from '@reduxjs/toolkit';
 
-import {typeMode, typeModeUnion, typeStatus} from '@types';
+import {typeLang, typeMode, typeModeUnion, typeStatus} from '@types';
 
 import {AppDispatch, typeApi} from '@store/store';
 
@@ -36,6 +36,7 @@ type excludeType = Exclude<typeModeUnion, 'custom'>;
 
 export interface IConfigText {
 	mode: excludeType;
+	lang: typeLang;
 }
 
 export interface IConfigThunkOptions {

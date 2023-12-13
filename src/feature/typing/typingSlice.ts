@@ -14,9 +14,9 @@ import {
 
 export const requestText = createAsyncThunk<IReturnThunk, IConfigText, IConfigThunkOptions>(
 	'@@api/loading-text',
-	async ({mode}, {extra: {api}, dispatch, rejectWithValue}) => {
+	async ({mode, lang}, {extra: {api}, dispatch, rejectWithValue}) => {
 		try {
-			const [allText, text] = await api.loadText(mode);
+			const [allText, text] = await api.loadText(mode, lang);
 			dispatch(addCurrentText({text, mode}));
 			return {allText, mode};
 		} catch (err) {

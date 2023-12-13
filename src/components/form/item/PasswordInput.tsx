@@ -1,8 +1,11 @@
+import {useTranslation} from 'react-i18next';
+
 import InputLabel from '@components/compose/InputLabel';
 
 import {IPropsInput} from '../types/typesInput';
 
 const PasswordInput = ({register, errors, options, ...other}: IPropsInput) => {
+	const {t} = useTranslation('translation');
 	const name = other?.name;
 	return (
 		<div>
@@ -11,15 +14,15 @@ const PasswordInput = ({register, errors, options, ...other}: IPropsInput) => {
 				name="password"
 				placeholder="••••••••"
 				register={register}
-				label={'Password'}
+				label={t('password')}
 				options={{
 					required: {
 						value: true,
-						message: 'Fill in this field',
+						message: t('fillFields'),
 					},
 					minLength: {
 						value: 6,
-						message: 'Password must be at least 6 characters',
+						message: t('passwordLength'),
 					},
 					...options,
 				}}

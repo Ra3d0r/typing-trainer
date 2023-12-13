@@ -18,7 +18,7 @@ describe('ModalAddText', () => {
 				errorMessage="Error message"
 			/>,
 		);
-		await user.click(screen.getByRole('button', {name: /add text/i}));
+		await user.click(screen.getByRole('button', {name: /addText/i}));
 		expect(addText).toHaveBeenCalledTimes(1);
 
 		await user.click(screen.getByRole('button', {name: /cancel/i}));

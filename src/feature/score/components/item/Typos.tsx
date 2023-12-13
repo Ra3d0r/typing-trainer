@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import {typeModeUnion} from '@types';
 
 import {useAppSelector} from '@store/redux-hooks';
@@ -24,7 +26,8 @@ const Svg = () => {
 
 const Typos = ({mode}: {mode: typeModeUnion}) => {
 	const typos = useAppSelector((state) => selectTypos(state, mode));
-	return <Indicator value={typos} svg={<Svg />} text="Typos" />;
+	const {t} = useTranslation('translation');
+	return <Indicator value={typos} svg={<Svg />} text={t('typos')} />;
 };
 
 export default Typos;

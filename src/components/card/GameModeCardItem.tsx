@@ -53,10 +53,12 @@ const GameModeCardItem = ({
 	mode,
 	description,
 	title,
+	buttonText,
 }: {
 	mode: string;
 	description: string;
 	title: string;
+	buttonText: string;
 }) => {
 	return (
 		<CardContainer>
@@ -64,7 +66,7 @@ const GameModeCardItem = ({
 				<Title>{title}</Title>
 				<Description>{description}</Description>
 			</TextContainer>
-			<Button to={`/game/${mode}`}>Play</Button>
+			<Button to={`/game/${mode}`}>{buttonText}</Button>
 		</CardContainer>
 	);
 };

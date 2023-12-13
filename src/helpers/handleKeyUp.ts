@@ -1,13 +1,16 @@
+import {t} from 'i18next';
+
 import {scoreActions} from '@feature/score/scoreSlice';
 import {toastActions} from '@feature/toast/toastSlice';
 import {typingActions} from '@feature/typing/typingSlice';
 import postScore from '@feature/userScore/postScore';
 
-import {textEng} from '../config';
+import {textEng, textRu} from '../config';
 import keyIdButtons from './keyIdButtons';
 import randomTextFromArray from './randomTextFromArray';
 import {typeHandleKeyUp} from './types/typeHandleKeyUp';
 import checkKeyboardLayout from './utils/checkKeyboardLayout';
+import deleteWords from './utils/deleteWords';
 
 const {
 	addCurrentText,
@@ -34,6 +37,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	allText,
 	isAuth,
 	errorsIndex,
+	lang,
 }) => {
 	if (event.key === 'Shift') {
 		setIsShiftPressed(false);
@@ -41,8 +45,8 @@ const handleKeyUp: typeHandleKeyUp = ({
 
 	setEventKeyCode('');
 
-	if (!checkKeyboardLayout('en', event.key)) {
-		dispatch(openToast({message: 'Change the keyboard layout', type: 'warning'}));
+	if (!checkKeyboardLayout(lang, event.key)) {
+		dispatch(openToast({message: t('changeKeyboard'), type: 'warning'}));
 		return;
 	}
 
@@ -72,7 +76,7 @@ const handleKeyUp: typeHandleKeyUp = ({
 	}
 
 	if (mode === 'custom' && currentTextIndex === currentText.length - 1) {
-		isAuth && dispatch(postScore({mode}));
+		isAuth && dispatch(postScore({mode, lang}));
 		dispatch(changeStatusCustomMode('idle'));
 		dispatch(resetCustomModeText());
 		return;
@@ -84,9 +88,14 @@ const handleKeyUp: typeHandleKeyUp = ({
 	}
 
 	if (mode !== 'custom') {
-		const text = randomTextFromArray(allText, mode, textEng.textKey);
-		isAuth && dispatch(postScore({mode}));
-		dispatch(addCurrentText({text, mode}));
+		const text = randomTextFromArray(
+			allText,
+			mode,
+			lang === 'en' ? textEng.textKey : textRu.textKey,
+		);
+		isAuth && dispatch(postScore({mode, lang}));
+		const changedText = lang === 'ru' ? deleteWords(text, '\r') : text;
+		dispatch(addCurrentText({text: changedText, mode}));
 		return;
 	}
 

@@ -1,4 +1,6 @@
-import {buttonsKeyboard} from '@public/data/buttonsKeyboard';
+import {buttonsKeyboard, buttonsKeyboardRU} from '@public/data/buttonsKeyboard';
+
+import {typeLang} from '@types';
 
 import KeyboardKey from './KeyboardKey';
 
@@ -7,10 +9,13 @@ interface props {
 	eventKeyCode: string;
 	currentKeyId: string | null;
 	currentLetter: string | undefined;
+	lang: typeLang;
 }
 
-const KeyboardList = ({isShiftPressed, eventKeyCode, currentKeyId, currentLetter}: props) => {
-	return buttonsKeyboard.map((board, rowIndex) => {
+const handleKeyBoard = (lang: typeLang) => (lang === 'en' ? buttonsKeyboard : buttonsKeyboardRU);
+
+const KeyboardList = ({isShiftPressed, eventKeyCode, currentKeyId, currentLetter, lang}: props) => {
+	return handleKeyBoard(lang).map((board, rowIndex) => {
 		return (
 			<div key={rowIndex} className="space-x-0.5 space-y-0.5 flex grow">
 				{board.map((key) => {
