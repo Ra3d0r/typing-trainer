@@ -7,6 +7,11 @@ export const selectCurrentLetter = (state: RootState, mode: typeModeUnion) => {
 	return state.typing[mode].currentText[index];
 };
 
+export const selectPreviousLetter = (state: RootState, mode: typeModeUnion) => {
+	const index = state.typing[mode].currentTextIndex;
+	return state.typing[mode].currentText[index - 1 < 0 ? 0 : index - 1];
+};
+
 export const selectCurrentTextIndex = (state: RootState, mode: typeModeUnion) =>
 	state.typing[mode].currentTextIndex;
 export const selectCurrentText = (state: RootState, mode: typeModeUnion) =>

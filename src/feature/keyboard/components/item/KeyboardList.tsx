@@ -10,11 +10,19 @@ interface props {
 	currentKeyId: string | null;
 	currentLetter: string | undefined;
 	lang: typeLang;
+	previousKeyId: string;
 }
 
 const handleKeyBoard = (lang: typeLang) => (lang === 'en' ? buttonsKeyboard : buttonsKeyboardRU);
 
-const KeyboardList = ({isShiftPressed, eventKeyCode, currentKeyId, currentLetter, lang}: props) => {
+const KeyboardList = ({
+	isShiftPressed,
+	eventKeyCode,
+	currentKeyId,
+	currentLetter,
+	lang,
+	previousKeyId,
+}: props) => {
 	return handleKeyBoard(lang).map((board, rowIndex) => {
 		return (
 			<div key={rowIndex} className="space-x-0.5 space-y-0.5 flex grow">
@@ -27,6 +35,7 @@ const KeyboardList = ({isShiftPressed, eventKeyCode, currentKeyId, currentLetter
 							eventKey={eventKeyCode}
 							keyTarget={currentKeyId}
 							currentLetter={currentLetter}
+							previousKeyId={previousKeyId}
 						/>
 					);
 				})}

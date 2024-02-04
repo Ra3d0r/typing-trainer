@@ -24,13 +24,11 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 	const {i18n, t} = useTranslation();
 
 	useKeyboardEvent('keydown', (event: KeyboardEvent) =>
-		handleKeyDown({event, setIsShiftPressed, setEventKeyCode, status}),
-	);
-	useKeyboardEvent('keyup', (event: KeyboardEvent) =>
-		handleKeyUp({
+		handleKeyDown({
 			event,
 			setIsShiftPressed,
 			setEventKeyCode,
+			status,
 			target,
 			dispatch,
 			currentText,
@@ -41,6 +39,13 @@ const useKeyboard = (target: string | undefined, mode: typeModeUnion): [boolean,
 			errorsIndex,
 			lang: i18n.language as typeLang,
 			t,
+		}),
+	);
+	useKeyboardEvent('keyup', (event: KeyboardEvent) =>
+		handleKeyUp({
+			event,
+			setIsShiftPressed,
+			setEventKeyCode,
 		}),
 	);
 

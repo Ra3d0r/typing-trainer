@@ -3,9 +3,10 @@ const classNameKey = (
 	eventKeyId: string,
 	targetKeyId: string | null,
 	currentLetter: string | undefined,
+	previousKeyId: string,
 ): string => {
 	switch (true) {
-		case eventKeyId === targetKeyId && keyId === eventKeyId:
+		case eventKeyId === previousKeyId && keyId === eventKeyId:
 			return 'target-typed';
 
 		case keyId === 'ShiftLeft' && keyId === eventKeyId:
