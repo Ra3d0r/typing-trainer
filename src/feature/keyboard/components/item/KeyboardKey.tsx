@@ -6,10 +6,11 @@ interface props {
 	id: string;
 	keyTarget: string | null;
 	currentLetter: string | undefined;
+	previousKeyId: string;
 }
 
-const KeyboardKey = ({kbd, eventKey, id, keyTarget, currentLetter}: props) => {
-	const className = classNameKey(id, eventKey, keyTarget, currentLetter);
+const KeyboardKey = ({kbd, eventKey, id, keyTarget, currentLetter, previousKeyId}: props) => {
+	const className = classNameKey(id, eventKey, keyTarget, currentLetter, previousKeyId);
 
 	switch (id) {
 		case 'Space':
