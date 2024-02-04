@@ -3,7 +3,7 @@ import tw from 'twin.macro';
 
 import {typeLang, typeModeUnion} from '@types';
 
-import {selectCurrentLetter} from '@feature/typing/typingSelectors';
+import {selectCurrentLetter, selectPreviousLetter} from '@feature/typing/typingSelectors';
 
 import useKeyboard from '@hooks/useKeyboard';
 
@@ -32,8 +32,10 @@ const Keyboard = ({mode}: {mode: typeModeUnion}) => {
 	const currentLetter: string | undefined = useAppSelector((state) =>
 		selectCurrentLetter(state, mode),
 	);
+	const previousLetter = useAppSelector((state) => selectPreviousLetter(state, mode));
 	const [isShiftPressed, eventKeyCode] = useKeyboard(currentLetter, mode);
 	const currentKeyId = keyIdButtons(currentLetter, i18n.language as typeLang);
+	const previousKeyId = keyIdButtons(previousLetter, i18n.language as typeLang);
 
 	return (
 		<KeyboardContainer>
@@ -44,6 +46,7 @@ const Keyboard = ({mode}: {mode: typeModeUnion}) => {
 					currentKeyId={currentKeyId}
 					currentLetter={currentLetter}
 					lang={i18n.language as typeLang}
+					previousKeyId={previousKeyId || ''}
 				/>
 			</KeyboardPanel>
 		</KeyboardContainer>
